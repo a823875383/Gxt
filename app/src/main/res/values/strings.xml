@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">供销通</string>
+    <string name="login_name">请输入您的手机号</string>
+    <string name="login_pass">请输入密码，长度6-12位</string>
+    <string name="login_code">请输入验证码</string>
+    <string name="login_forget">忘记密码?</string>
+    <string name="login_button">立即登录</string>
+    <string name="title_forget">找回密码</string>
+    <string name="forget_phone">请输入您已注册的手机号</string>
+    <string name="next">下一步</string>
+    <string name="forget_sent">验证码已发送至</string>
+    <string name="resend">重新发送</string>
+    <string name="forget_pass">输入密码，长度6-12位</string>
+    <string name="done">完成</string>
+    <string name="home">首页</string>
+    <string name="purchase">采购单</string>
+    <string name="order">订单</string>
+    <string name="user">我的</string>
+    <string name="withdraw">提现</string>
+    <string name="recharge">充值</string>
+    <string name="currency">总资产（元）</string>
+    <string name="goods_man">商品管理</string>
+    <string name="my_order">我的订单</string>
+    <string name="order_all">全部（x）</string>
+    <string name="order_unpay">待支付（x）</string>
+    <string name="order_unreceive">待收货（x）</string>
+    <string name="order_refund">退货/退款中（x）</string>
+    <string name="order_done">已完成（x）</string>
+    <string name="my_blank">银行卡（x）</string>
+    <string name="my_address">收货地址（x）</string>
+    <string name="my_account">我的账户</string>
+    <string name="change_name">修改登录名</string>
+    <string name="change_pass">修改登录密码</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+</resources>

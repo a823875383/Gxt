@@ -1,0 +1,141 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blank"
+    android:orientation="vertical"
+    tools:context="com.jsqix.gxt.app.fragment.DoubleFragment">
+
+    <include layout="@layout/layout_person" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:weightSum="2">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingBottom="@dimen/off_10dp"
+            android:paddingTop="@dimen/off_10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="@dimen/off_10dp"
+                android:drawableTop="@mipmap/ic_bank"
+                android:gravity="center"
+                android:text="@string/my_blank" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="@dimen/off_40dp"
+            android:layout_gravity="center"
+            android:background="@color/div_tab" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingBottom="@dimen/off_10dp"
+            android:paddingTop="@dimen/off_10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="@dimen/off_10dp"
+                android:drawableTop="@mipmap/ic_address"
+                android:gravity="center"
+                android:text="@string/my_address" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View style="@style/div_style" />
+
+    <View
+        style="@style/div_style"
+        android:layout_marginTop="@dimen/off_10dp" />
+
+    <LinearLayout
+        android:id="@+id/goods_manage"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/off_50dp"
+        android:background="@color/white"
+        android:gravity="center_vertical">
+
+        <View
+            android:layout_width="@dimen/off_4dp"
+            android:layout_height="@dimen/off_30dp"
+            android:background="@color/green" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/off_10dp"
+            android:layout_marginRight="@dimen/off_10dp"
+            android:drawableRight="@mipmap/ic_arrow"
+            android:textStyle="bold"
+            android:text="@string/goods_man"
+            android:textSize="@dimen/font_size_16sp" />
+    </LinearLayout>
+
+    <View style="@style/div_style" />
+
+    <View
+        style="@style/div_style"
+        android:layout_marginTop="@dimen/off_10dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/off_50dp"
+        android:background="@color/white"
+        android:gravity="center_vertical">
+
+        <View
+            android:layout_width="@dimen/off_4dp"
+            android:layout_height="@dimen/off_30dp"
+            android:background="@color/green" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/off_10dp"
+            android:text="@string/my_account"
+            android:textStyle="bold"
+            android:textSize="@dimen/font_size_16sp" />
+    </LinearLayout>
+
+    <View style="@style/div_style" />
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/off_50dp"
+        android:background="@color/white"
+        android:drawableRight="@mipmap/ic_arrow"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/off_14dp"
+        android:paddingRight="@dimen/off_10dp"
+        android:text="@string/change_name"
+        android:textSize="@dimen/font_size_16sp" />
+
+    <View style="@style/div_style" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/off_50dp"
+        android:background="@color/white"
+        android:drawableRight="@mipmap/ic_arrow"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/off_14dp"
+        android:paddingRight="@dimen/off_10dp"
+        android:text="@string/change_pass"
+        android:textSize="@dimen/font_size_16sp" />
+
+    <View style="@style/div_style" />
+</LinearLayout>

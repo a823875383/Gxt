@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blank"
+    android:orientation="vertical"
+    tools:context=".activity.SupplierMain">
+
+    <include layout="@layout/layout_person" />
+
+    <LinearLayout
+        android:id="@+id/goods_manage"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/off_50dp"
+        android:background="@color/white"
+        android:gravity="center_vertical">
+
+        <View
+            android:layout_width="@dimen/off_4dp"
+            android:layout_height="@dimen/off_30dp"
+            android:background="@color/green" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/off_10dp"
+            android:layout_marginRight="@dimen/off_10dp"
+            android:drawableRight="@mipmap/ic_arrow"
+            android:text="@string/goods_man"
+            android:textSize="@dimen/font_size_16sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <View style="@style/div_style" />
+
+    <View
+        style="@style/div_style"
+        android:layout_marginTop="@dimen/off_10dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/off_52dp"
+        android:background="@color/white"
+        android:gravity="center_vertical">
+
+        <View
+            android:layout_width="@dimen/off_4dp"
+            android:layout_height="@dimen/off_30dp"
+            android:background="@color/green" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="@string/my_order"
+            android:textSize="@dimen/font_size_16sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <View style="@style/div_style" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="3">
+
+        <LinearLayout
+            android:id="@+id/order_all"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:gravity="center"
+            android:paddingBottom="@dimen/off_15dp"
+            android:paddingTop="@dimen/off_15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="@dimen/off_10dp"
+                android:drawableTop="@mipmap/ic_order_all"
+                android:gravity="center"
+                android:text="@string/order_all" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/order_unpay"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="1dp"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:gravity="center"
+            android:paddingBottom="@dimen/off_15dp"
+            android:paddingTop="@dimen/off_15dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:drawablePadding="@dimen/off_10dp"
+                android:drawableTop="@mipmap/ic_order_unpay"
+                android:gravity="center"
+                android:text="@string/order_unpay" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/order_unreceive"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="1dp"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:gravity="center"
+            android:paddingBottom="@dimen/off_15dp"
+            android:paddingTop="@dimen/off_15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="@dimen/off_10dp"
+                android:drawableTop="@mipmap/ic_order_unreceive"
+                android:gravity="center"
+                android:text="@string/order_unreceive" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:weightSum="3">
+
+        <LinearLayout
+            android:id="@+id/order_refund"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:gravity="center"
+            android:paddingBottom="@dimen/off_15dp"
+            android:paddingTop="@dimen/off_15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="@dimen/off_10dp"
+                android:drawableTop="@mipmap/ic_order_refund"
+                android:gravity="center"
+                android:text="@string/order_refund" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/order_done"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="1dp"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:gravity="center"
+            android:paddingBottom="@dimen/off_15dp"
+            android:paddingTop="@dimen/off_15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="@dimen/off_10dp"
+                android:drawableTop="@mipmap/ic_order_done"
+                android:gravity="center"
+                android:text="@string/order_done" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="1dp"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:gravity="center"
+            android:paddingBottom="@dimen/off_15dp"
+            android:paddingTop="@dimen/off_15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="@dimen/off_10dp"
+                android:drawableTop="@mipmap/ic_order_all"
+                android:text="@string/order_unreceive"
+                android:visibility="invisible" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View style="@style/div_style" />
+</LinearLayout>

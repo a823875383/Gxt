@@ -1,0 +1,32 @@
+apply plugin: 'com.android.application'
+def cfg = rootProject.ext.configuration // 配置
+def libs = rootProject.ext.libraries // 库
+android {
+    compileSdkVersion cfg.compileSdkVersion
+    buildToolsVersion cfg.buildToolsVersion
+
+    defaultConfig {
+        applicationId cfg.package
+        minSdkVersion cfg.minSdkVersion
+        targetSdkVersion cfg.targetSdkVersion
+        versionCode cfg.versionCode
+        versionName cfg.versionName
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    compile "com.android.support:appcompat-v7:${libs.supportVersion}"
+    compile "com.android.support:design:${libs.supportVersion}"
+    compile "com.android.support:recyclerview-v7:${libs.supportVersion}"
+    compile "com.android.support:support-v4:${libs.supportVersion}"
+    compile project(':MyModule:Mycommon')
+
+}

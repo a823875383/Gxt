@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/off_240dp">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@mipmap/user_bg" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/off_30dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/head_bg">
+
+                <ImageView
+                    android:id="@+id/iv_head"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/ic_head_default" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/off_8dp"
+                android:text="0.00"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_size_26sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/off_8dp"
+                android:text="@string/currency"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_size_14sp" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_set"
+            android:layout_marginTop="@dimen/off_15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:padding="@dimen/off_15dp"
+            android:src="@mipmap/ic_user_set" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/off_45dp"
+            android:layout_alignParentBottom="true"
+            android:weightSum="2">
+
+            <Button
+                android:id="@+id/bt_withdraw"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#1fffffff"
+                android:gravity="center"
+                android:text="@string/withdraw"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_size_16sp" />
+
+            <Button
+                android:id="@+id/bt_recharge"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#1fffffff"
+                android:gravity="center"
+                android:text="@string/recharge"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_size_16sp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>
