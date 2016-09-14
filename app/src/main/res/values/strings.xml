@@ -10,7 +10,7 @@
     <string name="next">下一步</string>
     <string name="forget_sent">验证码已发送至</string>
     <string name="resend">重新发送</string>
-    <string name="forget_pass">输入密码，长度6-12位</string>
+    <string name="forget_pass">输入新密码，长度6-12位</string>
     <string name="done">完成</string>
     <string name="home">首页</string>
     <string name="purchase">采购单</string>
@@ -26,14 +26,45 @@
     <string name="order_unreceive">待收货（x）</string>
     <string name="order_refund">退货/退款中（x）</string>
     <string name="order_done">已完成（x）</string>
-    <string name="my_blank">银行卡（x）</string>
+    <string name="blank">银行卡（x）</string>
     <string name="my_address">收货地址（x）</string>
     <string name="my_account">我的账户</string>
+    <string name="my_blank">我的银行卡</string>
     <string name="change_name">修改登录名</string>
+    <string name="change_phone">修改登录手机号</string>
     <string name="change_pass">修改登录密码</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="sup_order">供应商订单</string>
+    <string name="pur_order">采购商订单</string>
+    <string name="all_order">查看全部</string>
+    <string name="unpay_order">待付款</string>
+    <string name="unrecieve_order">待收货</string>
+    <string name="refund_order">退货/退款中</string>
+    <string name="done_order">已完成</string>
+    <string name="user_center">个人中心</string>
+    <string name="bank_added">已添加银行卡（x张）</string>
+    <string name="add_bank">添加银行卡</string>
+    <string name="money">金额</string>
+    <string name="recharge_money">请输入充值金额</string>
+    <string name="recharge_away">选择充值方式：</string>
+    <string name="recharge_wechat">微信充值</string>
+    <string name="pay_wechat">微信支付</string>
+    <string name="recharge_alipay">支付宝充值</string>
+    <string name="pay_alipay">支付宝支付</string>
+    <string name="recharge_phone">手机账号充值</string>
+    <string name="recharge_login">手机账号登录</string>
+    <string name="phone">手机号</string>
+    <string name="pass">密码</string>
+    <string name="login">登录</string>
+    <string name="pay_phone">付款账户：</string>
+    <string name="balance_account">账户余额</string>
+    <string name="balance_available">( 可以余额x元 )</string>
+    <string name="recharge_button">确认充值</string>
+    <string name="cashier_counter">点窝收银台</string>
+    <string name="login_phone">请输入手机号</string>
+    <string name="again_pass">请再次输入新密码</string>
+    <string name="title_change_pass">修改密码</string>
+    <string name="title_change_phone">修改手机号</string>
+    <string name="new_phone">请输入新手机号</string>
 
 
 </resources>

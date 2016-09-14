@@ -10,6 +10,7 @@
 
     <EditText
         android:id="@+id/et_name"
+        style="@style/EditStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/off_10dp"
@@ -19,11 +20,11 @@
 
     <Button
         android:id="@+id/bt_next"
+        style="@style/WhiteText"
         android:layout_width="match_parent"
         android:layout_height="@dimen/off_40dp"
         android:layout_marginTop="@dimen/off_15dp"
         android:background="@drawable/bt_green"
         android:text="@string/next"
-        android:textColor="@color/white"
         android:textSize="@dimen/font_size_18sp" />
 </LinearLayout>

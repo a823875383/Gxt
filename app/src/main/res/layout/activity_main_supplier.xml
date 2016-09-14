@@ -22,14 +22,14 @@
             android:background="@color/green" />
 
         <TextView
+            style="@style/BlackText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/off_10dp"
             android:layout_marginRight="@dimen/off_10dp"
             android:drawableRight="@mipmap/ic_arrow"
             android:text="@string/goods_man"
-            android:textSize="@dimen/font_size_16sp"
-            android:textStyle="bold" />
+            android:textSize="@dimen/font_size_16sp" />
     </LinearLayout>
 
     <View style="@style/div_style" />
@@ -50,12 +50,12 @@
             android:background="@color/green" />
 
         <TextView
+            style="@style/BlackText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:text="@string/my_order"
-            android:textSize="@dimen/font_size_16sp"
-            android:textStyle="bold" />
+            android:textSize="@dimen/font_size_16sp" />
     </LinearLayout>
 
     <View style="@style/div_style" />
@@ -76,6 +76,7 @@
             android:paddingTop="@dimen/off_15dp">
 
             <TextView
+                style="@style/LightText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawablePadding="@dimen/off_10dp"
@@ -97,8 +98,9 @@
             android:paddingTop="@dimen/off_15dp">
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                style="@style/LightText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:drawablePadding="@dimen/off_10dp"
                 android:drawableTop="@mipmap/ic_order_unpay"
                 android:gravity="center"
@@ -117,6 +119,7 @@
             android:paddingTop="@dimen/off_15dp">
 
             <TextView
+                style="@style/LightText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawablePadding="@dimen/off_10dp"
@@ -143,6 +146,7 @@
             android:paddingTop="@dimen/off_15dp">
 
             <TextView
+                style="@style/LightText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawablePadding="@dimen/off_10dp"
@@ -163,6 +167,7 @@
             android:paddingTop="@dimen/off_15dp">
 
             <TextView
+                style="@style/LightText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawablePadding="@dimen/off_10dp"

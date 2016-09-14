@@ -28,6 +28,7 @@
             android:paddingTop="@dimen/off_5dp">
 
             <EditText
+                style="@style/EditStyle"
                 android:id="@+id/et_name"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/off_35dp"
@@ -52,6 +53,7 @@
             android:paddingTop="@dimen/off_5dp">
 
             <EditText
+                style="@style/EditStyle"
                 android:id="@+id/et_pass"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/off_35dp"
@@ -71,6 +73,7 @@
             android:background="@drawable/round_white">
 
             <EditText
+                style="@style/EditStyle"
                 android:id="@+id/et_code"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/off_35dp"
@@ -99,6 +102,7 @@
         </LinearLayout>
 
         <TextView
+            style="@style/GrayText"
             android:id="@+id/tv_forget"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -107,6 +111,7 @@
             android:text="@string/login_forget" />
 
         <Button
+            style="@style/WhiteText"
             android:id="@+id/bt_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -114,7 +119,6 @@
             android:layout_marginTop="@dimen/off_10dp"
             android:background="@drawable/round_green"
             android:text="@string/login_button"
-            android:textColor="@color/white"
             android:textSize="@dimen/font_size_18sp" />
     </LinearLayout>
 

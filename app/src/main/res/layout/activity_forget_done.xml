@@ -7,8 +7,10 @@
     android:orientation="vertical"
     android:padding="@dimen/off_20dp"
     tools:context="com.jsqix.gxt.app.activity.ForgetDone">
+
     <EditText
-        android:id="@+id/et_name"
+        android:id="@+id/et_phone"
+        style="@style/EditStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/off_10dp"
@@ -17,12 +19,12 @@
         android:padding="@dimen/off_10dp" />
 
     <Button
-        android:id="@+id/bt_next"
+        android:id="@+id/bt_done"
+        style="@style/WhiteText"
         android:layout_width="match_parent"
         android:layout_height="@dimen/off_40dp"
         android:layout_marginTop="@dimen/off_15dp"
         android:background="@drawable/bt_green"
         android:text="@string/done"
-        android:textColor="@color/white"
         android:textSize="@dimen/font_size_18sp" />
 </LinearLayout>

@@ -23,12 +23,13 @@
             android:paddingTop="@dimen/off_10dp">
 
             <TextView
+                style="@style/GrayText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawablePadding="@dimen/off_10dp"
                 android:drawableTop="@mipmap/ic_bank"
                 android:gravity="center"
-                android:text="@string/my_blank" />
+                android:text="@string/blank" />
         </LinearLayout>
 
         <View
@@ -46,6 +47,7 @@
             android:paddingTop="@dimen/off_10dp">
 
             <TextView
+                style="@style/GrayText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawablePadding="@dimen/off_10dp"
@@ -74,17 +76,18 @@
             android:background="@color/green" />
 
         <TextView
+            style="@style/BlackText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/off_10dp"
             android:text="@string/my_account"
-            android:textStyle="bold"
             android:textSize="@dimen/font_size_16sp" />
     </LinearLayout>
 
     <View style="@style/div_style" />
 
     <TextView
+        style="@style/GrayText"
         android:id="@+id/tv_name"
         android:layout_width="match_parent"
         android:layout_height="@dimen/off_50dp"
@@ -99,6 +102,7 @@
     <View style="@style/div_style" />
 
     <TextView
+        style="@style/GrayText"
         android:layout_width="match_parent"
         android:layout_height="@dimen/off_50dp"
         android:background="@color/white"

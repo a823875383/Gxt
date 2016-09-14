@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.jsqix.gxt.app.R;
 import com.jsqix.gxt.app.adapter.ViewPageAdapter;
@@ -15,12 +17,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import gxt.jsqix.com.mycommon.base.BaseFragment;
+import gxt.jsqix.com.mycommon.base.util.StatusBarCompat;
 
 /**
  * 采购商订单页面
  */
 @ContentView(R.layout.fragment_pur_order)
 public class PurOrderFragment extends BaseFragment {
+    @ViewInject(R.id.tv_title)
+    private TextView tvTitle;
     @ViewInject(R.id.tab_viewPage)
     private TabLayout tabLayout;
     @ViewInject(R.id.viewPage)
@@ -70,5 +75,10 @@ public class PurOrderFragment extends BaseFragment {
         ViewPageAdapter adapter = new ViewPageAdapter(fragments, titles, getChildFragmentManager());
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
+
+        //title margin透明通知栏高度
+        ViewGroup.MarginLayoutParams lp= (ViewGroup.MarginLayoutParams) tvTitle.getLayoutParams();
+        lp.setMargins(0, StatusBarCompat.getStatusBarHeight(mContext),0,0);
+        tvTitle.setLayoutParams(lp);
     }
 }

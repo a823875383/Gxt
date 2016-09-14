@@ -24,7 +24,16 @@
         <activity android:name=".activity.ForgetNext" />
         <activity android:name=".activity.ForgetDone" />
         <activity android:name=".activity.PurchaserMain" />
-        <activity android:name=".activity.DoubleMain"></activity>
+        <activity android:name=".activity.DoubleMain" />
+        <activity android:name=".activity.SupplierSet" />
+        <activity android:name=".activity.RechargeFirst" />
+        <activity android:name=".activity.RechargeNext" />
+        <activity android:name=".activity.RechargeDone" />
+        <activity android:name=".activity.RechargeForget" />
+        <activity android:name=".activity.ChangePassword" />
+        <activity android:name=".activity.ChangePhoneFirst" />
+        <activity android:name=".activity.ChangePhoneNext" />
+        <activity android:name=".activity.ChangePhoneDone"></activity>
     </application>
 
 </manifest>

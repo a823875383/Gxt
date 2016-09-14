@@ -14,6 +14,7 @@
         android:layout_gravity="center_horizontal">
 
         <TextView
+            style="@style/BlackText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/forget_sent" />
@@ -34,6 +35,7 @@
 
         <EditText
             android:id="@+id/et_code"
+            style="@style/EditStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -54,11 +56,11 @@
 
     <Button
         android:id="@+id/bt_next"
+        style="@style/WhiteText"
         android:layout_width="match_parent"
         android:layout_height="@dimen/off_40dp"
         android:layout_marginTop="@dimen/off_15dp"
         android:background="@drawable/bt_green"
         android:text="@string/next"
-        android:textColor="@color/white"
         android:textSize="@dimen/font_size_18sp" />
 </LinearLayout>

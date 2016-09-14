@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blank"
+    android:orientation="vertical"
+    tools:context=".activity.SupplierSet">
+
+    <TextView
+        style="@style/LightText"
+        android:layout_height="@dimen/off_50dp"
+        android:gravity="center_vertical"
+        android:padding="@dimen/off_10dp"
+        android:text="@string/my_account">
+
+    </TextView>
+
+    <View style="@style/div_style" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/off_10dp"
+        android:paddingRight="@dimen/off_10dp">
+
+        <TextView
+            android:id="@+id/tv_change_phone"
+            style="@style/BlackText"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/off_50dp"
+            android:drawableRight="@mipmap/ic_arrow"
+            android:gravity="center_vertical"
+            android:text="@string/change_phone" />
+
+        <View style="@style/div_style" />
+
+        <TextView
+            android:id="@+id/tv_change_pass"
+            style="@style/BlackText"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/off_50dp"
+            android:drawableRight="@mipmap/ic_arrow"
+            android:gravity="center_vertical"
+            android:text="@string/change_pass" />
+    </LinearLayout>
+
+    <View style="@style/div_style" />
+
+    <TextView
+        style="@style/LightText"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/off_50dp"
+        android:gravity="center_vertical"
+        android:padding="@dimen/off_10dp"
+        android:text="@string/my_blank">
+
+    </TextView>
+
+    <View style="@style/div_style" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/off_10dp"
+        android:paddingRight="@dimen/off_10dp">
+
+        <TextView
+            android:id="@+id/tv_bank_added"
+            style="@style/BlackText"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/off_50dp"
+            android:drawableRight="@mipmap/ic_arrow"
+            android:gravity="center_vertical"
+            android:text="@string/bank_added" />
+
+        <View style="@style/div_style" />
+
+        <TextView
+            android:id="@+id/tv_add_bank"
+            style="@style/BlackText"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/off_50dp"
+            android:drawableRight="@mipmap/ic_arrow"
+            android:gravity="center_vertical"
+            android:text="@string/add_bank" />
+    </LinearLayout>
+
+    <View style="@style/div_style" />
+</LinearLayout>

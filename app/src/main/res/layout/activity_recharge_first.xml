@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blank"
+    android:orientation="vertical"
+    tools:context="com.jsqix.gxt.app.activity.RechargeFirst">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/off_50dp"
+        android:layout_marginTop="@dimen/off_10dp"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:padding="@dimen/off_10dp">
+
+        <TextView
+            style="@style/BlackText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/money"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/et_money"
+            style="@style/EditStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/off_20dp"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="@string/recharge_money" />
+    </LinearLayout>
+
+    <TextView
+        style="@style/LightText"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/off_50dp"
+        android:gravity="center_vertical"
+        android:padding="@dimen/off_10dp"
+        android:text="@string/recharge_away" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <View style="@style/div_style" />
+
+        <TextView
+            android:id="@+id/tv_wechat"
+            style="@style/BlackText"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/off_50dp"
+            android:drawableLeft="@mipmap/ic_pay_wechat_01"
+            android:drawablePadding="@dimen/off_10dp"
+            android:drawableRight="@mipmap/ic_arrow"
+            android:gravity="center_vertical"
+            android:padding="@dimen/off_10dp"
+            android:text="@string/recharge_wechat"
+            android:textSize="16sp" />
+
+        <View style="@style/div_style" />
+
+        <TextView
+            android:id="@+id/tv_alipay"
+            style="@style/BlackText"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/off_50dp"
+            android:drawableLeft="@mipmap/ic_pay_alipay_01"
+            android:drawablePadding="@dimen/off_10dp"
+            android:drawableRight="@mipmap/ic_arrow"
+            android:gravity="center_vertical"
+            android:padding="@dimen/off_10dp"
+            android:text="@string/recharge_alipay"
+            android:textSize="16sp" />
+
+        <View style="@style/div_style" />
+
+        <TextView
+            android:id="@+id/tv_phone"
+            style="@style/BlackText"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/off_50dp"
+            android:drawableLeft="@mipmap/ic_pay_phone"
+            android:drawablePadding="@dimen/off_10dp"
+            android:drawableRight="@mipmap/ic_arrow"
+            android:gravity="center_vertical"
+            android:padding="@dimen/off_10dp"
+            android:text="@string/recharge_phone"
+            android:textSize="16sp" />
+
+        <View style="@style/div_style" />
+    </LinearLayout>
+</LinearLayout>

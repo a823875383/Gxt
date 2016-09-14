@@ -1,13 +1,272 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/blank"
+    android:orientation="vertical"
     tools:context=".fragment.DouOrderFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
 
-</FrameLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/green"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/off_50dp"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="@string/my_order"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/pur_order_all"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/off_50dp"
+            android:paddingLeft="@dimen/off_10dp"
+            android:paddingRight="@dimen/off_10dp">
+
+            <TextView
+                style="@style/BlackText"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/off_50dp"
+                android:layout_centerVertical="true"
+                android:gravity="center_vertical"
+                android:text="@string/pur_order" />
+
+            <TextView
+                style="@style/GrayText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:drawablePadding="@dimen/off_2dp"
+                android:drawableRight="@mipmap/ic_arrow"
+                android:text="@string/all_order"
+                android:textSize="@dimen/font_size_14sp" />
+        </RelativeLayout>
+
+
+        <View style="@style/div_style" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="4">
+
+            <LinearLayout
+                android:id="@+id/pur_order_unpay"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingBottom="@dimen/off_15dp"
+                android:paddingTop="@dimen/off_15dp">
+
+                <TextView
+                    style="@style/GrayText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="@dimen/off_10dp"
+                    android:drawableTop="@mipmap/ic_unpay_order"
+                    android:gravity="center"
+                    android:text="@string/unpay_order" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/pur_order_unreceive"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingBottom="@dimen/off_15dp"
+                android:paddingTop="@dimen/off_15dp">
+
+                <TextView
+                    style="@style/GrayText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="@dimen/off_10dp"
+                    android:drawableTop="@mipmap/ic_unreceive_order"
+                    android:gravity="center"
+                    android:text="@string/unrecieve_order" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/pur_order_refund"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingBottom="@dimen/off_15dp"
+                android:paddingTop="@dimen/off_15dp">
+
+                <TextView
+                    style="@style/GrayText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="@dimen/off_10dp"
+                    android:drawableTop="@mipmap/ic_refund_order"
+                    android:gravity="center"
+                    android:text="@string/refund_order" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/pur_order_done"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingBottom="@dimen/off_15dp"
+                android:paddingTop="@dimen/off_15dp">
+
+                <TextView
+                    style="@style/GrayText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="@dimen/off_10dp"
+                    android:drawableTop="@mipmap/ic_done_order"
+                    android:gravity="center"
+                    android:text="@string/done_order" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View style="@style/div_style" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/off_20dp"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <View style="@style/div_style" />
+
+        <RelativeLayout
+            android:id="@+id/sup_order_all"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/off_50dp"
+            android:paddingLeft="@dimen/off_10dp"
+            android:paddingRight="@dimen/off_10dp">
+
+            <TextView
+                style="@style/BlackText"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/off_50dp"
+                android:layout_centerVertical="true"
+                android:gravity="center_vertical"
+                android:text="@string/sup_order" />
+
+            <TextView
+                style="@style/GrayText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:drawablePadding="@dimen/off_2dp"
+                android:drawableRight="@mipmap/ic_arrow"
+                android:text="@string/all_order"
+                android:textSize="@dimen/font_size_14sp" />
+        </RelativeLayout>
+
+
+        <View style="@style/div_style" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="4">
+
+            <LinearLayout
+                android:id="@+id/sup_order_unpay"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingBottom="@dimen/off_15dp"
+                android:paddingTop="@dimen/off_15dp">
+
+                <TextView
+                    style="@style/GrayText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="@dimen/off_10dp"
+                    android:drawableTop="@mipmap/ic_unpay_order"
+                    android:gravity="center"
+                    android:text="@string/unpay_order" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/sup_order_unreceive"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingBottom="@dimen/off_15dp"
+                android:paddingTop="@dimen/off_15dp">
+
+                <TextView
+                    style="@style/GrayText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="@dimen/off_10dp"
+                    android:drawableTop="@mipmap/ic_unreceive_order"
+                    android:gravity="center"
+                    android:text="@string/unrecieve_order" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/sup_order_refund"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingBottom="@dimen/off_15dp"
+                android:paddingTop="@dimen/off_15dp">
+
+                <TextView
+                    style="@style/GrayText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="@dimen/off_10dp"
+                    android:drawableTop="@mipmap/ic_refund_order"
+                    android:gravity="center"
+                    android:text="@string/refund_order" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/sup_order_done"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingBottom="@dimen/off_15dp"
+                android:paddingTop="@dimen/off_15dp">
+
+                <TextView
+                    style="@style/GrayText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="@dimen/off_10dp"
+                    android:drawableTop="@mipmap/ic_done_order"
+                    android:gravity="center"
+                    android:text="@string/done_order" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View style="@style/div_style" />
+    </LinearLayout>
+</LinearLayout>

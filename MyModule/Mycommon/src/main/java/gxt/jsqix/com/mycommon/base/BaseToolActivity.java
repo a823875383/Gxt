@@ -8,6 +8,10 @@ import android.widget.TextView;
 
 import gxt.jsqix.com.mycommon.R;
 
+/**
+ * 带title的activity
+ * 根布局必须是LinearLayout
+ */
 public class BaseToolActivity extends BaseCompat {
 
     protected TextView mBack; // 返回

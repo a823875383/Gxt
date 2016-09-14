@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blank"
+    android:orientation="vertical"
+    tools:context="com.jsqix.gxt.app.activity.RechargeDone">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/off_50dp"
+                android:layout_marginTop="@dimen/off_10dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:padding="@dimen/off_10dp">
+
+                <TextView
+                    style="@style/BlackText"
+                    android:layout_width="@dimen/off_80dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/money" />
+
+                <TextView
+                    android:id="@+id/tv_money"
+                    style="@style/BlackText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/off_10dp"
+                    android:text="200.00" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/off_50dp"
+                android:gravity="center_vertical"
+                android:padding="@dimen/off_10dp">
+
+                <TextView
+                    style="@style/LightText"
+                    android:layout_width="@dimen/off_80dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/pay_phone" />
+
+                <TextView
+                    android:id="@+id/tv_phone"
+                    style="@style/BlackText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/off_10dp"
+                    android:text="13812345678" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:padding="@dimen/off_10dp">
+
+                <ImageView
+                    android:id="@+id/iv_balance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/ic_pay_balance" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/off_15dp"
+                    android:layout_toRightOf="@+id/iv_balance"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/BlackText"
+                        android:text="@string/balance_account" />
+
+                    <TextView
+                        android:id="@+id/tv_available"
+                        android:layout_width="wrap_content"
+                        style="@style/LightText"
+                        android:textSize="@dimen/font_size_12sp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/off_10dp"
+                        android:text="@string/balance_available" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:drawablePadding="@dimen/off_10dp"
+                    android:drawableRight="@mipmap/ic_arrow"
+                    android:text="@string/recharge" />
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/bt_recharge"
+                style="@style/WhiteText"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/off_50dp"
+                android:layout_marginLeft="@dimen/off_10dp"
+                android:layout_marginRight="@dimen/off_10dp"
+                android:layout_marginTop="@dimen/off_20dp"
+                android:background="@drawable/round_green"
+                android:text="@string/recharge_button"
+                android:textSize="@dimen/font_size_18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/off_50dp"
+            android:layout_alignParentBottom="true"
+            android:weightSum="2">
+
+            <LinearLayout
+                android:id="@+id/tv_wechat"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/green"
+                android:gravity="center">
+
+                <TextView
+                    style="@style/WhiteText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@mipmap/ic_pay_wechat_02"
+                    android:drawablePadding="@dimen/off_10dp"
+                    android:gravity="center"
+                    android:text="@string/pay_wechat" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/tv_alipay"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/blue"
+                android:gravity="center">
+
+                <TextView
+                    style="@style/WhiteText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@mipmap/ic_pay_alipay_02"
+                    android:drawablePadding="@dimen/off_10dp"
+                    android:gravity="center"
+                    android:text="@string/pay_alipay" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>
