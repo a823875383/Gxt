@@ -20,9 +20,13 @@ public class RechargeFirst extends BaseToolActivity {
     }
 
     @Override
-    protected void initView() {
-        super.initView();
+    protected void initTitle() {
         mTitle.setText(getString(R.string.cashier_counter));
+    }
+
+    @Override
+    protected void initView() {
+
     }
 
     @Event(R.id.tv_phone)

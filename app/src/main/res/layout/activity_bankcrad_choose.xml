@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.jsqix.gxt.app.activity.BankcradChoose">
+
+    <View
+        style="@style/div_style"
+        android:layout_marginTop="@dimen/off_10dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <ListView
+            android:id="@+id/listView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:cacheColorHint="@android:color/transparent"
+            android:divider="@null"
+            android:dividerHeight="0dp"
+            android:listSelector="@null" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/off_10dp">
+
+            <TextView
+                android:id="@+id/tv_add_bank"
+                style="@style/BlackText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@mipmap/ic_add_bank"
+                android:drawablePadding="@dimen/off_10dp"
+                android:gravity="center_vertical"
+                android:text="添加新卡" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View style="@style/div_style" />
+</LinearLayout>

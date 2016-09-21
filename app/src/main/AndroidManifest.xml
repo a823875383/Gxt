@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
 
     <application
         android:name=".app.AppContext"
@@ -33,7 +35,15 @@
         <activity android:name=".activity.ChangePassword" />
         <activity android:name=".activity.ChangePhoneFirst" />
         <activity android:name=".activity.ChangePhoneNext" />
-        <activity android:name=".activity.ChangePhoneDone"></activity>
+        <activity android:name=".activity.ChangePhoneDone" />
+        <activity android:name=".activity.WithdrawActivity" />
+        <activity android:name=".activity.BankcardAdd" />
+        <activity android:name=".activity.BankcradChoose" />
+        <activity android:name=".activity.BankcardAdded" />
+        <activity android:name=".activity.SupplierMerchandise" />
+        <activity android:name=".activity.SupplierSearch" />
+        <activity android:name=".activity.PurchaseSearch" />
+        <activity android:name=".activity.OrderActivity"></activity>
     </application>
 
 </manifest>

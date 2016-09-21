@@ -8,7 +8,7 @@ import org.xutils.view.annotation.ContentView;
 import gxt.jsqix.com.mycommon.base.BaseFragment;
 
 /**
- * 订单页面
+ * 采购商每项订单页面
  */
 @ContentView(R.layout.fragment_order)
 public class OrderFragment extends BaseFragment {

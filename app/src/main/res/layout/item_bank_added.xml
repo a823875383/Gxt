@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/lin_base"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/off_10dp"
+    android:layout_marginRight="@dimen/off_10dp"
+    android:layout_marginTop="@dimen/off_15dp"
+    android:background="@drawable/round_green">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/off_10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/lin_bank"
+                android:layout_width="@dimen/off_40dp"
+                android:layout_height="@dimen/off_40dp"
+                android:layout_centerVertical="true"
+                android:layout_margin="@dimen/off_2dp"
+                android:alpha="0.75"
+                android:background="@drawable/oval_white"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/iv_bank_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/bank_icbc" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/off_20dp"
+                android:layout_toRightOf="@+id/lin_bank"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_bank_name"
+                    style="@style/WhiteText"
+                    android:text="中国工商银行" />
+
+                <TextView
+                    android:id="@+id/tv_bank_type"
+                    style="@style/WhiteText"
+                    android:layout_marginTop="@dimen/off_8dp"
+                    android:text="储蓄卡"
+                    android:textSize="@dimen/font_size_12sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_delete"
+                style="@style/WhiteText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:text="@string/delete" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_bank_number"
+            style="@style/WhiteText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/off_15dp"
+            android:gravity="center"
+            android:text="* * * *   * * * *    * * * *    ####" />
+    </LinearLayout>
+
+</LinearLayout>

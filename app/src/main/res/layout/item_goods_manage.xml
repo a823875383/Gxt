@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/off_100dp"
+        android:padding="@dimen/off_10dp">
+
+        <LinearLayout
+            android:id="@+id/lin_goods"
+            android:layout_width="@dimen/off_100dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/rect_white"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/iv_goods"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/off_10dp"
+            android:layout_toRightOf="@+id/lin_goods">
+
+            <TextView
+                android:id="@+id/tv_goods_name"
+                style="@style/BlackText"
+                android:layout_width="@dimen/off_150dp"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:text="黑人牙膏225g去口臭清新口气防蛀牙天然正品" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/tv_goods_price"
+                android:layout_below="@+id/tv_goods_name"
+                android:layout_marginTop="@dimen/off_5dp"
+                android:gravity="center_vertical">
+
+                <TextView
+                    style="@style/BlackText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="商品ID ：" />
+
+                <TextView
+                    android:id="@+id/tv_goods_no"
+                    style="@style/BlackText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="12345678" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_goods_price"
+                style="@style/GreenText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:text="￥ 15.90"
+                android:textSize="@dimen/font_size_12sp" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_goods_status"
+            style="@style/GreenText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="出售中" />
+
+        <Button
+            android:id="@+id/bt_goods_op"
+            style="@style/WhiteText"
+            android:layout_width="@dimen/off_90dp"
+            android:layout_height="@dimen/off_35dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:background="@color/green"
+            android:text="操作" />
+    </RelativeLayout>
+
+    <View style="@style/div_style" />
+
+</LinearLayout>

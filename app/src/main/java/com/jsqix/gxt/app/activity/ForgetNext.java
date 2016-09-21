@@ -20,9 +20,13 @@ public class ForgetNext extends BaseToolActivity {
     }
 
     @Override
-    protected void initView() {
-        super.initView();
+    protected void initTitle() {
         mTitle.setText(getString(R.string.title_forget));
+    }
+
+    @Override
+    protected void initView() {
+
     }
 
     @Event(R.id.bt_next)

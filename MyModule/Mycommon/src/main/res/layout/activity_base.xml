@@ -3,11 +3,10 @@
     android:id="@+id/linearlayout_base"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    android:clipToPadding="true"
     android:orientation="vertical">
 
     <RelativeLayout
+        android:id="@+id/title_bar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/white">
@@ -34,7 +33,7 @@
             android:id="@+id/tv_right"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"            android:layout_alignParentRight="true"
             android:drawablePadding="@dimen/off_5dp"
             android:gravity="center"
             android:paddingLeft="@dimen/off_16dp"

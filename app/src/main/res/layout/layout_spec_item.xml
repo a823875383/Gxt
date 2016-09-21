@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/off_5dp"
+    android:paddingLeft="@dimen/off_5dp">
+
+    <CheckBox
+        android:id="@+id/checkbox"
+        android:layout_width="@dimen/off_40dp"
+        android:layout_height="@dimen/off_22dp"
+        android:background="@drawable/merchandise_select"
+        android:button="@null"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:singleLine="true"
+        android:text="红色"
+        android:textColor="@drawable/merchandise_color"
+        android:textSize="12sp" />
+
+</LinearLayout>

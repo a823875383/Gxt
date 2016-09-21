@@ -20,9 +20,13 @@ public class ChangePhoneNext extends BaseToolActivity {
     }
 
     @Override
-    protected void initView() {
-        super.initView();
+    protected void initTitle() {
         mTitle.setText(getString(R.string.title_change_phone));
+    }
+
+    @Override
+    protected void initView() {
+
     }
 
     @Event(R.id.bt_next)

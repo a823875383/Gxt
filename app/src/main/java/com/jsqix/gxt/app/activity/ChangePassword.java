@@ -17,8 +17,12 @@ public class ChangePassword extends BaseToolActivity {
     }
 
     @Override
-    protected void initView() {
-        super.initView();
+    protected void initTitle() {
         mTitle.setText(getString(R.string.title_change_pass));
     }
+
+    @Override
+    protected void initView() {
+    }
+
 }

@@ -10,9 +10,7 @@ import com.jsqix.gxt.app.adapter.ViewPageAdapter;
 import com.jsqix.gxt.app.fragment.DouOrderFragment;
 import com.jsqix.gxt.app.fragment.DoubleFragment;
 import com.jsqix.gxt.app.fragment.HomeFragment;
-import com.jsqix.gxt.app.fragment.PurOrderFragment;
 import com.jsqix.gxt.app.fragment.PurchaseFragment;
-import com.jsqix.gxt.app.fragment.PurchaserFragment;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
@@ -40,6 +38,11 @@ public class DoubleMain extends BaseCompat {
     }
 
     @Override
+    protected void initTitle() {
+
+    }
+
+    @Override
     protected void initView() {
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(new HomeFragment());
@@ -49,6 +52,12 @@ public class DoubleMain extends BaseCompat {
 
         viewPager.setAdapter(new ViewPageAdapter(fragments, getSupportFragmentManager()));
     }
+
+    @Override
+    protected void initVariable() {
+
+    }
+
     @Event(value = R.id.radio_tab, type = RadioGroup.OnCheckedChangeListener.class)
     private void changeTab(RadioGroup group, int checkedId) {
         switch (checkedId) {

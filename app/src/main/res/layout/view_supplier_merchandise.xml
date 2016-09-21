@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/off_20dp"
+        android:paddingLeft="@dimen/off_15dp"
+        android:paddingRight="@dimen/off_15dp"
+        android:paddingTop="@dimen/off_20dp">
+
+        <LinearLayout
+            android:id="@+id/lin_spec"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include layout="@layout/layout_spec" />
+
+            <include layout="@layout/layout_spec" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/off_20dp">
+
+            <TextView
+                style="@style/BlackText"
+                android:layout_width="@dimen/off_60dp"
+                android:text="@string/stock" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/off_40dp"
+                android:layout_marginLeft="@dimen/off_5dp"
+                android:background="@drawable/rect_white" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/off_5dp">
+
+            <TextView
+                style="@style/BlackText"
+                android:layout_width="@dimen/off_60dp"
+                android:text="@string/moq" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/off_40dp"
+                android:layout_marginLeft="@dimen/off_5dp"
+                android:background="@drawable/rect_white" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        style="@style/WhiteText"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/off_40dp"
+        android:background="@color/green"
+        android:text="@string/shelf"
+        android:textSize="@dimen/font_size_18sp" />
+</LinearLayout>

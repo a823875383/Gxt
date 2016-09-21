@@ -62,6 +62,10 @@
         <item name="android:textColor">@color/font_black</item>
     </style>
 
+    <style name="GreenText" parent="WrapStyle">
+        <item name="android:textColor">@color/green</item>
+    </style>
+
     <style name="GrayText" parent="WrapStyle">
         <item name="android:textColor">@color/font_gray</item>
     </style>

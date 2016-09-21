@@ -3,12 +3,14 @@
 
     <color name="white">#FFFFFF</color>
     <color name="green">#00AB1F</color>
+    <color name="yellow">#E6621D</color>
     <color name="blue">#1BA1E8</color>
     <color name="un_green">#AEE1B7</color>
     <color name="light_green">#12B52E</color>
     <color name="blank">#F9F9F9</color>
     <color name="tab_gray">#6B6B6B</color>
     <color name="div_tab">#F3F3F3</color>
+    <color name="div_line">#EDEEEF</color>
 
     <color name="font_black">#333333</color>
     <color name="font_gray">#666666</color>

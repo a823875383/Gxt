@@ -20,9 +20,13 @@ public class RechargeNext extends BaseToolActivity {
     }
 
     @Override
-    protected void initView() {
-        super.initView();
+    protected void initTitle() {
         mTitle.setText(getString(R.string.cashier_counter));
+    }
+
+    @Override
+    protected void initView() {
+
     }
 
     @Event(R.id.bt_login)
@@ -35,4 +39,6 @@ public class RechargeNext extends BaseToolActivity {
         startActivity(new Intent(this, RechargeForget.class));
 
     }
+
+
 }

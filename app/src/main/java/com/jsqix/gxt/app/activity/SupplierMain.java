@@ -31,11 +31,21 @@ public class SupplierMain extends BaseCompat {
     }
 
     @Override
+    protected void initTitle() {
+
+    }
+
+    @Override
     protected void initView() {
         //title margin透明通知栏高度
         ViewGroup.MarginLayoutParams lp = (ViewGroup.MarginLayoutParams) users.getLayoutParams();
         lp.setMargins(0, StatusBarCompat.getStatusBarHeight(this) + DensityUtil.dip2px(this, 5), 0, 0);
         users.setLayoutParams(lp);
+    }
+
+    @Override
+    protected void initVariable() {
+
     }
 
     @Event(R.id.iv_set)
@@ -46,6 +56,16 @@ public class SupplierMain extends BaseCompat {
     @Event(R.id.bt_recharge)
     private void rechargeClick(View v) {
         startActivity(new Intent(this, RechargeFirst.class));
+    }
+
+    @Event(R.id.bt_withdraw)
+    private void withDrawClick(View v) {
+        startActivity(new Intent(this, WithdrawActivity.class));
+    }
+
+    @Event(R.id.goods_manage)
+    private void goodsClick(View v) {
+        startActivity(new Intent(this, SupplierMerchandise.class));
     }
 
     @Override

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.jsqix.gxt.app.activity.WithdrawActivity">
+
+    <View
+        style="@style/div_style"
+        android:layout_marginTop="@dimen/off_10dp" />
+
+    <RelativeLayout
+        android:id="@+id/rel_choose"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="@dimen/off_10dp">
+
+        <ImageView
+            android:id="@+id/iv_bank_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/off_5dp"
+            android:src="@mipmap/bank_icbc" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/off_10dp"
+            android:layout_toRightOf="@+id/iv_bank_icon"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_bank_name"
+                style="@style/BlackText"
+                android:text="工商银行" />
+
+            <TextView
+                android:id="@+id/tv_bank_number"
+                style="@style/GrayText"
+                android:layout_marginTop="@dimen/off_8dp"
+                android:text="尾号2049"
+                android:textSize="@dimen/font_size_12sp" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/ic_arrow" />
+    </RelativeLayout>
+
+    <View style="@style/div_style" />
+
+    <View
+        style="@style/div_style"
+        android:layout_marginTop="@dimen/off_10dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/off_10dp"
+        android:paddingRight="@dimen/off_10dp">
+
+        <TextView
+            style="@style/BlackText"
+            android:layout_marginTop="@dimen/off_10dp"
+            android:text="@string/withdraw_money" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="￥"
+                android:textColor="#000"
+                android:textSize="@dimen/font_size_30sp" />
+
+            <EditText
+                android:id="@+id/et_money"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/off_60dp"
+                android:layout_marginLeft="@dimen/off_10dp"
+                android:background="@null"
+                android:gravity="center_vertical" />
+        </LinearLayout>
+
+        <View style="@style/div_style" />
+
+        <TextView
+            android:id="@+id/et_available"
+            style="@style/LightText"
+            android:layout_marginBottom="@dimen/off_10dp"
+            android:layout_marginTop="@dimen/off_10dp"
+            android:text="@string/available_money" />
+    </LinearLayout>
+
+    <View style="@style/div_style" />
+
+    <Button
+        android:id="@+id/bt_done"
+        style="@style/WhiteText"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/off_50dp"
+        android:layout_marginLeft="@dimen/off_15dp"
+        android:layout_marginRight="@dimen/off_15dp"
+        android:layout_marginTop="@dimen/off_40dp"
+        android:background="@drawable/round_green"
+        android:text="@string/withdraw"
+        android:textSize="@dimen/font_size_18sp" />
+</LinearLayout>

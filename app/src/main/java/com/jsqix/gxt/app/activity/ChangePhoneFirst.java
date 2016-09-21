@@ -24,10 +24,13 @@ public class ChangePhoneFirst extends BaseToolActivity {
     }
 
     @Override
-    protected void initView() {
-        super.initView();
-        phone.setHint(getString(R.string.login_phone));
+    protected void initTitle() {
         mTitle.setText(getString(R.string.title_change_phone));
+    }
+
+    @Override
+    protected void initView() {
+        phone.setHint(getString(R.string.login_phone));
     }
 
     @Event(R.id.bt_next)

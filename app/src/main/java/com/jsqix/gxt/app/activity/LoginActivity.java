@@ -8,7 +8,6 @@ import android.widget.ImageView;
 
 import com.jsqix.gxt.app.R;
 import com.jsqix.utils.LogWriter;
-import com.jsqix.utils.StringUtils;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
@@ -37,12 +36,22 @@ public class LoginActivity extends BaseCompat {
     }
 
     @Override
+    protected void initTitle() {
+
+    }
+
+    @Override
     protected void initView() {
         imgCode.setImageBitmap(Code.getInstance()
                 .setHeight(45)
                 .setWidth(100)
                 .createBitmap());
         LogWriter.e("TAG", Code.getInstance().getCode());
+    }
+
+    @Override
+    protected void initVariable() {
+
     }
 
     @Override

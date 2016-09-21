@@ -21,9 +21,13 @@ public class ChangePhoneDone extends BaseToolActivity {
     }
 
     @Override
-    protected void initView() {
-        super.initView();
+    protected void initTitle() {
         mTitle.setText(getString(R.string.title_change_phone));
+
+    }
+
+    @Override
+    protected void initView() {
         phone.setHint(getString(R.string.new_phone));
     }
 }

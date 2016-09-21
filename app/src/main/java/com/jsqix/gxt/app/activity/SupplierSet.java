@@ -11,6 +11,9 @@ import org.xutils.view.annotation.Event;
 
 import gxt.jsqix.com.mycommon.base.BaseToolActivity;
 
+/**
+ * 供应商个人中心
+ */
 @ContentView(R.layout.activity_supplier)
 public class SupplierSet extends BaseToolActivity {
 
@@ -20,9 +23,13 @@ public class SupplierSet extends BaseToolActivity {
     }
 
     @Override
-    protected void initView() {
-        super.initView();
+    protected void initTitle() {
         mTitle.setText(getString(R.string.user_center));
+    }
+
+    @Override
+    protected void initView() {
+
     }
 
     @Event(R.id.tv_change_pass)
@@ -33,6 +40,16 @@ public class SupplierSet extends BaseToolActivity {
     @Event(R.id.tv_change_phone)
     private void changePhone(View v) {
         startActivity(new Intent(this, ChangePhoneFirst.class));
+    }
+
+    @Event(R.id.tv_add_bank)
+    private void addbankClick(View v) {
+        startActivity(new Intent(this, BankcardAdd.class));
+    }
+
+    @Event(R.id.tv_bank_added)
+    private void addedClick(View v) {
+        startActivity(new Intent(this, BankcardAdded.class));
     }
 
 }

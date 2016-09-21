@@ -39,6 +39,11 @@ public class PurchaserMain extends BaseCompat {
     }
 
     @Override
+    protected void initTitle() {
+
+    }
+
+    @Override
     protected void initView() {
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(new HomeFragment());
@@ -47,6 +52,11 @@ public class PurchaserMain extends BaseCompat {
         fragments.add(new PurchaserFragment());
 
         viewPager.setAdapter(new ViewPageAdapter(fragments, getSupportFragmentManager()));
+    }
+
+    @Override
+    protected void initVariable() {
+
     }
 
     @Event(value = R.id.radio_tab, type = RadioGroup.OnCheckedChangeListener.class)

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blank"
+    android:orientation="vertical"
+    tools:context="com.jsqix.gxt.app.activity.BankcardAdd">
+
+
+    <View
+        style="@style/div_style"
+        android:layout_marginTop="@dimen/off_10dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/off_10dp"
+        android:paddingRight="@dimen/off_10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/off_50dp"
+            android:layout_marginLeft="@dimen/off_5dp"
+            android:layout_marginRight="@dimen/off_5dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                style="@style/BlackText"
+                android:layout_width="@dimen/off_60dp"
+                android:layout_height="wrap_content"
+                android:text="持卡人" />
+
+            <EditText
+                style="@style/EditStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="@string/input_card_user" />
+        </LinearLayout>
+
+        <View style="@style/div_style" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/off_50dp"
+            android:layout_marginLeft="@dimen/off_5dp"
+            android:layout_marginRight="@dimen/off_5dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                style="@style/BlackText"
+                android:layout_width="@dimen/off_60dp"
+                android:layout_height="wrap_content"
+                android:text="卡号" />
+
+            <EditText
+                style="@style/EditStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="@string/input_card_no" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View style="@style/div_style" />
+
+    <Button
+        android:id="@+id/bt_done"
+        style="@style/WhiteText"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/off_50dp"
+        android:layout_marginLeft="@dimen/off_15dp"
+        android:layout_marginRight="@dimen/off_15dp"
+        android:layout_marginTop="@dimen/off_40dp"
+        android:background="@drawable/round_green"
+        android:text="@string/done"
+        android:textSize="@dimen/font_size_18sp" />
+</LinearLayout>

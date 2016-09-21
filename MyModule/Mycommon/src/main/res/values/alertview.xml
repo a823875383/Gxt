@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="textColor_alert_msg">#000000</color>
+    <color name="textColor_alert_title">#000000</color>
+    <color name="bgColor_alert_button_press">#EAEAEA</color>
+    <color name="bgColor_alertview_alert">#f8f8f8</color>
+    <color name="bgColor_alertview_alert_start">#f0f0f0</color>
+    <dimen name="radius_alertview">15px</dimen>
+    <dimen name="margin_alert_left_right">40dp</dimen>
+
+</resources>
