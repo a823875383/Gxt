@@ -11,14 +11,14 @@
         android:padding="@dimen/off_10dp">
 
         <LinearLayout
-            android:id="@+id/lin_goods"
+            android:id="@+id/lin_goods_img"
             android:layout_width="@dimen/off_100dp"
             android:layout_height="match_parent"
             android:background="@drawable/rect_white"
             android:gravity="center">
 
             <ImageView
-                android:id="@+id/iv_goods"
+                android:id="@+id/iv_goods_img"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
@@ -27,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginLeft="@dimen/off_10dp"
-            android:layout_toRightOf="@+id/lin_goods">
+            android:layout_toRightOf="@+id/lin_goods_img">
 
             <TextView
                 android:id="@+id/tv_goods_name"

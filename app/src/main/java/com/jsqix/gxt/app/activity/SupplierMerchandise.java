@@ -1,6 +1,7 @@
 package com.jsqix.gxt.app.activity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
@@ -23,11 +24,16 @@ public class SupplierMerchandise extends BaseToolActivity {
     @Override
     protected void initTitle() {
         mTitle.setText(getString(R.string.goods_manage));
+        mTitle.setTextColor(Color.WHITE);
+        Drawable drawable = getResources().getDrawable(R.mipmap.ic_back_white);
+        drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+        mBack.setCompoundDrawables(drawable, null, null, null);
+        titleBar.setBackgroundColor(getResources().getColor(R.color.green));
     }
 
     @Override
     protected void initView() {
-        Drawable drawable = getResources().getDrawable(R.mipmap.ic_search);
+        Drawable drawable = getResources().getDrawable(R.mipmap.ic_search_white);
         drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
         mRight.setCompoundDrawables(drawable, null, null, null);
     }
@@ -37,5 +43,13 @@ public class SupplierMerchandise extends BaseToolActivity {
         startActivity(new Intent(this, SupplierSearch.class));
     }
 
+    @Override
+    protected boolean isTransparent() {
+        return false;
+    }
 
+    @Override
+    protected int getStatusColor() {
+        return getResources().getColor(R.color.colorPrimary);
+    }
 }

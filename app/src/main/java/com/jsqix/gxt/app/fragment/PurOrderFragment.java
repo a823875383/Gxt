@@ -67,11 +67,11 @@ public class PurOrderFragment extends BaseFragment {
         fragments.add(fragment);
 
         List<String> titles = new ArrayList<>();
-        titles.add("全部");
-        titles.add("待付款");
-        titles.add("待收货");
-        titles.add("退款中");
-        titles.add("已完成");
+        titles.add(getString(R.string.title_order_all));
+        titles.add(getString(R.string.title_order_unpay));
+        titles.add(getString(R.string.title_order_unreceive));
+        titles.add(getString(R.string.title_order_refund));
+        titles.add(getString(R.string.title_order_done));
         ViewPageAdapter adapter = new ViewPageAdapter(fragments, titles, getChildFragmentManager());
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);

@@ -18,16 +18,16 @@
     <string name="user">我的</string>
     <string name="withdraw">提现</string>
     <string name="recharge">充值</string>
-    <string name="currency">总资产（元）</string>
+    <string name="currency">总资产 (元)</string>
     <string name="goods_man">商品管理</string>
     <string name="my_order">我的订单</string>
-    <string name="order_all">全部（ x ）</string>
-    <string name="order_unpay">待支付（ x ）</string>
-    <string name="order_unreceive">待收货（ x ）</string>
-    <string name="order_refund">退货/退款中（ x ）</string>
-    <string name="order_done">已完成（ x ）</string>
-    <string name="blank">银行卡（x）</string>
-    <string name="my_address">收货地址（ x ）</string>
+    <string name="order_all">全部 ( x )</string>
+    <string name="order_unpay">待付款 ( x )</string>
+    <string name="order_unreceive">待收货 ( x )</string>
+    <string name="order_refund">退货/退款中 ( x )</string>
+    <string name="order_done">已完成 ( x )</string>
+    <string name="blank">银行卡 ( x )</string>
+    <string name="my_address">收货地址 ( x )</string>
     <string name="my_account">我的账户</string>
     <string name="my_blank">我的银行卡</string>
     <string name="change_name">修改登录名</string>
@@ -41,7 +41,7 @@
     <string name="refund_order">退货/退款中</string>
     <string name="done_order">已完成</string>
     <string name="user_center">个人中心</string>
-    <string name="bank_added">已添加银行卡（ x张 ）</string>
+    <string name="bank_added">已添加银行卡 ( x张 )</string>
     <string name="add_bank">添加银行卡</string>
     <string name="money">金额</string>
     <string name="recharge_money">请输入充值金额</string>
@@ -80,7 +80,24 @@
     <string name="search">搜索</string>
     <string name="shelf">下架</string>
     <string name="stock">库存 ：</string>
-    <string name="moq">起订量 ：</string>
+    <string name="MOQ">起订量 ：</string>
+    <string name="title_order_all">全部订单</string>
+    <string name="title_order_unpay">待付款</string>
+    <string name="title_order_unreceive">待收货</string>
+    <string name="title_order_refund">退款中</string>
+    <string name="title_order_refund_purchase">退货/退款中</string>
+    <string name="title_order_done">已完成</string>
+    <string name="deliver">发货</string>
+    <string name="logistics_company">物流公司 ：</string>
+    <string name="logistics_number">物流单号 ：</string>
+    <string name="confirm">确定</string>
+    <string name="submit">提交</string>
+    <string name="cancel">取消</string>
+    <string name="refund_or_agree">是否确定同意退款？</string>
+    <string name="return_or_agree">是否确定同意退货？</string>
+    <string name="refund_or">是否确定退款？</string>
+    <string name="receive_or">是否确定收货？</string>
+    <string name="return_disagree">不同意退货</string>
 
 
 </resources>

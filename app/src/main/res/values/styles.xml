@@ -70,6 +70,10 @@
         <item name="android:textColor">@color/font_gray</item>
     </style>
 
+    <style name="YellowText" parent="WrapStyle">
+        <item name="android:textColor">@color/yellow</item>
+    </style>
+
     <style name="LightText" parent="WrapStyle">
         <item name="android:textColor">@color/font_light</item>
     </style>

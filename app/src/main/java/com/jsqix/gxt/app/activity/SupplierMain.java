@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.jsqix.gxt.app.R;
+import com.jsqix.gxt.app.utils.Constant;
 import com.jsqix.utils.DensityUtil;
 
 import org.xutils.view.annotation.ContentView;
@@ -66,6 +67,29 @@ public class SupplierMain extends BaseCompat {
     @Event(R.id.goods_manage)
     private void goodsClick(View v) {
         startActivity(new Intent(this, SupplierMerchandise.class));
+    }
+
+    @Event(value = {R.id.order_all, R.id.order_unpay, R.id.order_unreceive, R.id.order_refund, R.id.order_done})
+    private void orderClick(View v) {
+        Intent intent = new Intent(this, OrderActivity.class);
+        switch (v.getId()) {
+            case R.id.order_all:
+                intent.putExtra(Constant.TITLE, getString(R.string.title_order_all));
+                break;
+            case R.id.order_unpay:
+                intent.putExtra(Constant.TITLE, getString(R.string.title_order_unpay));
+                break;
+            case R.id.order_unreceive:
+                intent.putExtra(Constant.TITLE, getString(R.string.title_order_unreceive));
+                break;
+            case R.id.order_refund:
+                intent.putExtra(Constant.TITLE, getString(R.string.title_order_refund_purchase));
+                break;
+            case R.id.order_done:
+                intent.putExtra(Constant.TITLE, getString(R.string.title_order_done));
+                break;
+        }
+        startActivity(intent);
     }
 
     @Override

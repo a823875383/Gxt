@@ -12,11 +12,10 @@ import gxt.jsqix.com.mycommon.base.util.StatusBarCompat;
 
 /**
  * 带title的activity
- * 根布局必须是LinearLayout
  */
 public abstract class BaseToolActivity extends BaseCompat {
 
-    private RelativeLayout titleBar;
+    protected RelativeLayout titleBar;
     protected TextView mBack; // 返回
     protected TextView mTitle; // 标题
     protected TextView mRight;//右菜单
@@ -40,11 +39,12 @@ public abstract class BaseToolActivity extends BaseCompat {
         mTitle = (TextView) findViewById(R.id.tv_title);
         mRight = (TextView) findViewById(R.id.tv_right);
         titleBar = (RelativeLayout) findViewById(R.id.title_bar);
-        //title margin透明通知栏高度
-        ViewGroup.MarginLayoutParams lp = (ViewGroup.MarginLayoutParams) titleBar.getLayoutParams();
-        lp.setMargins(0, StatusBarCompat.getStatusBarHeight(this), 0, 0);
-        titleBar.setLayoutParams(lp);
-
+        if (isTransparent()) {
+            //title margin透明通知栏高度
+            ViewGroup.MarginLayoutParams lp = (ViewGroup.MarginLayoutParams) titleBar.getLayoutParams();
+            lp.setMargins(0, StatusBarCompat.getStatusBarHeight(this), 0, 0);
+            titleBar.setLayoutParams(lp);
+        }
         mBack.setOnClickListener(this);
     }
 

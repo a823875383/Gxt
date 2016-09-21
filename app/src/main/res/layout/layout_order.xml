@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/off_100dp"
+        android:background="@color/white"
+        android:padding="@dimen/off_10dp">
+
+        <LinearLayout
+            android:id="@+id/lin_goods_img"
+            android:layout_width="@dimen/off_100dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/rect_white"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/iv_goods_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/off_10dp"
+            android:layout_toRightOf="@+id/lin_goods_img">
+
+            <TextView
+                android:id="@+id/tv_goods_name"
+                style="@style/BlackText"
+                android:layout_width="@dimen/off_150dp"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:text="黑人牙膏225g去口臭清新口气防蛀牙天然正品" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/tv_goods_price"
+                android:layout_below="@+id/tv_goods_name"
+                android:layout_marginTop="@dimen/off_5dp"
+                android:gravity="center_vertical">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.8">
+
+                    <TextView
+                        style="@style/GrayText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/stock" />
+
+                    <TextView
+                        android:id="@+id/tv_goods_stock"
+                        style="@style/GrayText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="10000" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.2">
+
+                    <TextView
+                        style="@style/GrayText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/MOQ" />
+
+                    <TextView
+                        android:id="@+id/tv_goods_moq"
+                        style="@style/GrayText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="10" />
+                </LinearLayout>
+
+
+                <TextView
+                    android:id="@+id/tv_order_num"
+                    style="@style/GrayText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_weight="0.8"
+                    android:gravity="right"
+                    android:text="x20" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_goods_price"
+                style="@style/GreenText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:text="￥ 15.90"
+                android:textSize="@dimen/font_size_12sp" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_goods_status"
+            style="@style/GreenText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="待付款"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <View style="@style/div_style" />
+</LinearLayout>

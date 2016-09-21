@@ -1,15 +1,22 @@
 package com.jsqix.gxt.app.fragment;
 
 
+import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.jsqix.gxt.app.R;
+import com.jsqix.gxt.app.activity.BankcardAdded;
+import com.jsqix.gxt.app.activity.ChangePassword;
+import com.jsqix.gxt.app.activity.ChangePhoneFirst;
+import com.jsqix.gxt.app.activity.RechargeFirst;
+import com.jsqix.gxt.app.activity.WithdrawActivity;
 import com.jsqix.utils.DensityUtil;
 
 import org.xutils.view.annotation.ContentView;
+import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 
 import gxt.jsqix.com.mycommon.base.BaseFragment;
@@ -36,8 +43,39 @@ public class PurchaserFragment extends BaseFragment {
         imgSet.setVisibility(View.GONE);
 
         //title margin透明通知栏高度
-        ViewGroup.MarginLayoutParams lp= (ViewGroup.MarginLayoutParams) users.getLayoutParams();
-        lp.setMargins(0, StatusBarCompat.getStatusBarHeight(mContext)+ DensityUtil.dip2px(mContext,5),0,0);
+        ViewGroup.MarginLayoutParams lp = (ViewGroup.MarginLayoutParams) users.getLayoutParams();
+        lp.setMargins(0, StatusBarCompat.getStatusBarHeight(mContext) + DensityUtil.dip2px(mContext, 5), 0, 0);
         users.setLayoutParams(lp);
+    }
+
+
+    @Event(R.id.bt_recharge)
+    private void rechargeClick(View v) {
+        startActivity(new Intent(mContext, RechargeFirst.class));
+    }
+
+    @Event(R.id.bt_withdraw)
+    private void withDrawClick(View v) {
+        startActivity(new Intent(mContext, WithdrawActivity.class));
+    }
+
+    @Event(R.id.lin_bank)
+    private void addedClick(View v) {
+        startActivity(new Intent(mContext, BankcardAdded.class));
+    }
+
+    @Event(R.id.lin_address)
+    private void addressClick(View v) {
+
+    }
+
+    @Event(R.id.tv_change_pass)
+    private void changePass(View v) {
+        startActivity(new Intent(mContext, ChangePassword.class));
+    }
+
+    @Event(R.id.tv_change_phone)
+    private void changePhone(View v) {
+        startActivity(new Intent(mContext, ChangePhoneFirst.class));
     }
 }

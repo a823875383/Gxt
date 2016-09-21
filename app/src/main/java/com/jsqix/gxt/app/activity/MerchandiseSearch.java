@@ -61,7 +61,7 @@ public abstract class MerchandiseSearch extends BaseCompat {
             if (StringUtils.isEmpty(key)) {
                 Utils.makeToast(this, getString(R.string.goods_search));
             } else {
-                Drawable drawable = getResources().getDrawable(R.mipmap.ic_search);
+                Drawable drawable = getResources().getDrawable(R.mipmap.ic_search_white);
                 drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
                 mRight.setCompoundDrawables(drawable, null, null, null);
                 mRight.setText("");

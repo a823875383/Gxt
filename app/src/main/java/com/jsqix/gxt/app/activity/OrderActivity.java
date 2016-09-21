@@ -1,8 +1,11 @@
 package com.jsqix.gxt.app.activity;
 
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import com.jsqix.gxt.app.R;
+import com.jsqix.gxt.app.utils.Constant;
 
 import org.xutils.view.annotation.ContentView;
 
@@ -24,6 +27,11 @@ public class OrderActivity extends BaseToolActivity {
     @Override
     protected void initTitle() {
         mTitle.setText(title);
+        mTitle.setTextColor(Color.WHITE);
+        Drawable drawable = getResources().getDrawable(R.mipmap.ic_back_white);
+        drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+        mBack.setCompoundDrawables(drawable, null, null, null);
+        titleBar.setBackgroundColor(getResources().getColor(R.color.green));
     }
 
     @Override
@@ -34,7 +42,17 @@ public class OrderActivity extends BaseToolActivity {
     @Override
     protected void initVariable() {
         super.initVariable();
-        title = getIntent().getExtras().getString("", "");
-        order_type = getIntent().getExtras().getString("", "");
+        title = getIntent().getExtras().getString(Constant.TITLE, "");
+        order_type = getIntent().getExtras().getString(Constant.TYPE, "");
+    }
+
+    @Override
+    protected boolean isTransparent() {
+        return false;
+    }
+
+    @Override
+    protected int getStatusColor() {
+        return getResources().getColor(R.color.colorPrimary);
     }
 }

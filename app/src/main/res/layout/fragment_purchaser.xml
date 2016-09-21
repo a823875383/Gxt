@@ -15,6 +15,7 @@
         android:weightSum="2">
 
         <LinearLayout
+            android:id="@+id/lin_bank"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -39,6 +40,7 @@
             android:background="@color/div_tab" />
 
         <LinearLayout
+            android:id="@+id/lin_address"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -88,7 +90,7 @@
 
     <TextView
         style="@style/GrayText"
-        android:id="@+id/tv_name"
+        android:id="@+id/tv_change_phone"
         android:layout_width="match_parent"
         android:layout_height="@dimen/off_50dp"
         android:background="@color/white"
@@ -102,6 +104,7 @@
     <View style="@style/div_style" />
 
     <TextView
+        android:id="@+id/tv_change_pass"
         style="@style/GrayText"
         android:layout_width="match_parent"
         android:layout_height="@dimen/off_50dp"

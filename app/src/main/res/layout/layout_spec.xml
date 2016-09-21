@@ -11,7 +11,7 @@
         android:layout_width="@dimen/off_60dp"
         android:layout_height="@dimen/off_22dp"
         android:gravity="center_vertical"
-        android:text="@string/stock" />
+        android:text="颜色 ：" />
 
     <LinearLayout
         android:id="@+id/lin_property"

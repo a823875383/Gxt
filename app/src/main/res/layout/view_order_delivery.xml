@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/off_10dp">
+
+        <TextView
+            style="@style/BlackText"
+            android:layout_centerInParent="true"
+            android:text="@string/deliver" />
+
+        <ImageView
+            android:id="@+id/iv_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/ic_close" />
+    </RelativeLayout>
+
+    <View style="@style/div_style" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/off_10dp"
+        android:orientation="vertical"
+        android:padding="@dimen/off_5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                style="@style/BlackText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/logistics_company" />
+
+            <EditText
+                android:id="@+id/et_logistics_company"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/off_35dp"
+                android:layout_marginLeft="@dimen/off_10dp"
+                android:background="@drawable/rect_white" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/off_15dp">
+
+            <TextView
+                style="@style/BlackText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/logistics_number" />
+
+            <EditText
+                android:id="@+id/et_logistics_number"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/off_35dp"
+                android:layout_marginLeft="@dimen/off_10dp"
+                android:background="@drawable/rect_white" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/off_40dp"
+        android:weightSum="2">
+
+        <Button
+            android:id="@+id/bt_submit"
+            style="@style/WhiteText"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/green"
+            android:text="@string/submit"
+            android:textSize="@dimen/font_size_16sp" />
+
+        <Button
+            android:id="@+id/bt_cancel"
+            style="@style/WhiteText"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/gray"
+            android:text="@string/cancel"
+            android:textSize="@dimen/font_size_16sp" />
+    </LinearLayout>
+</LinearLayout>
