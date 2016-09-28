@@ -30,7 +30,7 @@ public class BankcardAdded extends BaseToolActivity {
 
     @Override
     protected void initView() {
-        Drawable drawable = getResources().getDrawable(R.mipmap.ic_add);
+        Drawable drawable = getResources().getDrawable(R.mipmap.ic_bank_add);
         drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
         mRight.setCompoundDrawables(drawable, null, null, null);
     }

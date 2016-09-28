@@ -9,7 +9,7 @@
         android:id="@+id/checkbox"
         android:layout_width="@dimen/off_40dp"
         android:layout_height="@dimen/off_22dp"
-        android:background="@drawable/merchandise_select"
+        android:background="@drawable/merchandise_choose"
         android:button="@null"
         android:ellipsize="end"
         android:gravity="center"

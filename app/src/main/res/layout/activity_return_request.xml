@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_return_request"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blank"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/off_10dp"
+    android:paddingRight="@dimen/off_10dp"
+    tools:context="com.jsqix.gxt.app.activity.ReturnRequest">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/off_10dp"
+        android:layout_marginTop="@dimen/off_10dp">
+
+        <TextView
+            style="@style/GrayText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/return_reason" />
+
+        <TextView
+            style="@style/GreenText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" * " />
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/off_40dp">
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/off_40dp"
+            android:background="@drawable/rect_white"
+            android:entries="@array/return_cause"
+            android:gravity="center"
+            android:spinnerMode="dialog" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/off_10dp"
+            android:src="@mipmap/ic_arrow_down" />
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/off_10dp"
+        android:layout_marginTop="@dimen/off_10dp">
+
+        <TextView
+            style="@style/GrayText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/return_money" />
+
+        <TextView
+            style="@style/GreenText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" * " />
+    </LinearLayout>
+
+
+    <EditText
+        android:id="@+id/et_money"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/off_40dp"
+        android:background="@drawable/rect_white"
+        android:paddingLeft="@dimen/off_10dp"
+        android:paddingRight="@dimen/off_10dp"
+        android:singleLine="true" />
+
+    <TextView
+        style="@style/GrayText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/off_10dp"
+        android:layout_marginTop="@dimen/off_10dp"
+        android:text="@string/return_depict" />
+
+    <EditText
+        android:id="@+id/ed_depict"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/off_150dp"
+        android:background="@drawable/rect_white" />
+
+    <Button
+        style="@style/WhiteText"
+        android:layout_width="@dimen/off_180dp"
+        android:layout_height="@dimen/off_40dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/off_50dp"
+        android:background="@color/green"
+        android:text="@string/submit"
+        android:textSize="@dimen/font_size_16sp" />
+</LinearLayout>

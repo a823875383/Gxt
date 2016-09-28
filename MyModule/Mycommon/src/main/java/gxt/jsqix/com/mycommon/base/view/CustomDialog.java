@@ -18,17 +18,36 @@ public class CustomDialog extends Dialog {
     private WindowManager.LayoutParams lp;
 
     public CustomDialog(Context context) {
-        super(context, R.style.BaseDialog);
+        super(context, R.style.BaseDialog);//默认主题
         this.mContext = context;
         setCanceledOnTouchOutside(true);
         setCancelable(true);
     }
+
+    public CustomDialog(Context context, int themeResId) {
+        super(context, themeResId);//自定义主题
+        this.mContext = context;
+        setCanceledOnTouchOutside(true);
+        setCancelable(true);
+    }
+
 
     public void setView(View view) {
         setContentView(view);
         // 设置window属性
         lp = getWindow().getAttributes();
         lp.gravity = Gravity.CENTER;
+        lp.alpha = 1.0f; // 设置本身透明度
+        lp.dimAmount = 0.65f; // 设置黑暗度
+        getWindow().setAttributes(lp);
+        setParas(0.8f, 0f);//默认宽度为0.8
+    }
+
+    public void setView(View view, int gravity) {
+        setContentView(view);
+        // 设置window属性
+        lp = getWindow().getAttributes();
+        lp.gravity = gravity;
         lp.alpha = 1.0f; // 设置本身透明度
         lp.dimAmount = 0.65f; // 设置黑暗度
         getWindow().setAttributes(lp);

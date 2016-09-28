@@ -98,6 +98,54 @@
     <string name="refund_or">是否确定退款？</string>
     <string name="receive_or">是否确定收货？</string>
     <string name="return_disagree">不同意退货</string>
+    <string name="address_manage">管理收货地址</string>
+    <string name="address_choose">选择收货地址</string>
+    <string name="title_add_address">添加收货地址</string>
+    <string name="title_edit_address">编辑收货地址</string>
+    <string name="manage">管理</string>
+    <string name="address_add">新增收货地址</string>
+    <string name="address_add_new">添加新地址</string>
+    <string name="address_no">您还没有专属的收货地址哦 ！</string>
+    <string name="set_default">设为默认地址</string>
+    <string name="name">姓名 ：</string>
+    <string name="mobile">手机 ：</string>
+    <string name="area">所属区域 ：</string>
+    <string name="address">详细地址 ：</string>
+    <string name="contact">联系人</string>
+    <string name="location_info">地址信息</string>
+    <string name="save">保存</string>
+    <string name="address_name">请填写收货人姓名</string>
+    <string name="address_phone">请填写收货手机号码</string>
+    <string name="address_area">点击选择</string>
+    <string name="address_info">请填写收货人详细地址</string>
+    <string name="order_info">订单详情</string>
+    <string name="consignee">收件人 : </string>
+    <string name="edit">编辑</string>
+    <string name="select">全选</string>
+    <string name="total">合计 : </string>
+    <string name="settlement">去结算 ( x )</string>
+    <string name="no_purchase">您的采购单是空的哦 ! 赶紧去采购吧 !</string>
+    <string name="forward_home">前往首页</string>
+    <string name="order_num">订购数量 : </string>
+    <string name="return_request">退货申请</string>
+    <string name="return_reason">退款原因</string>
+    <string name="return_money">退款金额</string>
+    <string name="return_depict">退款描述</string>
+    <string name="order_confirm">确认订单</string>
+    <string name="add_card">添加新卡</string>
+    <string name="buy_now">立即购买</string>
+    <string name="join_cart">加入购物车</string>
+    <string name="order_submit">提交订单</string>
+    <string name="real_pay">实付款 : </string>
+    <string name="classify">分类</string>
+    <string name="merchandise">商品</string>
+    <string name="detail">详情</string>
+    <string-array name="return_cause">
+        <item>商品质量问题</item>
+        <item>商品错发/漏发/少发</item>
+    </string-array>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

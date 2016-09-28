@@ -8,7 +8,7 @@ import com.zhy.adapter.abslistview.ViewHolder;
 import java.util.List;
 
 /**
- * Created by dongqing on 16/9/13.
+ * Created by dongqing on 16/9/22
  */
 public class OrderAdapter extends CommonAdapter {
 

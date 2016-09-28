@@ -18,4 +18,14 @@
         <!-- 模糊 -->
     </style>
 
+    <!-- Dialog进出动画 -->
+    <style name="Animation.Boom" parent="@android:style/Animation.Dialog">
+        <item name="android:windowEnterAnimation">@anim/slide_in_bottom</item>
+        <item name="android:windowExitAnimation">@anim/slide_out_bottom</item>
+    </style>
+
+    <style name="Dialog.Boom" parent="BaseDialog">
+        <item name="android:windowAnimationStyle">@style/Animation.Boom</item>
+    </style>
+
 </resources>

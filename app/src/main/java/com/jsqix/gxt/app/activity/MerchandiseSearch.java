@@ -105,5 +105,15 @@ public abstract class MerchandiseSearch extends BaseCompat {
     }
 
     abstract void search(String key);
+
+    @Override
+    protected boolean isShowNetOff() {
+        return false;
+    }
+
+    @Override
+    protected boolean isStatusWhite() {
+        return true;
+    }
 }
 

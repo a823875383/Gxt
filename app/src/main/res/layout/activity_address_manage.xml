@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blank"
+    android:orientation="vertical"
+    tools:context="com.jsqix.gxt.app.activity.AddressManage">
+
+    <LinearLayout
+        android:id="@+id/lin_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/off_10dp"
+            android:layout_marginTop="@dimen/off_10dp"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <View style="@style/div_style" />
+
+            <TextView
+                android:id="@+id/tv_add_address"
+                style="@style/BlackText"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/off_40dp"
+                android:drawableLeft="@mipmap/ic_add_address"
+                android:drawablePadding="@dimen/off_10dp"
+                android:drawableRight="@mipmap/ic_arrow"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/off_10dp"
+                android:paddingRight="@dimen/off_10dp"
+                android:text="@string/address_add" />
+
+            <View style="@style/div_style" />
+
+        </LinearLayout>
+
+        <View style="@style/div_style" />
+
+        <include layout="@layout/layout_listview" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lin_no_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="@dimen/off_40dp"
+            android:layout_marginTop="@dimen/off_40dp"
+            android:text="@string/address_no" />
+
+        <LinearLayout
+            android:id="@+id/lin_add"
+            android:layout_width="@dimen/off_180dp"
+            android:layout_height="@dimen/off_40dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/green"
+            android:gravity="center">
+
+            <TextView
+                style="@style/WhiteText"
+                android:drawableLeft="@mipmap/ic_add_new"
+                android:drawablePadding="@dimen/off_10dp"
+                android:gravity="center"
+                android:text="@string/address_add_new" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

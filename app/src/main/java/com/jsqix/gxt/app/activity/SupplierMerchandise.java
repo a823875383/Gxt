@@ -28,7 +28,7 @@ public class SupplierMerchandise extends BaseToolActivity {
         Drawable drawable = getResources().getDrawable(R.mipmap.ic_back_white);
         drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
         mBack.setCompoundDrawables(drawable, null, null, null);
-        titleBar.setBackgroundColor(getResources().getColor(R.color.green));
+        titleBase.setBackgroundColor(getResources().getColor(R.color.green));
     }
 
     @Override
@@ -43,13 +43,4 @@ public class SupplierMerchandise extends BaseToolActivity {
         startActivity(new Intent(this, SupplierSearch.class));
     }
 
-    @Override
-    protected boolean isTransparent() {
-        return false;
-    }
-
-    @Override
-    protected int getStatusColor() {
-        return getResources().getColor(R.color.colorPrimary);
-    }
 }

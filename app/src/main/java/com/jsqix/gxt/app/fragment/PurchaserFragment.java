@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.jsqix.gxt.app.R;
+import com.jsqix.gxt.app.activity.AddressManage;
 import com.jsqix.gxt.app.activity.BankcardAdded;
 import com.jsqix.gxt.app.activity.ChangePassword;
 import com.jsqix.gxt.app.activity.ChangePhoneFirst;
@@ -48,6 +49,11 @@ public class PurchaserFragment extends BaseFragment {
         users.setLayoutParams(lp);
     }
 
+    @Override
+    protected void getArgument() {
+
+    }
+
 
     @Event(R.id.bt_recharge)
     private void rechargeClick(View v) {
@@ -66,7 +72,7 @@ public class PurchaserFragment extends BaseFragment {
 
     @Event(R.id.lin_address)
     private void addressClick(View v) {
-
+        startActivity(new Intent(mContext, AddressManage.class));
     }
 
     @Event(R.id.tv_change_pass)

@@ -1,9 +1,13 @@
 package gxt.jsqix.com.mycommon.base;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -15,7 +19,8 @@ import gxt.jsqix.com.mycommon.base.util.StatusBarCompat;
  */
 public abstract class BaseToolActivity extends BaseCompat {
 
-    protected RelativeLayout titleBar;
+    protected LinearLayout titleBase;
+    private RelativeLayout titleBar;
     protected TextView mBack; // 返回
     protected TextView mTitle; // 标题
     protected TextView mRight;//右菜单
@@ -29,8 +34,8 @@ public abstract class BaseToolActivity extends BaseCompat {
     @Override
     public void setContentView(@LayoutRes int layoutResID) {
         super.setContentView(R.layout.activity_base);
-        ViewGroup vg = (ViewGroup) findViewById(R.id.linearlayout_base);
-        getLayoutInflater().inflate(layoutResID, vg);
+        titleBase = (LinearLayout) findViewById(R.id.linearlayout_base);
+        getLayoutInflater().inflate(layoutResID, titleBase);
         init();
     }
 
@@ -68,5 +73,23 @@ public abstract class BaseToolActivity extends BaseCompat {
     @Override
     protected boolean isTransparent() {
         return true;
+    }
+
+    @Override
+    protected boolean isShowNetOff() {
+        return true;
+    }
+
+    @Override
+    protected boolean isStatusWhite() {
+        Drawable background = titleBase.getBackground();
+        ColorDrawable colorDrawable = (ColorDrawable) background;
+        int color = colorDrawable.getColor();
+        if (color == Color.WHITE) {
+            //标题栏为白色，状态栏改为黑色字体
+            return true;
+        } else {
+            return false;
+        }
     }
 }

@@ -165,12 +165,12 @@
 
             <Button
                 android:id="@+id/bt_op_02"
-                style="@style/WhiteText"
+                style="@style/GreenText"
                 android:layout_width="@dimen/off_80dp"
                 android:layout_height="@dimen/off_35dp"
                 android:layout_marginRight="@dimen/off_10dp"
                 android:layout_toLeftOf="@+id/bt_op_01"
-                android:background="@color/green"
+                android:background="@drawable/rect_green_white"
                 android:text="不同意退货" />
         </RelativeLayout>
 

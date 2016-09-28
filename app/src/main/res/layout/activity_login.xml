@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/blank"
+    android:orientation="vertical"
     tools:context=".activity.LoginActivity">
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="280dp"
+        android:layout_height="wrap_content"
         android:background="@mipmap/login_bg" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_height="match_parent"
+        android:gravity="center"
         android:layout_margin="@dimen/off_20dp"
         android:orientation="vertical">
 
@@ -28,8 +29,8 @@
             android:paddingTop="@dimen/off_5dp">
 
             <EditText
-                style="@style/EditStyle"
                 android:id="@+id/et_name"
+                style="@style/EditStyle"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/off_35dp"
                 android:background="@null"
@@ -53,8 +54,8 @@
             android:paddingTop="@dimen/off_5dp">
 
             <EditText
-                style="@style/EditStyle"
                 android:id="@+id/et_pass"
+                style="@style/EditStyle"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/off_35dp"
                 android:background="@null"
@@ -70,11 +71,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/off_15dp"
-            android:background="@drawable/round_white">
+            android:background="@drawable/round_white"
+            android:visibility="gone">
 
             <EditText
-                style="@style/EditStyle"
                 android:id="@+id/et_code"
+                style="@style/EditStyle"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/off_35dp"
                 android:layout_marginBottom="@dimen/off_5dp"
@@ -102,8 +104,8 @@
         </LinearLayout>
 
         <TextView
-            style="@style/GrayText"
             android:id="@+id/tv_forget"
+            style="@style/GrayText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
@@ -111,8 +113,8 @@
             android:text="@string/login_forget" />
 
         <Button
-            style="@style/WhiteText"
             android:id="@+id/bt_login"
+            style="@style/WhiteText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/off_10dp"
@@ -122,4 +124,4 @@
             android:textSize="@dimen/font_size_18sp" />
     </LinearLayout>
 
-</RelativeLayout>
+</LinearLayout>

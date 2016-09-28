@@ -21,6 +21,11 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+
+        debug {
+            minifyEnabled false
+            debuggable true
+        }
     }
     packagingOptions {
         exclude 'META-INF/DEPENDENCIES.txt'
@@ -37,11 +42,14 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    testCompile 'junit:junit:4.12'
     compile "com.android.support:appcompat-v7:${libs.supportVersion}"
     compile "com.android.support:design:${libs.supportVersion}"
     compile "com.android.support:recyclerview-v7:${libs.supportVersion}"
     compile "com.android.support:support-v4:${libs.supportVersion}"
     compile project(':MyModule:Mycommon')
+    compile "com.bigkoo:pickerview:${libs.pickerview}"
+    compile "com.bigkoo:convenientbanner:${libs.banner}"
 
+    compile 'com.android.support:support-v4:24.2.1'
+    testCompile 'junit:junit:4.12'
 }

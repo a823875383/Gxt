@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/bg_order_info"
+        android:orientation="vertical"
+        android:padding="@dimen/off_10dp">
+
+        <TextView
+            android:id="@+id/tv_update_status"
+            style="@style/WhiteText"
+            android:text="您的商品已确认收货,交易完成!" />
+
+        <TextView
+            android:id="@+id/tv_update_date"
+            style="@style/WhiteText"
+            android:layout_marginTop="@dimen/off_5dp"
+            android:text="2016-08-17 12:00:00" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="@dimen/off_10dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:src="@mipmap/ic_addres_choice" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/off_10dp"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true">
+
+                    <TextView
+                        style="@style/BlackText"
+                        android:text="@string/consignee" />
+
+                    <TextView
+                        android:id="@+id/tv_name"
+                        style="@style/BlackText" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_phone"
+                    style="@style/BlackText"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="13012345678" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_address"
+                style="@style/BlackText"
+                android:layout_marginTop="@dimen/off_10dp"
+                android:text="收货地址 : 江苏省苏州市工业园区创意产业园动漫大厦8栋7楼" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View style="@style/div_style" />
+</LinearLayout>

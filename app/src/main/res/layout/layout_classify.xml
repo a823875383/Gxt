@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="@dimen/off_100dp"
+        android:layout_height="match_parent"
+        android:background="@color/blank"
+        android:cacheColorHint="@android:color/transparent"
+        android:divider="@color/white"
+        android:dividerHeight="1dp" />
+
+    <GridView
+        android:id="@id/gridView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:cacheColorHint="@android:color/transparent"
+        android:horizontalSpacing="@dimen/off_10dp"
+        android:numColumns="3"
+        android:padding="@dimen/off_10dp"
+        android:verticalSpacing="@dimen/off_10dp" />
+</LinearLayout>

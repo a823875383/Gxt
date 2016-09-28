@@ -16,15 +16,7 @@
         android:background="@color/white"
         android:orientation="vertical">
 
-        <ListView
-            android:id="@+id/listView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:cacheColorHint="@android:color/transparent"
-            android:divider="@null"
-            android:dividerHeight="0dp"
-            android:listSelector="@null" />
+        <include layout="@layout/layout_listview" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -39,7 +31,7 @@
                 android:drawableLeft="@mipmap/ic_add_bank"
                 android:drawablePadding="@dimen/off_10dp"
                 android:gravity="center_vertical"
-                android:text="添加新卡" />
+                android:text="@string/add_card" />
         </LinearLayout>
 
     </LinearLayout>

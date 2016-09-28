@@ -31,7 +31,7 @@ public class OrderActivity extends BaseToolActivity {
         Drawable drawable = getResources().getDrawable(R.mipmap.ic_back_white);
         drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
         mBack.setCompoundDrawables(drawable, null, null, null);
-        titleBar.setBackgroundColor(getResources().getColor(R.color.green));
+        titleBase.setBackgroundColor(getResources().getColor(R.color.green));
     }
 
     @Override
@@ -46,13 +46,4 @@ public class OrderActivity extends BaseToolActivity {
         order_type = getIntent().getExtras().getString(Constant.TYPE, "");
     }
 
-    @Override
-    protected boolean isTransparent() {
-        return false;
-    }
-
-    @Override
-    protected int getStatusColor() {
-        return getResources().getColor(R.color.colorPrimary);
-    }
 }

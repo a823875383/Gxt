@@ -25,9 +25,12 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mContext = getActivity().getBaseContext();
+        mContext = getActivity();
+        getArgument();
         initView();
     }
 
     protected abstract void initView();
+
+    protected abstract void getArgument();
 }

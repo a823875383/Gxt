@@ -23,4 +23,9 @@ public class OrderFragment extends BaseFragment {
     protected void initView() {
 
     }
+
+    @Override
+    protected void getArgument() {
+
+    }
 }

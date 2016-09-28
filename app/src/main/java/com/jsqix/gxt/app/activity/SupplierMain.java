@@ -101,4 +101,14 @@ public class SupplierMain extends BaseCompat {
     protected int getStatusColor() {
         return -1;
     }
+
+    @Override
+    protected boolean isShowNetOff() {
+        return false;
+    }
+
+    @Override
+    protected boolean isStatusWhite() {
+        return false;
+    }
 }

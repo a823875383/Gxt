@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/off_15dp"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/off_10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/off_105dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_goods_price"
+                    style="@style/GreenText"
+                    android:text="￥ 15.90" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/off_10dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            style="@style/GrayText"
+                            android:text="@string/stock" />
+
+                        <TextView
+                            android:id="@+id/tv_goods_stock"
+                            style="@style/GrayText"
+                            android:text="10000" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/off_40dp">
+
+                        <TextView
+                            style="@style/GrayText"
+                            android:text="@string/MOQ" />
+
+                        <TextView
+                            android:id="@+id/tv_goods_moq"
+                            style="@style/GrayText"
+                            android:text="10" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    style="@style/BlackText"
+                    android:layout_marginTop="@dimen/off_10dp"
+                    android:text="请选择 分类" />
+            </LinearLayout>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <LinearLayout
+                    android:id="@+id/lin_spec"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/off_15dp"
+                    android:orientation="vertical">
+
+                    <include layout="@layout/layout_spec_info" />
+
+                    <include layout="@layout/layout_spec_info" />
+                </LinearLayout>
+            </ScrollView>
+
+            <TextView
+                style="@style/BlackText"
+                android:text="订购数量" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/off_10dp">
+
+
+                <ImageView
+                    android:id="@+id/iv_reduce"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/ic_cart_reduce" />
+
+                <TextView
+                    android:id="@+id/tv_num"
+                    style="@style/BlackText"
+                    android:layout_width="@dimen/off_50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/off_10dp"
+                    android:layout_marginRight="@dimen/off_10dp"
+                    android:background="@mipmap/ic_cart"
+                    android:gravity="center"
+                    android:text="10000" />
+
+                <ImageView
+                    android:id="@+id/iv_add"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/ic_cart_add" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/off_50dp"
+            android:layout_marginTop="@dimen/off_15dp"
+            android:weightSum="2">
+
+            <Button
+                android:id="@+id/bt_buy"
+                style="@style/WhiteText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/green"
+                android:text="@string/buy_now"
+                android:textSize="@dimen/font_size_16sp" />
+
+            <Button
+                android:id="@+id/bt_cart"
+                style="@style/WhiteText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/orange"
+                android:text="@string/join_cart"
+                android:textSize="@dimen/font_size_16sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="@dimen/off_95dp"
+        android:layout_height="@dimen/off_95dp"
+        android:layout_marginLeft="@dimen/off_10dp"
+        android:background="@drawable/rect_white_div" />
+
+</RelativeLayout>

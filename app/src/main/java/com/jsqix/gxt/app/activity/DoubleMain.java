@@ -31,6 +31,8 @@ public class DoubleMain extends BaseCompat {
     @ViewInject(R.id.radio_tab)
     private RadioGroup radioGroup;
 
+    int oldIndex = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,20 +62,27 @@ public class DoubleMain extends BaseCompat {
 
     @Event(value = R.id.radio_tab, type = RadioGroup.OnCheckedChangeListener.class)
     private void changeTab(RadioGroup group, int checkedId) {
+        int newIndex = 0;
         switch (checkedId) {
             case R.id.radio_home:
-                viewPager.setCurrentItem(0, false);
+                newIndex = 0;
                 break;
             case R.id.radio_purchase:
-                viewPager.setCurrentItem(1, false);
+                newIndex = 1;
                 break;
             case R.id.radio_order:
-                viewPager.setCurrentItem(2, false);
+                newIndex = 2;
                 break;
             case R.id.radio_user:
-                viewPager.setCurrentItem(3, false);
+                newIndex = 3;
                 break;
         }
+        if (Math.abs(newIndex - oldIndex) > 1) {
+            viewPager.setCurrentItem(newIndex, false);
+        } else {
+            viewPager.setCurrentItem(newIndex);
+        }
+        oldIndex = newIndex;
     }
 
     @Event(value = R.id.viewPage, type = ViewPager.OnPageChangeListener.class, method = "onPageSelected")
@@ -102,5 +111,15 @@ public class DoubleMain extends BaseCompat {
     @Override
     protected int getStatusColor() {
         return 0;
+    }
+
+    @Override
+    protected boolean isShowNetOff() {
+        return false;
+    }
+
+    @Override
+    protected boolean isStatusWhite() {
+        return false;
     }
 }

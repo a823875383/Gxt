@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blank"
+    android:orientation="vertical"
+    tools:context="com.jsqix.gxt.app.activity.AddressActivity">
+
+    <TextView
+        style="@style/BlackText"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/off_50dp"
+        android:gravity="center_vertical"
+        android:padding="@dimen/off_10dp"
+        android:text="@string/contact" />
+
+    <View style="@style/div_style" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/off_50dp"
+            android:padding="@dimen/off_10dp">
+
+            <TextView
+                style="@style/BlackText"
+                android:text="@string/name" />
+
+            <EditText
+                android:id="@+id/et_name"
+                style="@style/EditStyle"
+                android:singleLine="true"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/off_5dp"
+                android:background="@null"
+                android:hint="@string/address_name"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <View style="@style/div_style" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/off_50dp"
+            android:padding="@dimen/off_10dp">
+
+            <TextView
+                style="@style/BlackText"
+                android:text="@string/mobile" />
+
+            <EditText
+                android:id="@+id/et_phone"
+                style="@style/EditStyle"
+                android:singleLine="true"
+                android:inputType="phone"
+                android:maxLength="11"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/off_5dp"
+                android:background="@null"
+                android:hint="@string/address_phone"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View style="@style/div_style" />
+
+    <TextView
+        style="@style/BlackText"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/off_50dp"
+        android:gravity="center_vertical"
+        android:padding="@dimen/off_10dp"
+        android:text="@string/location_info" />
+
+    <View style="@style/div_style" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/off_50dp"
+            android:gravity="center_vertical"
+            android:padding="@dimen/off_10dp">
+
+            <TextView
+                style="@style/BlackText"
+                android:text="@string/area" />
+
+            <TextView
+                android:id="@+id/tv_area"
+                style="@style/EditStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:background="@null"
+                android:drawableLeft="@mipmap/ic_address_locate"
+                android:drawablePadding="@dimen/off_10dp"
+                android:drawableRight="@mipmap/ic_arrow"
+                android:hint="@string/address_area"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <View style="@style/div_style" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/off_50dp"
+            android:padding="@dimen/off_10dp">
+
+            <TextView
+                style="@style/BlackText"
+                android:text="@string/address" />
+
+            <EditText
+                android:id="@+id/et_address"
+                style="@style/EditStyle"
+                android:singleLine="true"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:hint="@string/address_info"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View style="@style/div_style" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/off_10dp">
+
+        <CheckBox
+            android:id="@+id/cb_choose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@drawable/address_choose" />
+
+        <TextView
+            style="@style/GrayText"
+            android:layout_height="@dimen/off_35dp"
+            android:layout_marginLeft="@dimen/off_10dp"
+            android:gravity="center_vertical"
+            android:text="@string/set_default" />
+    </LinearLayout>
+
+    <View style="@style/div_style" />
+
+    <TextView
+        android:id="@+id/tv_delete"
+        style="@style/GreenText"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/off_50dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:text="@string/delete"
+        android:textSize="@dimen/font_size_16sp" />
+
+    <View style="@style/div_style" />
+</LinearLayout>

@@ -27,6 +27,7 @@
     <dimen name="off_36dp">36dp</dimen>
     <dimen name="off_38dp">38dp</dimen>
     <dimen name="off_40dp">40dp</dimen>
+    <dimen name="off_42dp">42dp</dimen>
     <dimen name="off_45dp">45dp</dimen>
     <dimen name="off_50dp">50dp</dimen>
     <dimen name="off_52dp">52dp</dimen>
@@ -34,10 +35,13 @@
     <dimen name="off_65dp">65dp</dimen>
     <dimen name="off_70dp">70dp</dimen>
     <dimen name="off_75dp">75dp</dimen>
+    <dimen name="off_78dp">78dp</dimen>
     <dimen name="off_80dp">80dp</dimen>
     <dimen name="off_85dp">85dp</dimen>
     <dimen name="off_90dp">90dp</dimen>
+    <dimen name="off_95dp">95dp</dimen>
     <dimen name="off_100dp">100dp</dimen>
+    <dimen name="off_105dp">105dp</dimen>
     <dimen name="off_110dp">110dp</dimen>
     <dimen name="off_120dp">120dp</dimen>
     <dimen name="off_140dp">140dp</dimen>

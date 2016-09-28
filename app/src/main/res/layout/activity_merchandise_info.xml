@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_goods_info"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blank"
+    android:orientation="vertical"
+    tools:context="com.jsqix.gxt.app.activity.MerchandiseInfo">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/title_bar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/off_50dp">
+
+            <TextView
+                android:id="@+id/tv_left"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:drawableLeft="@mipmap/ic_back"
+                android:drawablePadding="@dimen/off_5dp"
+                android:gravity="center"
+                android:paddingLeft="@dimen/off_16dp"
+                android:paddingRight="@dimen/off_16dp" />
+
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tab_viewPage"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/off_35dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                app:tabGravity="center"
+                app:tabIndicatorColor="@color/green"
+                app:tabSelectedTextColor="@color/green"
+                app:tabTextAppearance="@style/TitleText" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#F1F1F1" />
+    </LinearLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPage"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/off_50dp"
+        android:weightSum="2">
+
+        <Button
+            android:id="@+id/bt_buy"
+            style="@style/WhiteText"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/green"
+            android:text="@string/buy_now"
+            android:textSize="@dimen/font_size_16sp" />
+
+        <Button
+            android:id="@+id/bt_cart"
+            style="@style/WhiteText"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/orange"
+            android:text="@string/join_cart"
+            android:textSize="@dimen/font_size_16sp" />
+    </LinearLayout>
+
+
+</LinearLayout>

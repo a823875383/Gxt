@@ -85,5 +85,4 @@
     <style name="TitleText" parent="BlackText">
         <item name="android:textSize">@dimen/font_size_18sp</item>
     </style>
-
 </resources>

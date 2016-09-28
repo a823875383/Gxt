@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageView;
 
 import com.jsqix.gxt.app.R;
 import com.jsqix.utils.LogWriter;
@@ -13,22 +12,29 @@ import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import gxt.jsqix.com.mycommon.base.BaseCompat;
-import gxt.jsqix.com.mycommon.base.util.Code;
+import gxt.jsqix.com.mycommon.base.api.ApiClient;
+import gxt.jsqix.com.mycommon.base.api.HttpGet;
+import gxt.jsqix.com.mycommon.base.api.Md5;
+import gxt.jsqix.com.mycommon.base.api.RequestIP;
+import gxt.jsqix.com.mycommon.base.util.CommUtils;
 
 /**
  * 登录
  */
 @ContentView(R.layout.activity_login)
-public class LoginActivity extends BaseCompat {
+public class LoginActivity extends BaseCompat implements HttpGet.InterfaceHttpGet {
     @ViewInject(R.id.et_name)
     private EditText loginName;//登录名
     @ViewInject(R.id.et_pass)
     private EditText loginPass;//密码
     @ViewInject(R.id.et_code)
     private EditText loginCode;//验证码
-    @ViewInject(R.id.iv_code)
-    private ImageView imgCode;//登录名
+//    @ViewInject(R.id.iv_code)
+//    private ImageView imgCode;//登录名
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,11 +48,11 @@ public class LoginActivity extends BaseCompat {
 
     @Override
     protected void initView() {
-        imgCode.setImageBitmap(Code.getInstance()
-                .setHeight(45)
-                .setWidth(100)
-                .createBitmap());
-        LogWriter.e("TAG", Code.getInstance().getCode());
+//        imgCode.setImageBitmap(Code.getInstance()
+//                .setHeight(45)
+//                .setWidth(100)
+//                .createBitmap());
+//        LogWriter.e("TAG", Code.getInstance().getCode());
     }
 
     @Override
@@ -64,6 +70,16 @@ public class LoginActivity extends BaseCompat {
         return -1;
     }
 
+    @Override
+    protected boolean isShowNetOff() {
+        return false;
+    }
+
+    @Override
+    protected boolean isStatusWhite() {
+        return false;
+    }
+
     @Event(R.id.tv_forget)
     private void forgetClick(View v) {
         startActivity(new Intent(this, ForgetFirst.class));
@@ -71,14 +87,38 @@ public class LoginActivity extends BaseCompat {
 
     @Event(R.id.bt_login)
     private void loginClick(View v) {
+        login();
         if (loginName.getText().toString().trim().equals("0")) {
             startActivity(new Intent(this, PurchaserMain.class));
         } else if (loginName.getText().toString().trim().equals("1")) {
             startActivity(new Intent(this, DoubleMain.class));
         } else {
-            startActivity(new Intent(this, SupplierMain.class));
+            startActivity(new Intent(this, MerchandiseInfo.class));
         }
     }
 
+    /**
+     * 登录
+     */
+    void login() {
+        Map<String, Object> paras = new HashMap<>();
+        paras.put("phone", CommUtils.textToString(loginName));
+        paras.put("loginPwd", Md5.getMD5(CommUtils.textToString(loginPass) + ApiClient.SECRET_KEY, "utf-8"));
+        paras.put("timeStamp", System.currentTimeMillis());
+        Map<String, Object> unparas = new HashMap<>();
+        unparas.put("plat_id", 102204);
+        HttpGet get = new HttpGet(this, unparas, paras, this) {
+            @Override
+            public void onPreExecute() {
 
+            }
+        };
+        get.execute(RequestIP.LOGIN);
+    }
+
+
+    @Override
+    public void getCallback(int resultCode, String result) {
+        LogWriter.e(result);
+    }
 }

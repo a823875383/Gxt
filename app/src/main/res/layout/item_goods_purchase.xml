@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blank"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="@dimen/off_10dp">
+
+        <ImageView
+            android:id="@+id/iv_goods_img"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/off_70dp"
+            android:layout_gravity="center"
+            android:scaleType="center" />
+
+        <TextView
+            android:id="@+id/tv_goods_name"
+            style="@style/BlackText"
+            android:layout_height="@dimen/off_40dp"
+            android:layout_marginTop="@dimen/off_10dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="好孩子 婴儿床 实木无漆宝\n宝床多功能" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/GrayText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/stock"
+                    android:textSize="@dimen/font_size_12sp" />
+
+                <TextView
+                    android:id="@+id/tv_goods_stock"
+                    style="@style/GrayText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10000"
+                    android:textSize="@dimen/font_size_12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true">
+
+                <TextView
+                    style="@style/GrayText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/MOQ"
+                    android:textSize="@dimen/font_size_12sp" />
+
+                <TextView
+                    android:id="@+id/tv_goods_moq"
+                    style="@style/GrayText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10"
+                    android:textSize="@dimen/font_size_12sp" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/off_10dp">
+
+            <TextView
+                style="@style/BlackText"
+                android:text="@string/order_num" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true">
+
+                <ImageView
+                    android:id="@+id/iv_reduce"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/off_10dp"
+                    android:src="@mipmap/ic_cart_reduce" />
+
+                <TextView
+                    android:id="@+id/tv_num"
+                    style="@style/BlackText"
+                    android:layout_width="@dimen/off_50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/off_10dp"
+                    android:layout_marginRight="@dimen/off_10dp"
+                    android:background="@mipmap/ic_cart"
+                    android:gravity="center"
+                    android:text="10000" />
+
+                <ImageView
+                    android:id="@+id/iv_add"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/ic_cart_add" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_goods_price"
+            style="@style/GreenText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/off_10dp"
+            android:text="￥ 15.90"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <view
+        style="@style/div_style"
+        android:layout_marginTop="@dimen/off_10dp" />
+
+</LinearLayout>

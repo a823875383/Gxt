@@ -1,6 +1,7 @@
 package com.jsqix.gxt.app.activity;
 
 import android.content.Intent;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -33,10 +34,10 @@ public class WithdrawActivity extends BaseToolActivity {
 
     @Override
     protected void initView() {
-//        int[] colors={0xff29B292,0xff23A79F,0xff1D9DB4};//分别为开始颜色，中间夜色，结束颜色
-//        GradientDrawable gd = new GradientDrawable(GradientDrawable.Orientation.LEFT_RIGHT, colors);
-//        gd.setGradientType(GradientDrawable.LINEAR_GRADIENT);
-//        rel_choose.setBackgroundDrawable(gd);
+        int[] colors={0xff29B292,0xff23A79F,0xff1D9DB4};//分别为开始颜色，中间夜色，结束颜色
+        GradientDrawable gd = new GradientDrawable(GradientDrawable.Orientation.LEFT_RIGHT, colors);
+        gd.setGradientType(GradientDrawable.LINEAR_GRADIENT);
+        rel_choose.setBackgroundDrawable(gd);
     }
 
     @Event(R.id.rel_choose)
