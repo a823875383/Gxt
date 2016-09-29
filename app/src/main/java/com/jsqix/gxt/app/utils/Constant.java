@@ -9,6 +9,7 @@ public class Constant {
     public final static String TYPE = "order_type";
     public final static String INDEX = "index";
     public final static String NAME = "name";
+    public final static String ID="id";
     public final static int PAGESIZE = 10;
 
     //aCache key

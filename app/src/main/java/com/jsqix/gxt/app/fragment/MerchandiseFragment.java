@@ -20,6 +20,7 @@ import gxt.jsqix.com.mycommon.base.view.CustomDialog;
 public class MerchandiseFragment extends BaseFragment {
     private CustomDialog specDialog;
 
+
     public MerchandiseFragment() {
         // Required empty public constructor
     }
@@ -39,7 +40,6 @@ public class MerchandiseFragment extends BaseFragment {
 
     @Override
     protected void getArgument() {
-
     }
 
     @Event(R.id.rel_spec)

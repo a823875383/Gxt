@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_classify"
     android:layout_width="@dimen/off_100dp"
     android:layout_height="@dimen/off_50dp"
-    android:background="@mipmap/bg_classify_left"
     android:gravity="center">
 
     <TextView
         android:id="@id/tv_name"
-        style="@style/GreenText"
+        style="@style/BlackText"
         android:text="休闲食品" />
 
 </LinearLayout>

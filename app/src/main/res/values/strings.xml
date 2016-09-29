@@ -149,6 +149,8 @@
     <string name="no_more_data">没有更多数据了!</string>
     <string name="no_data">暂无数据</string>
     <string name="last_page">最后一页</string>
+    <string name="all">全部</string>
+    <string name="rmb">￥ </string>
     <string-array name="return_cause">
         <item>商品质量问题</item>
         <item>商品错发/漏发/少发</item>

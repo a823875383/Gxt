@@ -50,7 +50,7 @@
         <TextView
             android:id="@+id/tv_name"
             style="@style/BlackText"
-            android:text="全部" />
+            android:text="@string/all" />
 
         <TextView
             android:id="@+id/tv_classify"
@@ -64,7 +64,7 @@
     <View style="@style/div_style" />
 
     <com.handmark.pulltorefresh.library.PullToRefreshGridView xmlns:ptr="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/gridView"
+        android:id="@+id/refreshGridView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:cacheColorHint="@android:color/transparent"

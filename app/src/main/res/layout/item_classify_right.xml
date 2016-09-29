@@ -15,6 +15,9 @@
     <TextView
         android:id="@+id/tv_goods_name"
         style="@style/LightText"
+        android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/off_10dp"
+        android:ellipsize="end"
+        android:maxLines="1"
         android:text="饼干" />
 </LinearLayout>
