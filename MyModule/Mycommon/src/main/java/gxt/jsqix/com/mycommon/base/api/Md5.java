@@ -1,5 +1,9 @@
 package gxt.jsqix.com.mycommon.base.api;
 
+import com.jsqix.utils.LogWriter;
+
+import org.apaches.commons.codec.digest.DigestUtils;
+
 import java.io.UnsupportedEncodingException;
 
 public class Md5 {
@@ -41,6 +45,15 @@ public class Md5 {
             e.printStackTrace();
         }
         return s;
+    }
+
+    public static String getMd5Hex(String str, String charset) {
+        try {
+            str = DigestUtils.md5Hex(str.getBytes(charset));
+        } catch (Exception e) {
+            LogWriter.e(e.getMessage());
+        }
+        return str;
     }
 
 }

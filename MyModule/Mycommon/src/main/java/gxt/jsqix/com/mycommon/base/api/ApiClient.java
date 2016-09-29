@@ -16,6 +16,7 @@ public class ApiClient {
     // 测试服务器
 //    public static final String RequestIP = UAD.getRequestIp();
 
+    public final static int P_ID = 102204;
     public final static String UTF_8 = "UTF-8";
     public final static String ANDRID_SDK_KEY = "3c7210a86f1107b95459d2b4cb1ccf1d";
     public final static String SECRET_KEY = "3c7210a86f1107b95459d2b4cb1ccf1d";
@@ -26,10 +27,10 @@ public class ApiClient {
         if (data != null) {
             LogWriter.v("XXXXX", "--------------------------");
             LogWriter.i("签名前----", data.toString());
-            String data2 = getSignAfter(data, ApiClient.ANDRID_SDK_KEY);
-            LogWriter.i("签名后----", data2);
-            data.put("hmac", data2);
-            data2 = makePostData2(data);
+//            String data2 = getSignAfter(data, ApiClient.ANDRID_SDK_KEY);
+//            LogWriter.i("签名后----", data2);
+//            data.put("hmac", data2);
+            String data2 = makePostData2(data);
 
             url = srcUrl + "?" + data2;
             LogWriter.i("发送的请求----", url);
@@ -50,9 +51,7 @@ public class ApiClient {
             if (data.get(name) == null) {
                 postData.append("");
             } else {
-                postData.append(URLEncoder.encode(
-                        URLEncoder.encode(data.get(name) + "", "utf-8"),
-                        "utf-8"));
+                postData.append(URLEncoder.encode(data.get(name) + "", "utf-8"));
             }
             postData.append('&');
         }
@@ -101,7 +100,8 @@ public class ApiClient {
      */
     private static String getSign(String signAfter, String key) {
         LogWriter.v("加密前：", signAfter);
-        String sign = Md5.getMD5(signAfter + key, "utf-8");
+//        String sign = Md5.getMD5(signAfter + key,"utf-8");
+        String sign = Md5.getMd5Hex(signAfter + key, "utf-8");
         LogWriter.v("加密后：", sign);
         return sign;
     }

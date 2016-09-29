@@ -1,6 +1,5 @@
 package gxt.jsqix.com.mycommon.base;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -14,7 +13,7 @@ import org.xutils.x;
  * Created by dongqing on 16/9/12.
  */
 public abstract class BaseFragment extends Fragment {
-    protected Context mContext;
+    protected BaseCompat mContext;
 
     @Nullable
     @Override
@@ -25,7 +24,7 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mContext = getActivity();
+        mContext = (BaseCompat) getActivity();
         getArgument();
         initView();
     }

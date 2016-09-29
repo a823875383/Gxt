@@ -46,10 +46,13 @@
     <string name="money">金额</string>
     <string name="recharge_money">请输入充值金额</string>
     <string name="recharge_away">选择充值方式：</string>
+    <string name="pay_away">选择支付方式：</string>
     <string name="recharge_wechat">微信充值</string>
     <string name="pay_wechat">微信支付</string>
     <string name="recharge_alipay">支付宝充值</string>
     <string name="pay_alipay">支付宝支付</string>
+    <string name="pay_balance">账户余额支付</string>
+    <string name="pay_online">在线支付</string>
     <string name="recharge_phone">手机账号充值</string>
     <string name="recharge_login">手机账号登录</string>
     <string name="phone">手机号</string>
@@ -127,19 +130,25 @@
     <string name="no_purchase">您的采购单是空的哦 ! 赶紧去采购吧 !</string>
     <string name="forward_home">前往首页</string>
     <string name="order_num">订购数量 : </string>
+    <string name="order_no">订单编号 : </string>
     <string name="return_request">退货申请</string>
     <string name="return_reason">退款原因</string>
     <string name="return_money">退款金额</string>
     <string name="return_depict">退款描述</string>
+    <string name="order_depict">订单描述</string>
     <string name="order_confirm">确认订单</string>
     <string name="add_card">添加新卡</string>
     <string name="buy_now">立即购买</string>
     <string name="join_cart">加入购物车</string>
     <string name="order_submit">提交订单</string>
     <string name="real_pay">实付款 : </string>
+    <string name="real_money">应付金额 : </string>
     <string name="classify">分类</string>
     <string name="merchandise">商品</string>
     <string name="detail">详情</string>
+    <string name="no_more_data">没有更多数据了!</string>
+    <string name="no_data">暂无数据</string>
+    <string name="last_page">最后一页</string>
     <string-array name="return_cause">
         <item>商品质量问题</item>
         <item>商品错发/漏发/少发</item>

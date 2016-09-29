@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/alertview_bg"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/off_15dp">
+
+        <EditText
+            android:id="@+id/et_money"
+            style="@style/EditStyle"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/off_42dp"
+            android:background="@drawable/round_line_gray"
+            android:hint="请输入支付金额"
+            android:inputType="numberDecimal"
+            android:maxLines="1"
+            android:paddingLeft="@dimen/off_10dp" />
+
+        <EditText
+            android:id="@+id/et_pass"
+            style="@style/EditStyle"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/off_42dp"
+            android:layout_marginTop="@dimen/off_10dp"
+            android:background="@drawable/round_line_gray"
+            android:hint="请输入支付密码"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:paddingLeft="@dimen/off_10dp" />
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="15dp"
+        android:background="@color/alertdialog_line" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_neg"
+            android:layout_width="wrap_content"
+            android:layout_height="43dp"
+            android:layout_weight="1"
+            android:background="@drawable/alertview_left_selector"
+            android:gravity="center"
+            android:text="@string/cancel"
+            android:textColor="@color/font_gray"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/img_line"
+            android:layout_width="1dp"
+            android:layout_height="43dp"
+            android:background="@color/alertdialog_line" />
+
+        <Button
+            android:id="@+id/btn_pos"
+            android:layout_width="wrap_content"
+            android:layout_height="43dp"
+            android:layout_weight="1"
+            android:background="@drawable/alertview_right_selector"
+            android:gravity="center"
+            android:text="@string/confirm"
+            android:textColor="@color/green"
+            android:textSize="16sp" />
+    </LinearLayout>
+</LinearLayout>

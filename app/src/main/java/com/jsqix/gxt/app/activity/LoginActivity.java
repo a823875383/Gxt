@@ -5,8 +5,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
+import com.google.gson.Gson;
 import com.jsqix.gxt.app.R;
-import com.jsqix.utils.LogWriter;
+import com.jsqix.gxt.app.obj.LoginResult;
+import com.jsqix.gxt.app.utils.Constant;
+import com.jsqix.utils.Utils;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
@@ -18,7 +21,6 @@ import java.util.Map;
 import gxt.jsqix.com.mycommon.base.BaseCompat;
 import gxt.jsqix.com.mycommon.base.api.ApiClient;
 import gxt.jsqix.com.mycommon.base.api.HttpGet;
-import gxt.jsqix.com.mycommon.base.api.Md5;
 import gxt.jsqix.com.mycommon.base.api.RequestIP;
 import gxt.jsqix.com.mycommon.base.util.CommUtils;
 
@@ -88,13 +90,13 @@ public class LoginActivity extends BaseCompat implements HttpGet.InterfaceHttpGe
     @Event(R.id.bt_login)
     private void loginClick(View v) {
         login();
-        if (loginName.getText().toString().trim().equals("0")) {
-            startActivity(new Intent(this, PurchaserMain.class));
-        } else if (loginName.getText().toString().trim().equals("1")) {
-            startActivity(new Intent(this, DoubleMain.class));
-        } else {
-            startActivity(new Intent(this, MerchandiseInfo.class));
-        }
+//        if (CommUtils.textToString(loginName).equals("0")) {
+//            startActivity(new Intent(this, PurchaserMain.class));
+//        } else if (CommUtils.textToString(loginName).equals("1")) {
+//            startActivity(new Intent(this, DoubleMain.class));
+//        } else {
+//            startActivity(new Intent(this, MerchandiseInfo.class));
+//        }
     }
 
     /**
@@ -103,10 +105,10 @@ public class LoginActivity extends BaseCompat implements HttpGet.InterfaceHttpGe
     void login() {
         Map<String, Object> paras = new HashMap<>();
         paras.put("phone", CommUtils.textToString(loginName));
-        paras.put("loginPwd", Md5.getMD5(CommUtils.textToString(loginPass) + ApiClient.SECRET_KEY, "utf-8"));
+        paras.put("loginPwd", CommUtils.textToString(loginPass));
         paras.put("timeStamp", System.currentTimeMillis());
         Map<String, Object> unparas = new HashMap<>();
-        unparas.put("plat_id", 102204);
+        unparas.put("plat_id", ApiClient.P_ID);
         HttpGet get = new HttpGet(this, unparas, paras, this) {
             @Override
             public void onPreExecute() {
@@ -119,6 +121,26 @@ public class LoginActivity extends BaseCompat implements HttpGet.InterfaceHttpGe
 
     @Override
     public void getCallback(int resultCode, String result) {
-        LogWriter.e(result);
+        LoginResult resultBean = new Gson().fromJson(result, LoginResult.class);
+        if (resultBean != null) {
+            if (resultBean.getCode().equals("000")) {
+                if (resultBean.getObj().getSuppliter_status() == 1) {//供应商
+                    if (resultBean.getObj().getProcure_status() == 1) {//采购商
+                        startActivity(new Intent(this, DoubleMain.class));
+                    } else {
+                        startActivity(new Intent(this, SupplierMain.class));
+                    }
+                } else if (resultBean.getObj().getProcure_status() == 1) {//采购商
+                    startActivity(new Intent(this, PurchaserMain.class));
+                }
+                aCache.put(Constant.USER, resultBean.getObj());
+                aCache.put(Constant.U_ID, resultBean.getObj().getId());
+            } else {
+                Utils.makeToast(this, resultBean.getMsg());
+            }
+        } else {
+            Utils.makeToast(this, getString(R.string.network_timeout));
+
+        }
     }
 }

@@ -1,3 +1,4 @@
 <resources>
     <string name="no_network">网络未连接,请检查网络再试!</string>
+    <string name="network_timeout">网络超时,请检查网络再试!</string>
 </resources>

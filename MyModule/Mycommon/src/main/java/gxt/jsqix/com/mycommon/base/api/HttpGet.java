@@ -24,6 +24,8 @@ public abstract class HttpGet extends AsyncTask<String, String, String> {
         this.mListener = listener;
         this.postMap = params;
         this.context = context;
+        String hmac = ApiClient.getSignAfter(params, ApiClient.ANDRID_SDK_KEY);
+        postMap.put("hmac", hmac);
     }
 
     /**
@@ -76,7 +78,7 @@ public abstract class HttpGet extends AsyncTask<String, String, String> {
     }
 
     private void XutilsRequst(String url) throws Throwable {
-        LogWriter.i(url);
+        System.out.println(url);
         RequestParams params = new RequestParams(url);
         response = x.http().getSync(params, String.class);
     }

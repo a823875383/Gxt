@@ -1,42 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/pull_to_refresh_footer"
-    android:layout_width="fill_parent"
-    android:layout_height="60dp"
-    android:background="@color/white"
-    android:gravity="center" >
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <ProgressBar
-        android:id="@+id/pull_to_load_progress"
-       android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="30dip"
-        android:layout_marginRight="20dip"
-        android:indeterminate="true"
-        android:indeterminateDrawable="@drawable/loading_progress_bar"
-        android:visibility="visible" />
+    <FrameLayout
+        android:id="@+id/pull_to_refresh_footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/pull_to_load_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_gravity="center"
-        android:layout_marginLeft="30dip"
-        android:layout_marginRight="20dip"
-        android:gravity="center"
-        android:src="@mipmap/arrow"
-        android:visibility="gone" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/white"
+            android:gravity="center">
 
-    <TextView
-        android:id="@+id/pull_to_load_text"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:text="上拉加载更多"
-        android:visibility="visible" />
+            <ProgressBar
+                android:id="@+id/pull_to_load_progress"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="30dip"
+                android:layout_marginRight="20dip"
+                android:indeterminate="true"
+                android:indeterminateDrawable="@drawable/loading_progress_bar"
+                android:visibility="visible" />
 
-</RelativeLayout>
+            <ImageView
+                android:id="@+id/pull_to_load_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:layout_marginLeft="30dip"
+                android:layout_marginRight="20dip"
+                android:gravity="center"
+                android:src="@mipmap/arrow"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/pull_to_load_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="上拉加载更多"
+                android:visibility="visible" />
+
+        </RelativeLayout>
+
+    </FrameLayout>
+</merge>

@@ -13,4 +13,8 @@ public class CommUtils extends StringUtils {
     public static String textToString(TextView tv) {
         return tv.getText().toString().trim();
     }
+
+    public static <T> T Obj2Bean(Object object, Class<T> classOfT) {
+        return (T) object;
+    }
 }

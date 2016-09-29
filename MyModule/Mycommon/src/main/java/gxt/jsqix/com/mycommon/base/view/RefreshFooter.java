@@ -1,10 +1,11 @@
 package gxt.jsqix.com.mycommon.base.view;
 
 import android.content.Context;
+import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.handmark.pulltorefresh.library.LoadingLayoutBase;
@@ -16,7 +17,7 @@ import gxt.jsqix.com.mycommon.R;
  */
 
 public class RefreshFooter extends LoadingLayoutBase {
-    private RelativeLayout mFooterView;
+    private FrameLayout mFooterView;
     private ProgressBar mFooterProgressBar;
     private ImageView mFooterImageView;
     private TextView mFooterTextView;
@@ -25,11 +26,13 @@ public class RefreshFooter extends LoadingLayoutBase {
     public RefreshFooter(Context context) {
         super(context);
         LayoutInflater.from(context).inflate(R.layout.refresh_footer, this);
-        mFooterView = (RelativeLayout) findViewById(R.id.pull_to_refresh_footer);
+        mFooterView = (FrameLayout) findViewById(R.id.pull_to_refresh_footer);
         mFooterImageView = (ImageView) findViewById(R.id.pull_to_load_image);
         mFooterTextView = (TextView) findViewById(R.id.pull_to_load_text);
         mFooterProgressBar = (ProgressBar) findViewById(R.id.pull_to_load_progress);
-
+        LayoutParams lp = (LayoutParams) mFooterView.getLayoutParams();
+        lp.gravity = Gravity.TOP;
+        reset();
     }
 
     @Override

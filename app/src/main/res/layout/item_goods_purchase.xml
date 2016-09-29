@@ -2,26 +2,30 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blank"
+    android:background="@color/white"
     android:orientation="vertical">
+
+    <View
+        style="@style/div_style"
+        android:layout_height="@dimen/off_10dp"
+        android:background="@color/blank" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
         android:orientation="vertical"
         android:padding="@dimen/off_10dp">
 
         <ImageView
             android:id="@+id/iv_goods_img"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/off_70dp"
-            android:layout_gravity="center"
-            android:scaleType="center" />
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/off_100dp"
+            android:layout_gravity="center" />
 
         <TextView
             android:id="@+id/tv_goods_name"
             style="@style/BlackText"
+            android:layout_width="match_parent"
             android:layout_height="@dimen/off_40dp"
             android:layout_marginTop="@dimen/off_10dp"
             android:ellipsize="end"
@@ -99,13 +103,13 @@
                 <TextView
                     android:id="@+id/tv_num"
                     style="@style/BlackText"
-                    android:layout_width="@dimen/off_50dp"
+                    android:layout_width="@dimen/off_35dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/off_10dp"
-                    android:layout_marginRight="@dimen/off_10dp"
+                    android:layout_marginLeft="@dimen/off_5dp"
+                    android:layout_marginRight="@dimen/off_5dp"
                     android:background="@mipmap/ic_cart"
                     android:gravity="center"
-                    android:text="10000" />
+                    android:text="1" />
 
                 <ImageView
                     android:id="@+id/iv_add"
@@ -125,8 +129,36 @@
             android:textStyle="bold" />
     </LinearLayout>
 
-    <view
+    <View
         style="@style/div_style"
         android:layout_marginTop="@dimen/off_10dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/off_10dp"
+        android:weightSum="2">
+
+        <Button
+            android:id="@+id/bt_buy"
+            style="@style/WhiteText"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/off_30dp"
+            android:layout_weight="1"
+            android:background="@color/green"
+            android:text="@string/buy_now"
+            android:textSize="@dimen/font_size_12sp" />
+
+        <Button
+            android:id="@+id/bt_cart"
+            style="@style/WhiteText"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/off_30dp"
+            android:layout_marginLeft="@dimen/off_10dp"
+            android:layout_weight="1"
+            android:background="@color/orange"
+            android:text="@string/join_cart"
+            android:textSize="@dimen/font_size_12sp" />
+    </LinearLayout>
 
 </LinearLayout>

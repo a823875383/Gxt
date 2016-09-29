@@ -44,7 +44,7 @@ public abstract class HttpPost extends AsyncTask<String, String, String> {
      * @param unSignParams 参数
      * @param params       不参与签名的参数
      */
-    public HttpPost(Context context, Map<String, Object> unSignParams, Map<String, Object> params, InterfaceHttpPost listener) {
+    public HttpPost(Context context, Map<String, Object> params, Map<String, Object> unSignParams, InterfaceHttpPost listener) {
         this.postMap = unSignParams;
         String hmac = ApiClient.getSignAfter(unSignParams, ApiClient.ANDRID_SDK_KEY);
         postMap.put("hmac", hmac);
