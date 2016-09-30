@@ -70,6 +70,7 @@
         android:cacheColorHint="@android:color/transparent"
         android:horizontalSpacing="@dimen/off_10dp"
         android:numColumns="2"
+        android:scrollbars="none"
         android:overScrollMode="never"
         ptr:ptrShowIndicator="false" />
 

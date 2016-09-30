@@ -30,6 +30,49 @@
                 android:paddingLeft="@dimen/off_16dp"
                 android:paddingRight="@dimen/off_16dp" />
 
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true">
+
+                <RadioGroup
+                    android:id="@+id/rg_nav_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="@dimen/off_5dp"
+                    android:checkedButton="@+id/rb_goods"
+                    android:gravity="bottom"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rb_goods"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@null"
+                        android:text="商品"
+                        android:textColor="@drawable/info_color"
+                        android:textSize="@dimen/font_size_16sp" />
+
+                    <RadioButton
+                        android:id="@+id/rb_detail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/off_20dp"
+                        android:button="@null"
+                        android:text="详情"
+                        android:textColor="@drawable/info_color"
+                        android:textSize="@dimen/font_size_16sp" />
+                </RadioGroup>
+
+                <ImageView
+                    android:id="@+id/iv_nav_indicator"
+                    android:layout_width="@dimen/off_30dp"
+                    android:layout_height="1dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/green"
+                    android:scaleType="matrix" />
+
+            </RelativeLayout>
         </RelativeLayout>
 
         <View

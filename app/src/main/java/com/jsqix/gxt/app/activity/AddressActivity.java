@@ -1,5 +1,6 @@
 package com.jsqix.gxt.app.activity;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
@@ -69,6 +70,9 @@ public class AddressActivity extends BaseToolActivity {
 
     @Event(R.id.tv_area)
     private void areaClick(View v) {
-        areaPicker.show();
+        //areaPicker.show();
+        startActivity(new Intent(this,CitySelect.class));
     }
+
+
 }

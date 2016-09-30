@@ -55,7 +55,8 @@
         <activity android:name=".activity.FragmentActivity" />
         <activity android:name=".activity.OrderSubmit" />
         <activity android:name=".activity.MerchandiseInfo" />
-        <activity android:name=".activity.OrderPay"></activity>
+        <activity android:name=".activity.OrderPay" />
+        <activity android:name=".activity.CitySelect"></activity>
     </application>
 
 </manifest>

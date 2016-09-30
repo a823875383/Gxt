@@ -1,109 +1,105 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_merchandise"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/blank"
-    android:id="@+id/fragment_merchandise"
+    android:orientation="vertical"
     tools:context="com.jsqix.gxt.app.fragment.MerchandiseFragment">
+
+    <include
+        layout="@layout/layout_banner"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/off_300dp" />
+
+    <View style="@style/div_style" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="@dimen/off_10dp">
 
-        <include
-            layout="@layout/layout_banner"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/off_300dp" />
+        <TextView
+            android:id="@+id/tv_goods_name"
+            style="@style/BlackText"
+            android:text="新西兰原装进口 纯净天然蜂蜜 蜜滋兰多花种百花蜂蜜500G" />
 
-        <View style="@style/div_style" />
-
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:orientation="vertical"
-            android:padding="@dimen/off_10dp">
+            android:layout_marginTop="@dimen/off_10dp">
 
             <TextView
-                android:id="@+id/tv_goods_name"
-                style="@style/BlackText"
-                android:text="新西兰原装进口 纯净天然蜂蜜 蜜滋兰多花种百花蜂蜜500G" />
+                android:id="@+id/tv_goods_price"
+                style="@style/GreenText"
+                android:text="￥ 15.90" />
 
-            <RelativeLayout
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/off_10dp">
+                android:layout_alignParentRight="true">
 
-                <TextView
-                    android:id="@+id/tv_goods_price"
-                    style="@style/GreenText"
-                    android:text="￥ 15.90" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        style="@style/GrayText"
+                        android:text="@string/stock" />
+
+                    <TextView
+                        android:id="@+id/tv_goods_stock"
+                        style="@style/GrayText"
+                        android:text="10000" />
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true">
+                    android:layout_marginLeft="@dimen/off_40dp">
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                    <TextView
+                        style="@style/GrayText"
+                        android:text="@string/MOQ" />
 
-                        <TextView
-                            style="@style/GrayText"
-                            android:text="@string/stock" />
-
-                        <TextView
-                            android:id="@+id/tv_goods_stock"
-                            style="@style/GrayText"
-                            android:text="10000" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/off_40dp">
-
-                        <TextView
-                            style="@style/GrayText"
-                            android:text="@string/MOQ" />
-
-                        <TextView
-                            android:id="@+id/tv_goods_moq"
-                            style="@style/GrayText"
-                            android:text="10" />
-                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/tv_goods_moq"
+                        style="@style/GrayText"
+                        android:text="10" />
                 </LinearLayout>
+            </LinearLayout>
 
 
-            </RelativeLayout>
-
-        </LinearLayout>
-
-        <View style="@style/div_style" />
-
-        <View
-            style="@style/div_style"
-            android:layout_marginTop="@dimen/off_10dp" />
-
-        <RelativeLayout
-            android:id="@+id/rel_spec"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:padding="@dimen/off_10dp">
-
-            <TextView
-                android:id="@+id/tv_spec"
-                style="@style/BlackText"
-                android:text="请选择 分类" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:src="@mipmap/ic_arrow" />
         </RelativeLayout>
+
     </LinearLayout>
 
-</FrameLayout>
+    <View style="@style/div_style" />
+
+    <View
+        style="@style/div_style"
+        android:layout_marginTop="@dimen/off_10dp" />
+
+    <RelativeLayout
+        android:id="@+id/rel_spec"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="@dimen/off_10dp">
+
+        <TextView
+            android:id="@+id/tv_spec"
+            style="@style/BlackText"
+            android:text="请选择 分类" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/ic_arrow" />
+    </RelativeLayout>
+</LinearLayout>
+
