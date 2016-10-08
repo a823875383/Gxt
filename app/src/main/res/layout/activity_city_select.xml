@@ -4,31 +4,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/off_10dp">
-
-        <EditText
-            android:id="@+id/cityType"
-            android:layout_width="@dimen/off_120dp"
-            android:layout_height="wrap_content"
-            android:hint="类型" />
-
-        <EditText
-            android:id="@+id/parentID"
-            android:layout_width="@dimen/off_120dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/off_10dp"
-            android:hint="父ID" />
-
-        <Button
-            android:id="@+id/bt_confirm"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="确定" />
-    </LinearLayout>
-
     <include layout="@layout/layout_listview" />
 
 </LinearLayout>

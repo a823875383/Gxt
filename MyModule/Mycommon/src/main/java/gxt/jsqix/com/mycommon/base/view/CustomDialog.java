@@ -17,6 +17,7 @@ public class CustomDialog extends Dialog {
     private Context mContext;
     private WindowManager.LayoutParams lp;
     private View contentView;
+    private Object object;
 
     public CustomDialog(Context context) {
         super(context, R.style.BaseDialog);//默认主题
@@ -97,5 +98,13 @@ public class CustomDialog extends Dialog {
             lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
         }
         getWindow().setAttributes(lp);
+    }
+
+    public void setObject(Object object) {
+        this.object = object;
+    }
+
+    public Object getObject() {
+        return object;
     }
 }

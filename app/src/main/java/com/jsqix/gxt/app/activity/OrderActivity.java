@@ -43,7 +43,7 @@ public class OrderActivity extends BaseToolActivity {
     protected void initVariable() {
         super.initVariable();
         title = getIntent().getExtras().getString(Constant.TITLE, "");
-        order_type = getIntent().getExtras().getString(Constant.TYPE, "");
+        order_type = getIntent().getExtras().getString(Constant.ORDER_TYPE, "");
     }
 
 }

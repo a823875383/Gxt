@@ -23,7 +23,7 @@
             android:layout_marginLeft="@dimen/off_10dp"
             android:src="@mipmap/ic_cart_reduce" />
 
-        <TextView
+        <EditText
             android:id="@+id/tv_num"
             style="@style/BlackText"
             android:layout_width="@dimen/off_50dp"
@@ -31,8 +31,9 @@
             android:layout_marginLeft="@dimen/off_10dp"
             android:layout_marginRight="@dimen/off_10dp"
             android:background="@mipmap/ic_cart"
+            android:maxLines="1"
             android:gravity="center"
-            android:text="10000" />
+            android:text="1" />
 
         <ImageView
             android:id="@+id/iv_add"
@@ -47,13 +48,13 @@
         android:weightSum="2">
 
         <Button
-            android:id="@+id/bt_submit"
+            android:id="@+id/bt_confirm"
             style="@style/WhiteText"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@color/green"
-            android:text="@string/submit"
+            android:text="@string/confirm"
             android:textSize="@dimen/font_size_16sp" />
 
         <Button

@@ -77,23 +77,23 @@ public class DouOrderFragment extends BaseFragment {
         switch (v.getId()) {
             case R.id.sup_order_all:
                 bundle.putString(Constant.TITLE, getString(R.string.title_order_all));
-                bundle.putString(Constant.TYPE, "");
+                bundle.putString(Constant.ORDER_TYPE, "");
                 break;
             case R.id.sup_order_unpay:
                 bundle.putString(Constant.TITLE, getString(R.string.title_order_unpay));
-                bundle.putString(Constant.TYPE, "");
+                bundle.putString(Constant.ORDER_TYPE, "");
                 break;
             case R.id.sup_order_unreceive:
                 bundle.putString(Constant.TITLE, getString(R.string.title_order_unreceive));
-                bundle.putString(Constant.TYPE, "");
+                bundle.putString(Constant.ORDER_TYPE, "");
                 break;
             case R.id.sup_order_refund:
                 bundle.putString(Constant.TITLE, getString(R.string.title_order_refund));
-                bundle.putString(Constant.TYPE, "");
+                bundle.putString(Constant.ORDER_TYPE, "");
                 break;
             case R.id.sup_order_done:
                 bundle.putString(Constant.TITLE, getString(R.string.title_order_done));
-                bundle.putString(Constant.TYPE, "");
+                bundle.putString(Constant.ORDER_TYPE, "");
                 break;
 
         }

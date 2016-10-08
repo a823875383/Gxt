@@ -35,12 +35,12 @@
             <EditText
                 android:id="@+id/et_name"
                 style="@style/EditStyle"
-                android:singleLine="true"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="@dimen/off_5dp"
                 android:background="@null"
                 android:hint="@string/address_name"
+                android:singleLine="true"
                 android:textSize="16sp" />
         </LinearLayout>
 
@@ -58,14 +58,14 @@
             <EditText
                 android:id="@+id/et_phone"
                 style="@style/EditStyle"
-                android:singleLine="true"
-                android:inputType="phone"
-                android:maxLength="11"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="@dimen/off_5dp"
                 android:background="@null"
                 android:hint="@string/address_phone"
+                android:inputType="phone"
+                android:maxLength="11"
+                android:singleLine="true"
                 android:textSize="16sp" />
         </LinearLayout>
     </LinearLayout>
@@ -103,11 +103,11 @@
                 style="@style/EditStyle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center_vertical"
                 android:background="@null"
                 android:drawableLeft="@mipmap/ic_address_locate"
                 android:drawablePadding="@dimen/off_10dp"
                 android:drawableRight="@mipmap/ic_arrow"
+                android:gravity="center_vertical"
                 android:hint="@string/address_area"
                 android:textSize="16sp" />
         </LinearLayout>
@@ -126,11 +126,11 @@
             <EditText
                 android:id="@+id/et_address"
                 style="@style/EditStyle"
-                android:singleLine="true"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@null"
                 android:hint="@string/address_info"
+                android:singleLine="true"
                 android:textSize="16sp" />
         </LinearLayout>
     </LinearLayout>
@@ -138,9 +138,12 @@
     <View style="@style/div_style" />
 
     <LinearLayout
+        android:id="@+id/lin_choose"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/off_10dp">
+        android:paddingLeft="@dimen/off_10dp"
+        android:paddingTop="@dimen/off_10dp"
+        android:visibility="visible">
 
         <CheckBox
             android:id="@+id/cb_choose"
@@ -156,17 +159,25 @@
             android:text="@string/set_default" />
     </LinearLayout>
 
-    <View style="@style/div_style" />
-
-    <TextView
-        android:id="@+id/tv_delete"
-        style="@style/GreenText"
+    <LinearLayout
+        android:id="@+id/lin_delete"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/off_50dp"
-        android:background="@color/white"
-        android:gravity="center"
-        android:text="@string/delete"
-        android:textSize="@dimen/font_size_16sp" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/off_10dp"
+        android:orientation="vertical">
 
-    <View style="@style/div_style" />
+        <View style="@style/div_style" />
+
+        <TextView
+            style="@style/GreenText"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/off_50dp"
+            android:background="@color/white"
+            android:gravity="center"
+            android:text="@string/delete"
+            android:textSize="@dimen/font_size_16sp" />
+
+        <View style="@style/div_style" />
+    </LinearLayout>
+
 </LinearLayout>

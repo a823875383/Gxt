@@ -17,7 +17,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/off_10dp"
             android:layout_marginTop="@dimen/off_10dp"
             android:background="@color/white"
             android:orientation="vertical">
@@ -40,8 +39,6 @@
             <View style="@style/div_style" />
 
         </LinearLayout>
-
-        <View style="@style/div_style" />
 
         <include layout="@layout/layout_listview" />
     </LinearLayout>

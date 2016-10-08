@@ -114,7 +114,7 @@ public class HomeFragment extends BaseFragment implements HttpGet.InterfaceHttpG
         Map<String, Object> paras = new HashMap<>();
         paras.put("userId", mContext.aCache.getAsString(Constant.U_ID));
         paras.put("pageNum", pageNum);
-        paras.put("pageSize", Constant.PAGESIZE);
+        paras.put("pageSize", Constant.PAGE_SIZE);
         if (oneClassifyId != -1) {
             paras.put("oneClassifyId", oneClassifyId);
         }
@@ -133,7 +133,6 @@ public class HomeFragment extends BaseFragment implements HttpGet.InterfaceHttpG
         get.execute(RequestIP.GET_GOODS_LIST);
         get.setResultCode(DATA_LIST);
     }
-
 
 
     /**
@@ -249,9 +248,14 @@ public class HomeFragment extends BaseFragment implements HttpGet.InterfaceHttpG
      */
     @Event(R.id.tv_classify)
     private void classifyClick(View v) {
+//        if(layoutClassify.getVisibility()==View.GONE){
         layoutClassify.setVisibility(View.VISIBLE);
         refreshGridView.setVisibility(View.GONE);
         getClassifyLeft();
+//    }
+//        else {
+
+//        }
     }
 
     /**

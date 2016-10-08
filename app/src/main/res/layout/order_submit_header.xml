@@ -6,9 +6,11 @@
     android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/lin_address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
+        android:gravity="center_vertical"
         android:orientation="horizontal"
         android:padding="@dimen/off_10dp">
 
@@ -19,6 +21,7 @@
             android:src="@mipmap/ic_addres_choice" />
 
         <TextView
+            android:id="@+id/tv_no_address"
             style="@style/BlackText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -28,6 +31,7 @@
             android:visibility="gone" />
 
         <LinearLayout
+            android:id="@+id/lin_default_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/off_10dp"
@@ -64,6 +68,7 @@
             <TextView
                 android:id="@+id/tv_address"
                 style="@style/BlackText"
+                android:layout_width="match_parent"
                 android:layout_marginTop="@dimen/off_10dp"
                 android:drawablePadding="@dimen/off_10dp"
                 android:drawableRight="@mipmap/ic_arrow"

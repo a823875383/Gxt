@@ -53,7 +53,8 @@
                             android:id="@+id/tv_sex"
                             style="@style/BlackText"
                             android:layout_marginLeft="@dimen/off_10dp"
-                            android:text="先生" />
+                            android:text="先生"
+                            android:visibility="gone" />
 
                         <TextView
                             android:id="@+id/tv_phone"
@@ -104,8 +105,7 @@
                     android:id="@+id/cb_choose"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:button="@drawable/address_choose"
-                    android:checked="true" />
+                    android:button="@drawable/address_choose" />
 
                 <TextView
                     style="@style/BlackText"
