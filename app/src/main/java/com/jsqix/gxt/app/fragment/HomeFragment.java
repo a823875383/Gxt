@@ -206,7 +206,9 @@ public class HomeFragment extends BaseFragment implements HttpGet.InterfaceHttpG
         } else {
             Utils.makeToast(mContext, getString(R.string.network_timeout));
         }
-        refreshGridView.onRefreshComplete();
+        new Handler().postDelayed(() -> {
+            refreshGridView.onRefreshComplete();
+        }, 500);
     }
 
     /**
@@ -231,12 +233,9 @@ public class HomeFragment extends BaseFragment implements HttpGet.InterfaceHttpG
             pageNum++;
             getGoodsData();
         } else {
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    refreshGridView.onRefreshComplete();
-                    Utils.makeToast(mContext, getString(R.string.no_more_data));
-                }
+            new Handler().postDelayed(() -> {
+                refreshGridView.onRefreshComplete();
+                Utils.makeToast(mContext, getString(R.string.no_more_data));
             }, 1000);
         }
     }

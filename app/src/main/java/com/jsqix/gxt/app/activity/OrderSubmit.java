@@ -13,8 +13,10 @@ import com.google.gson.Gson;
 import com.jsqix.gxt.app.R;
 import com.jsqix.gxt.app.adapter.SureOrderAdapter;
 import com.jsqix.gxt.app.obj.AddressObj;
+import com.jsqix.gxt.app.obj.OrderSubmitResult;
 import com.jsqix.gxt.app.obj.OrderSureResult;
 import com.jsqix.gxt.app.utils.Constant;
+import com.jsqix.gxt.app.utils.NetUtils;
 import com.jsqix.utils.Utils;
 
 import org.xutils.view.annotation.ContentView;
@@ -27,6 +29,7 @@ import java.util.List;
 import java.util.Map;
 
 import gxt.jsqix.com.mycommon.base.BaseToolActivity;
+import gxt.jsqix.com.mycommon.base.api.ApiClient;
 import gxt.jsqix.com.mycommon.base.api.HttpGet;
 import gxt.jsqix.com.mycommon.base.api.RequestIP;
 
@@ -60,6 +63,8 @@ public class OrderSubmit extends BaseToolActivity implements HttpGet.InterfaceHt
     private String productListJson;
     private int buyType, addressId;
 
+    final static int SURE_ORDER = 0x0001, SUBMIT_ORDER = 0x0010;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,7 +96,8 @@ public class OrderSubmit extends BaseToolActivity implements HttpGet.InterfaceHt
 
     @Event(R.id.bt_submit)
     private void submitClick(View v) {
-        startActivity(new Intent(this, OrderPay.class));
+        //startActivity(new Intent(this, OrderPay.class));
+        addOrder();
     }
 
     @Event(R.id.lin_address)
@@ -115,12 +121,67 @@ public class OrderSubmit extends BaseToolActivity implements HttpGet.InterfaceHt
 
             }
         };
+        get.setResultCode(SURE_ORDER);
         get.execute(RequestIP.SURE_ORDER);
+    }
+
+    /**
+     * 提交订单
+     */
+    private void addOrder() {
+        Map<String, Object> paras = new HashMap<>();
+        paras.put("userId", aCache.getAsString(Constant.U_ID));
+        paras.put("productListJson", productListJson);
+        paras.put("buyType", buyType);
+        paras.put("addressId", addressId);
+        paras.put("orderIp", NetUtils.getPhoneIp());
+        paras.put("orderType", ApiClient.ORDER_TYPE);
+        paras.put("channel", ApiClient.CHANNEL);
+        HttpGet get = new HttpGet(this, paras, this) {
+            @Override
+            public void onPreExecute() {
+
+            }
+        };
+        get.setResultCode(SUBMIT_ORDER);
+        get.execute(RequestIP.ADD_ORDER);
     }
 
 
     @Override
     public void getCallback(int resultCode, String result) {
+        switch (resultCode) {
+            case SURE_ORDER:
+                sureResult(result);
+                break;
+            case SUBMIT_ORDER:
+                OrderSubmitResult submitResult = new Gson().fromJson(result, OrderSubmitResult.class);
+                if (submitResult != null) {
+                    if (submitResult.getCode().equals("000")) {
+                        if (submitResult.getObj().size() == 1) {//支付页面
+                            OrderSubmitResult.ObjBean objBean = submitResult.getObj().get(0);
+                            Intent intent = new Intent(this, OrderPay.class);
+                            intent.putExtra(Constant.ID, objBean.getId());
+                            intent.putExtra(Constant.DATA, objBean.getOrder_totals());
+                            startActivity(intent);
+                        } else {//待支付订单页面
+                            Intent intent = new Intent(this, PurchaserMain.class);
+                            intent.putExtra(Constant.INDEX, 2);
+                            intent.putExtra(Constant.ORDER_TYPE, 1);
+                            startActivity(intent);
+                        }
+                        finish();
+                    } else {
+                        Utils.makeToast(this, submitResult.getMsg());
+                    }
+                } else {
+                    Utils.makeToast(this, getString(R.string.network_timeout));
+                }
+                break;
+        }
+    }
+
+    private void sureResult(String result) {
         OrderSureResult sureResult = new Gson().fromJson(result, OrderSureResult.class);
         if (sureResult != null) {
             if (sureResult.getCode().equals("000")) {

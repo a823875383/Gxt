@@ -66,7 +66,7 @@
             android:background="@drawable/rect_gray"
             android:gravity="top"
             android:padding="@dimen/off_10dp"
-            android:text="爱多久都五福if一起几点去鸡起舞几千几千加强纪委集切切我偶企鹅哦穷奇诶哦亲穷而且" />
+            android:text="" />
 
         <View
             style="@style/div_style"

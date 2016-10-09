@@ -2,11 +2,13 @@ package com.jsqix.gxt.app.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 
 import com.google.gson.Gson;
 import com.jsqix.gxt.app.R;
+import com.jsqix.gxt.app.app.AppContext;
 import com.jsqix.gxt.app.obj.LoginResult;
 import com.jsqix.gxt.app.utils.Constant;
 import com.jsqix.utils.Utils;
@@ -89,20 +91,19 @@ public class LoginActivity extends BaseCompat implements HttpGet.InterfaceHttpGe
 
     @Event(R.id.bt_login)
     private void loginClick(View v) {
-        login();
-//        if (CommUtils.textToString(loginName).equals("0")) {
-//            startActivity(new Intent(this, PurchaserMain.class));
-//        } else if (CommUtils.textToString(loginName).equals("1")) {
-//            startActivity(new Intent(this, DoubleMain.class));
-//        } else {
-//            startActivity(new Intent(this, MerchandiseInfo.class));
-//        }
+        if (CommUtils.textToString(loginName).equals("0")) {
+            startActivity(new Intent(this, SupplierMain.class));
+        } else if (CommUtils.textToString(loginName).equals("1")) {
+            startActivity(new Intent(this, DoubleMain.class));
+        } else {
+            login();
+        }
     }
 
     /**
      * 登录
      */
-    void login() {
+    private void login() {
         Map<String, Object> paras = new HashMap<>();
         paras.put("phone", CommUtils.textToString(loginName));
         paras.put("loginPwd", CommUtils.textToString(loginPass));
@@ -116,6 +117,7 @@ public class LoginActivity extends BaseCompat implements HttpGet.InterfaceHttpGe
             }
         };
         get.execute(RequestIP.LOGIN);
+
     }
 
 
@@ -135,6 +137,7 @@ public class LoginActivity extends BaseCompat implements HttpGet.InterfaceHttpGe
                 }
                 aCache.put(Constant.USER, resultBean.getObj());
                 aCache.put(Constant.U_ID, resultBean.getObj().getId());
+                finish();
             } else {
                 Utils.makeToast(this, resultBean.getMsg());
             }
@@ -142,5 +145,10 @@ public class LoginActivity extends BaseCompat implements HttpGet.InterfaceHttpGe
             Utils.makeToast(this, getString(R.string.network_timeout));
 
         }
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        return AppContext.getInstance().closeAppByBack(keyCode, event);
     }
 }

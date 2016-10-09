@@ -38,6 +38,7 @@ public class FragmentActivity extends BaseCompat {
             fragment = (Fragment) Class.forName(className).newInstance();
             Bundle bundle = new Bundle();
             bundle.putInt(Constant.INDEX, currentIndex);
+            bundle.putBoolean(Constant.DATA, true);
             fragment.setArguments(bundle);
         } catch (Exception e) {
             LogWriter.e(e.getMessage());

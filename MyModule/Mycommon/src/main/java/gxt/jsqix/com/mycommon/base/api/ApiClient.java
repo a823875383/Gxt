@@ -17,6 +17,8 @@ public class ApiClient {
 //    public static final String RequestIP = UAD.getRequestIp();
 
     public final static int P_ID = 102204;
+    public final static int ORDER_TYPE = 1002;
+    public final static int CHANNEL = 1003;
     public final static String UTF_8 = "UTF-8";
     public final static String ANDRID_SDK_KEY = "3c7210a86f1107b95459d2b4cb1ccf1d";
     public final static String SECRET_KEY = "3c7210a86f1107b95459d2b4cb1ccf1d";
@@ -98,7 +100,7 @@ public class ApiClient {
      * @param signAfter
      * @return
      */
-    private static String getSign(String signAfter, String key) {
+    public static String getSign(String signAfter, String key) {
         LogWriter.v("加密前：", signAfter);
 //        String sign = Md5.getMD5(signAfter + key,"utf-8");
         String sign = Md5.getMd5Hex(signAfter + key, "utf-8");

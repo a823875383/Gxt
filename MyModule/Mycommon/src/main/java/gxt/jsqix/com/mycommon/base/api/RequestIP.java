@@ -14,6 +14,7 @@ public class RequestIP {
     public final static String GET_GOODS_TWO_CLASSIFY = IP + "buyGoods/getGoodsTwoClassify";
     public final static String GET_PRODUCT_DETAIL = IP + "buyGoods/getProductDetail";
     public final static String SURE_ORDER = IP + "buyGoods/sureOrder";
+    public final static String ADD_ORDER = IP + "buyGoods/addOrder";
 
     public final static String LIST_GOODS_STANDARD = IP + "goods/listGoodsStandard";
     public final static String QUERY_PRODUCT_BY_STANDARD = IP + "goods/queryProductByStandard";
@@ -25,5 +26,7 @@ public class RequestIP {
     public final static String UPDATE_ADDRESS = IP + "city/updateAddress";
     public final static String UPDATE_DEFULT = IP + "city/updateDefult";
     public final static String DELETE_ADDRESS = IP + "city/deleteAddress";
+
+    public final static String ORDER_BUYER_LIST = IP + "order/orderBuyerList";
 
 }

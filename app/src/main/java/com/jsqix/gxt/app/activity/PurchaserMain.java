@@ -3,14 +3,17 @@ package com.jsqix.gxt.app.activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.view.KeyEvent;
 import android.widget.RadioGroup;
 
 import com.jsqix.gxt.app.R;
 import com.jsqix.gxt.app.adapter.ViewPageAdapter;
+import com.jsqix.gxt.app.app.AppContext;
 import com.jsqix.gxt.app.fragment.HomeFragment;
 import com.jsqix.gxt.app.fragment.PurOrderFragment;
 import com.jsqix.gxt.app.fragment.PurchaseFragment;
 import com.jsqix.gxt.app.fragment.PurchaserFragment;
+import com.jsqix.gxt.app.utils.Constant;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
@@ -31,7 +34,7 @@ public class PurchaserMain extends BaseCompat {
     @ViewInject(R.id.radio_tab)
     private RadioGroup radioGroup;
 
-    int oldIndex = 0;
+    private int oldIndex = 0, selectIndex = 0, orderType = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,15 +51,25 @@ public class PurchaserMain extends BaseCompat {
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(new HomeFragment());
         fragments.add(new PurchaseFragment());
-        fragments.add(new PurOrderFragment());
+
+        PurOrderFragment fragment = new PurOrderFragment();
+        Bundle bundle = new Bundle();
+        bundle.putInt(Constant.INDEX, orderType);
+        fragment.setArguments(bundle);
+
+        fragments.add(fragment);
         fragments.add(new PurchaserFragment());
 
         viewPager.setAdapter(new ViewPageAdapter(fragments, getSupportFragmentManager()));
+        viewPager.setCurrentItem(selectIndex);
     }
 
     @Override
     protected void initVariable() {
-
+        if (getIntent().getExtras() != null) {
+            selectIndex = getIntent().getIntExtra(Constant.INDEX, 0);
+            orderType = getIntent().getIntExtra(Constant.ORDER_TYPE, 0);
+        }
     }
 
     @Event(value = R.id.radio_tab, type = RadioGroup.OnCheckedChangeListener.class)
@@ -120,5 +133,10 @@ public class PurchaserMain extends BaseCompat {
     @Override
     protected boolean isStatusWhite() {
         return false;
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        return AppContext.getInstance().closeAppByBack(keyCode, event);
     }
 }

@@ -41,7 +41,7 @@
                 android:inputType="phone"
                 android:maxLength="11"
                 android:singleLine="true"
-                android:text="15855884545" />
+                android:text="18755555555" />
         </LinearLayout>
 
         <LinearLayout
