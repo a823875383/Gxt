@@ -38,10 +38,8 @@
                 android:drawablePadding="@dimen/off_5dp"
                 android:hint="@string/login_name"
                 android:imeOptions="actionNext"
-                android:inputType="phone"
-                android:maxLength="11"
                 android:singleLine="true"
-                android:text="18755555555" />
+                android:text="jenny04" />
         </LinearLayout>
 
         <LinearLayout

@@ -14,6 +14,7 @@ import com.jsqix.gxt.app.adapter.ViewPageAdapter;
 import com.jsqix.gxt.app.utils.Constant;
 
 import org.xutils.view.annotation.ContentView;
+import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 
 import java.util.ArrayList;
@@ -94,6 +95,11 @@ public class PurOrderFragment extends BaseFragment {
         lp.setMargins(0, StatusBarCompat.getStatusBarHeight(mContext), 0, 0);
         titleBar.setLayoutParams(lp);
         mBack.setVisibility(showBack ? View.VISIBLE : View.GONE);
+    }
+
+    @Event(R.id.tv_left)
+    private void backClick(View v) {
+        mContext.finish();
     }
 
     @Override

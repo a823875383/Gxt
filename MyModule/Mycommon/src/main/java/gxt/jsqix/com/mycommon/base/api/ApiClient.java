@@ -26,7 +26,7 @@ public class ApiClient {
     public static String makeGetMessage(String srcUrl, Map<String, Object> data)
             throws IOException {
         String url = null;
-        if (data != null) {
+        if (data != null && data.size() != 0) {
             LogWriter.v("XXXXX", "--------------------------");
             LogWriter.i("签名前----", data.toString());
 //            String data2 = getSignAfter(data, ApiClient.ANDRID_SDK_KEY);

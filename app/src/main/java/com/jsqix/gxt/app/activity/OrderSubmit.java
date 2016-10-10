@@ -162,7 +162,6 @@ public class OrderSubmit extends BaseToolActivity implements HttpGet.InterfaceHt
                             OrderSubmitResult.ObjBean objBean = submitResult.getObj().get(0);
                             Intent intent = new Intent(this, OrderPay.class);
                             intent.putExtra(Constant.ID, objBean.getId());
-                            intent.putExtra(Constant.DATA, objBean.getOrder_totals());
                             startActivity(intent);
                         } else {//待支付订单页面
                             Intent intent = new Intent(this, PurchaserMain.class);

@@ -8,6 +8,7 @@ import com.jsqix.utils.LogWriter;
 import org.xutils.http.RequestParams;
 import org.xutils.x;
 
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
@@ -17,6 +18,12 @@ public abstract class HttpGet extends AsyncTask<String, String, String> {
     InterfaceHttpGet mListener;
     Context context;
     Map<String, Object> postMap;
+
+    public HttpGet(Context context, InterfaceHttpGet listener) {
+        postMap = new HashMap<>();
+        this.mListener = listener;
+        this.context = context;
+    }
 
     // Constructor
     public HttpGet(Context context, Map<String, Object> params,

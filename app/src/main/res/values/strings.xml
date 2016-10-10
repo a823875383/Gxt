@@ -91,11 +91,14 @@
     <string name="title_order_refund_purchase">退货/退款中</string>
     <string name="title_order_done">已完成</string>
     <string name="deliver">发货</string>
+    <string name="merchant_feedback">商家反馈</string>
+    <string name="logistics_info">物流信息</string>
     <string name="logistics_company">物流公司 ：</string>
     <string name="logistics_number">物流单号 ：</string>
     <string name="confirm">确定</string>
     <string name="submit">提交</string>
     <string name="cancel">取消</string>
+    <string name="delete_or_agree">是否确定删除该订单？</string>
     <string name="refund_or_agree">是否确定同意退款？</string>
     <string name="return_or_agree">是否确定同意退货？</string>
     <string name="refund_or">是否确定退款？</string>
@@ -152,8 +155,10 @@
     <string name="all">全部</string>
     <string name="rmb">￥ </string>
     <string-array name="return_cause">
-        <item>商品质量问题</item>
+        <item>商品与描述不符</item>
         <item>商品错发/漏发/少发</item>
+        <item>商品质量问题</item>
+        <item>其他</item>
     </string-array>
 
     <!-- TODO: Remove or change this placeholder text -->

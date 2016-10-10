@@ -120,8 +120,8 @@ public class OrderSureResult extends BaseBean {
             private int freight;
             private int freight_flag;
             private int product_id;
-            private int sales_price;
-            private int wholesale_price;
+            private double sales_price;
+            private double wholesale_price;
             private int stock;
             private String product_name;
             private int min_num;
@@ -215,19 +215,19 @@ public class OrderSureResult extends BaseBean {
                 this.product_id = product_id;
             }
 
-            public int getSales_price() {
+            public double getSales_price() {
                 return sales_price;
             }
 
-            public void setSales_price(int sales_price) {
+            public void setSales_price(double sales_price) {
                 this.sales_price = sales_price;
             }
 
-            public int getWholesale_price() {
+            public double getWholesale_price() {
                 return wholesale_price;
             }
 
-            public void setWholesale_price(int wholesale_price) {
+            public void setWholesale_price(double wholesale_price) {
                 this.wholesale_price = wholesale_price;
             }
 

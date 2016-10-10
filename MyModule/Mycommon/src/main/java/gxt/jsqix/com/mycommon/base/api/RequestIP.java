@@ -28,5 +28,10 @@ public class RequestIP {
     public final static String DELETE_ADDRESS = IP + "city/deleteAddress";
 
     public final static String ORDER_BUYER_LIST = IP + "order/orderBuyerList";
+    public final static String ORDER_SELLER_LIST = IP + "order/orderSellerList";
+    public final static String QUERY_EXPRESS = IP + "order/queryExpress";
+    public final static String QUERY_ORDER = IP + "order/queryOrder";
+    public final static String UPT_BUYER_ORDER = IP + "order/uptBuyerOrder";
+    public final static String UPT_SELLER_ORDER = IP + "order/uptOrder";
 
 }

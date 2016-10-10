@@ -75,18 +75,23 @@ public class SupplierMain extends BaseCompat {
         switch (v.getId()) {
             case R.id.order_all:
                 intent.putExtra(Constant.TITLE, getString(R.string.title_order_all));
+                intent.putExtra(Constant.ORDER_TYPE, 0);
                 break;
             case R.id.order_unpay:
                 intent.putExtra(Constant.TITLE, getString(R.string.title_order_unpay));
+                intent.putExtra(Constant.ORDER_TYPE, 1);
                 break;
             case R.id.order_unreceive:
                 intent.putExtra(Constant.TITLE, getString(R.string.title_order_unreceive));
+                intent.putExtra(Constant.ORDER_TYPE, 2);
                 break;
             case R.id.order_refund:
                 intent.putExtra(Constant.TITLE, getString(R.string.title_order_refund_purchase));
+                intent.putExtra(Constant.ORDER_TYPE, 3);
                 break;
             case R.id.order_done:
                 intent.putExtra(Constant.TITLE, getString(R.string.title_order_done));
+                intent.putExtra(Constant.ORDER_TYPE, 4);
                 break;
         }
         startActivity(intent);

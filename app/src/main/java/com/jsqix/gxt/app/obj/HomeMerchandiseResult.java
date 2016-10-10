@@ -133,8 +133,8 @@ public class HomeMerchandiseResult extends BaseBean {
             private String goods_name;
             private String goods_image;
             private int product_id;
-            private float sales_price;
-            private float wholesale_price;
+            private double sales_price;
+            private double wholesale_price;
             private int stock;
             private String product_name;
             private int min_num;
@@ -172,19 +172,19 @@ public class HomeMerchandiseResult extends BaseBean {
                 this.product_id = product_id;
             }
 
-            public float getSales_price() {
+            public double getSales_price() {
                 return sales_price;
             }
 
-            public void setSales_price(float sales_price) {
+            public void setSales_price(double sales_price) {
                 this.sales_price = sales_price;
             }
 
-            public float getWholesale_price() {
+            public double getWholesale_price() {
                 return wholesale_price;
             }
 
-            public void setWholesale_price(float wholesale_price) {
+            public void setWholesale_price(double wholesale_price) {
                 this.wholesale_price = wholesale_price;
             }
 

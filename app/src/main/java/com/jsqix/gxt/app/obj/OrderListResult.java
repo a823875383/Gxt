@@ -1,5 +1,9 @@
 package com.jsqix.gxt.app.obj;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import gxt.jsqix.com.mycommon.base.bean.BaseBean;
@@ -8,7 +12,7 @@ import gxt.jsqix.com.mycommon.base.bean.BaseBean;
  * Created by dongqing on 2016/10/9.
  */
 
-public class OrderListResult extends BaseBean{
+public class OrderListResult extends BaseBean {
 
     /**
      * page_number : 1
@@ -131,7 +135,7 @@ public class OrderListResult extends BaseBean{
             this.item_list = item_list;
         }
 
-        public static class ItemListBean {
+        public static class ItemListBean implements Parcelable {
             private int id;
             private int buyer_id;
             private int seller_id;
@@ -269,7 +273,7 @@ public class OrderListResult extends BaseBean{
                 this.order_list = order_list;
             }
 
-            public static class OrderListBean {
+            public static class OrderListBean implements Parcelable {
                 private int id;
                 private int detail_id;
                 private int goods_id;
@@ -423,7 +427,122 @@ public class OrderListResult extends BaseBean{
                 public void setDec_status(int dec_status) {
                     this.dec_status = dec_status;
                 }
+
+                @Override
+                public int describeContents() {
+                    return 0;
+                }
+
+                @Override
+                public void writeToParcel(Parcel dest, int flags) {
+                    dest.writeInt(this.id);
+                    dest.writeInt(this.detail_id);
+                    dest.writeInt(this.goods_id);
+                    dest.writeInt(this.product_id);
+                    dest.writeInt(this.num);
+                    dest.writeDouble(this.wholesale_price);
+                    dest.writeString(this.tag_detail);
+                    dest.writeString(this.product_name);
+                    dest.writeString(this.goods_image);
+                    dest.writeInt(this.order_id);
+                    dest.writeInt(this.cart_id);
+                    dest.writeInt(this.min_num);
+                    dest.writeInt(this.stock);
+                    dest.writeInt(this.return_status);
+                    dest.writeString(this.dec);
+                    dest.writeInt(this.day1);
+                    dest.writeInt(this.dec_status);
+                }
+
+                public OrderListBean() {
+                }
+
+                protected OrderListBean(Parcel in) {
+                    this.id = in.readInt();
+                    this.detail_id = in.readInt();
+                    this.goods_id = in.readInt();
+                    this.product_id = in.readInt();
+                    this.num = in.readInt();
+                    this.wholesale_price = in.readDouble();
+                    this.tag_detail = in.readString();
+                    this.product_name = in.readString();
+                    this.goods_image = in.readString();
+                    this.order_id = in.readInt();
+                    this.cart_id = in.readInt();
+                    this.min_num = in.readInt();
+                    this.stock = in.readInt();
+                    this.return_status = in.readInt();
+                    this.dec = in.readString();
+                    this.day1 = in.readInt();
+                    this.dec_status = in.readInt();
+                }
+
+                public static final Creator<OrderListBean> CREATOR = new Creator<OrderListBean>() {
+                    @Override
+                    public OrderListBean createFromParcel(Parcel source) {
+                        return new OrderListBean(source);
+                    }
+
+                    @Override
+                    public OrderListBean[] newArray(int size) {
+                        return new OrderListBean[size];
+                    }
+                };
             }
+
+            @Override
+            public int describeContents() {
+                return 0;
+            }
+
+            @Override
+            public void writeToParcel(Parcel dest, int flags) {
+                dest.writeInt(this.id);
+                dest.writeInt(this.buyer_id);
+                dest.writeInt(this.seller_id);
+                dest.writeInt(this.order_status);
+                dest.writeDouble(this.order_totals);
+                dest.writeInt(this.detail_id);
+                dest.writeInt(this.goods_id);
+                dest.writeInt(this.product_id);
+                dest.writeInt(this.order_id);
+                dest.writeString(this.add_time);
+                dest.writeInt(this.cart_id);
+                dest.writeString(this.stype);
+                dest.writeList(this.order_list);
+            }
+
+            public ItemListBean() {
+            }
+
+            protected ItemListBean(Parcel in) {
+                this.id = in.readInt();
+                this.buyer_id = in.readInt();
+                this.seller_id = in.readInt();
+                this.order_status = in.readInt();
+                this.order_totals = in.readDouble();
+                this.detail_id = in.readInt();
+                this.goods_id = in.readInt();
+                this.product_id = in.readInt();
+                this.order_id = in.readInt();
+                this.add_time = in.readString();
+                this.cart_id = in.readInt();
+                this.stype = in.readString();
+                this.order_list = new ArrayList<OrderListBean>();
+                in.readList(this.order_list, OrderListBean.class.getClassLoader());
+            }
+
+            public static final Creator<ItemListBean> CREATOR = new Creator<ItemListBean>() {
+                @Override
+                public ItemListBean createFromParcel(Parcel source) {
+                    return new ItemListBean(source);
+                }
+
+                @Override
+                public ItemListBean[] newArray(int size) {
+                    return new ItemListBean[size];
+                }
+            };
         }
     }
 }

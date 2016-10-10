@@ -19,7 +19,7 @@
         style="@style/BlackText"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/off_5dp"
-        android:text="@string/deliver" />
+        android:text="@string/merchant_feedback" />
 
     <TextView
         android:id="@+id/tv_advice"
