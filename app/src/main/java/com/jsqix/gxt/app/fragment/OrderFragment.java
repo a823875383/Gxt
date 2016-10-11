@@ -65,7 +65,6 @@ public class OrderFragment extends BaseFragment implements HttpGet.InterfaceHttp
         refreshListView.setAdapter(adapter);
         refreshListView.setOnRefreshListener(this);
 //        refreshListView.setEmptyView();
-        getOrdertList();
     }
 
     @Override
@@ -73,6 +72,12 @@ public class OrderFragment extends BaseFragment implements HttpGet.InterfaceHttp
         if (getArguments() != null) {
             type = getArguments().getInt(Constant.ORDER_TYPE, 0);
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        getOrdertList();
     }
 
     /**

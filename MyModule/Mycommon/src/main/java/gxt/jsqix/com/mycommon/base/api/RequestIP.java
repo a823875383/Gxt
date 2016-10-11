@@ -15,9 +15,14 @@ public class RequestIP {
     public final static String GET_PRODUCT_DETAIL = IP + "buyGoods/getProductDetail";
     public final static String SURE_ORDER = IP + "buyGoods/sureOrder";
     public final static String ADD_ORDER = IP + "buyGoods/addOrder";
+    public final static String GET_USER_BALANCE = IP + "buyGoods/getUserBalance";
+    public final static String BALANCE_PAY = IP + "buyGoods/balancePay";
+    public final static String ADD_CART = IP + "buyGoods/addCart";
 
     public final static String LIST_GOODS_STANDARD = IP + "goods/listGoodsStandard";
     public final static String QUERY_PRODUCT_BY_STANDARD = IP + "goods/queryProductByStandard";
+    public final static String GOODS_CART = IP + "goods/goodsCart";
+    public final static String DELETE_CART = IP + "goods/deletes";
 
     public final static String PRO_LIST = IP + "city/proList";
     public final static String ADDRESS_LIST = IP + "city/addressList";

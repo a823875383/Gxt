@@ -165,7 +165,7 @@ public class OrderSubmitResult extends BaseBean{
             private int goods_id;
             private int product_id;
             private int num;
-            private int sales_price;
+            private double sales_price;
             private String tag_detail;
             private String goods_name;
             private String product_name;
@@ -206,11 +206,11 @@ public class OrderSubmitResult extends BaseBean{
                 this.num = num;
             }
 
-            public int getSales_price() {
+            public double getSales_price() {
                 return sales_price;
             }
 
-            public void setSales_price(int sales_price) {
+            public void setSales_price(double sales_price) {
                 this.sales_price = sales_price;
             }
 

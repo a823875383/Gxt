@@ -38,6 +38,7 @@ import java.util.Map;
 import gxt.jsqix.com.mycommon.base.BaseFragment;
 import gxt.jsqix.com.mycommon.base.api.HttpGet;
 import gxt.jsqix.com.mycommon.base.api.RequestIP;
+import gxt.jsqix.com.mycommon.base.bean.BaseBean;
 import gxt.jsqix.com.mycommon.base.util.StatusBarCompat;
 import gxt.jsqix.com.mycommon.base.view.RefreshFooter;
 import gxt.jsqix.com.mycommon.base.view.RefreshHeader;
@@ -46,7 +47,7 @@ import gxt.jsqix.com.mycommon.base.view.RefreshHeader;
  * 首页
  */
 @ContentView(R.layout.fragment_home)
-public class HomeFragment extends BaseFragment implements HttpGet.InterfaceHttpGet, PullToRefreshBase.OnRefreshListener2<GridView> {
+public class HomeFragment extends BaseFragment implements HttpGet.InterfaceHttpGet, PullToRefreshBase.OnRefreshListener2<GridView>, HomeGoodsAdapter.CartListener {
     @ViewInject(R.id.title_bar)
     private RelativeLayout title_bar;
     @ViewInject(R.id.refreshGridView)
@@ -72,7 +73,7 @@ public class HomeFragment extends BaseFragment implements HttpGet.InterfaceHttpG
     private ClassifyRightAdapter rightAdapter;
 
 
-    final static int DATA_LIST = 0x0001, CLASSIFY_LEFT = 0x0010, CLASSIFY_RIGHT = 0x0011;
+    final static int DATA_LIST = 0x0001, CLASSIFY_LEFT = 0x0010, CLASSIFY_RIGHT = 0x0011, ADD_CART = 0x0100;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -88,6 +89,7 @@ public class HomeFragment extends BaseFragment implements HttpGet.InterfaceHttpG
         refreshGridView.setHeaderLayout(new RefreshHeader(mContext));
         refreshGridView.setFooterLayout(new RefreshFooter(mContext));
         goodsAdapter = new HomeGoodsAdapter(mContext, R.layout.item_goods_purchase, merchandiseData);
+        goodsAdapter.setCartListener(this);
         refreshGridView.setAdapter(goodsAdapter);
         refreshGridView.setMode(PullToRefreshBase.Mode.BOTH);
         refreshGridView.setOnRefreshListener(this);
@@ -134,6 +136,62 @@ public class HomeFragment extends BaseFragment implements HttpGet.InterfaceHttpG
         get.setResultCode(DATA_LIST);
     }
 
+    /**
+     * 获取一级分类
+     */
+    private void getClassifyLeft() {
+        Map<String, Object> paras = new HashMap<>();
+        paras.put("userId", mContext.aCache.getAsString(Constant.U_ID));
+        HttpGet get = new HttpGet(mContext, paras, this) {
+            @Override
+            public void onPreExecute() {
+
+            }
+        };
+        get.execute(RequestIP.GET_GOODS_ONE_CLASSIFY);
+        get.setResultCode(CLASSIFY_LEFT);
+    }
+
+    /**
+     * 获取二级分类
+     *
+     * @param oneClassifyId
+     */
+    private void getClassifyRight(int oneClassifyId) {
+        Map<String, Object> paras = new HashMap<>();
+        paras.put("userId", mContext.aCache.getAsString(Constant.U_ID));
+        paras.put("oneClassifyId", oneClassifyId);
+        HttpGet get = new HttpGet(mContext, paras, this) {
+            @Override
+            public void onPreExecute() {
+
+            }
+        };
+        get.execute(RequestIP.GET_GOODS_TWO_CLASSIFY);
+        get.setResultCode(CLASSIFY_RIGHT);
+    }
+
+    /**
+     * 加入购物车
+     *
+     * @param productId
+     * @param orderCounts
+     */
+    @Override
+    public void addCart(String productId, String orderCounts) {
+        Map<String, Object> paras = new HashMap<>();
+        paras.put("userId", mContext.aCache.getAsString(Constant.U_ID));
+        paras.put("productId", productId);
+        paras.put("orderCounts", orderCounts);
+        HttpGet get = new HttpGet(mContext, paras, this) {
+            @Override
+            public void onPreExecute() {
+
+            }
+        };
+        get.execute(RequestIP.ADD_CART);
+        get.setResultCode(ADD_CART);
+    }
 
     /**
      * 接口回调
@@ -153,8 +211,20 @@ public class HomeFragment extends BaseFragment implements HttpGet.InterfaceHttpG
             case CLASSIFY_RIGHT:
                 classifyRight(result);
                 break;
+            case ADD_CART:
+                cartResult(result);
+                break;
         }
 
+    }
+
+    private void cartResult(String result) {
+        BaseBean baseBean = new Gson().fromJson(result, BaseBean.class);
+        if (baseBean != null) {
+            Utils.makeToast(mContext, baseBean.getMsg());
+        } else {
+            Utils.makeToast(mContext, mContext.getString(R.string.network_timeout));
+        }
     }
 
     private void classifyRight(String result) {
@@ -323,39 +393,5 @@ public class HomeFragment extends BaseFragment implements HttpGet.InterfaceHttpG
         startActivity(intent);
     }
 
-    /**
-     * 获取一级分类
-     */
-    private void getClassifyLeft() {
-        Map<String, Object> paras = new HashMap<>();
-        paras.put("userId", mContext.aCache.getAsString(Constant.U_ID));
-        HttpGet get = new HttpGet(mContext, paras, this) {
-            @Override
-            public void onPreExecute() {
-
-            }
-        };
-        get.execute(RequestIP.GET_GOODS_ONE_CLASSIFY);
-        get.setResultCode(CLASSIFY_LEFT);
-    }
-
-    /**
-     * 获取二级分类
-     *
-     * @param oneClassifyId
-     */
-    private void getClassifyRight(int oneClassifyId) {
-        Map<String, Object> paras = new HashMap<>();
-        paras.put("userId", mContext.aCache.getAsString(Constant.U_ID));
-        paras.put("oneClassifyId", oneClassifyId);
-        HttpGet get = new HttpGet(mContext, paras, this) {
-            @Override
-            public void onPreExecute() {
-
-            }
-        };
-        get.execute(RequestIP.GET_GOODS_TWO_CLASSIFY);
-        get.setResultCode(CLASSIFY_RIGHT);
-    }
 
 }

@@ -44,6 +44,7 @@ public class HomeGoodsAdapter extends CommonAdapter<HomeMerchandiseResult.ObjBea
     private Button btConfirm, btCancel;
 
     private UpdateNum update;
+    private CartListener cartListener;
 
     public HomeGoodsAdapter(Context context, final int layoutId, List<HomeMerchandiseResult.ObjBean.ItemListBean> datas) {
         super(context, layoutId, datas);
@@ -53,6 +54,10 @@ public class HomeGoodsAdapter extends CommonAdapter<HomeMerchandiseResult.ObjBea
 
     public void setUpdate(UpdateNum update) {
         this.update = update;
+    }
+
+    public void setCartListener(CartListener cartListener) {
+        this.cartListener = cartListener;
     }
 
     private void initMoqDialog() {
@@ -162,11 +167,17 @@ public class HomeGoodsAdapter extends CommonAdapter<HomeMerchandiseResult.ObjBea
 
         });
         viewHolder.setOnClickListener(R.id.bt_cart, v -> {
-
+            if (cartListener != null) {
+                cartListener.addCart(item.getProduct_id() + "", CommUtils.textToString(tvNum));
+            }
         });
     }
 
     interface UpdateNum {
         void update(String num);
+    }
+
+    public interface CartListener {
+        void addCart(String productId, String orderCounts);
     }
 }

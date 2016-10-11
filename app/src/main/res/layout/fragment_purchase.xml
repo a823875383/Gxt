@@ -57,7 +57,10 @@
             android:layout_height="0dp"
             android:layout_weight="1">
 
-            <include layout="@layout/layout_listview" />
+            <include
+                layout="@layout/layout_refresh_listview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
         </LinearLayout>
 
         <RelativeLayout
@@ -78,6 +81,7 @@
                 android:text="@string/select" />
 
             <LinearLayout
+                android:id="@+id/lin_total"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true">
@@ -89,7 +93,7 @@
                 <TextView
                     android:id="@+id/tv_total"
                     style="@style/GreenText"
-                    android:text="¥ 38.70 " />
+                    android:text="¥ 0 " />
             </LinearLayout>
 
             <Button
@@ -101,6 +105,17 @@
                 android:background="@color/green"
                 android:gravity="center"
                 android:text="@string/settlement" />
+
+            <Button
+                android:id="@+id/bt_delete"
+                style="@style/WhiteText"
+                android:layout_width="@dimen/off_70dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:background="@color/actionsheet_red"
+                android:gravity="center"
+                android:text="@string/delete"
+                android:visibility="gone" />
         </RelativeLayout>
 
     </LinearLayout>
@@ -121,6 +136,7 @@
             android:text="@string/no_purchase" />
 
         <Button
+            android:id="@+id/bt_home"
             style="@style/WhiteText"
             android:layout_width="@dimen/off_180dp"
             android:layout_height="@dimen/off_40dp"

@@ -30,7 +30,7 @@ public class SureOrderAdapter extends CommonAdapter<OrderSureResult.ObjBean.Prod
         viewHolder.setText(R.id.tv_goods_stock, item.getStock() + "");
         viewHolder.setText(R.id.tv_goods_moq, item.getMin_num() + "");
         viewHolder.setText(R.id.tv_order_num, "x"+item.getCart_number());
-        viewHolder.setText(R.id.tv_goods_price, mContext.getString(R.string.rmb) + item.getSales_price());
+        viewHolder.setText(R.id.tv_goods_price, mContext.getString(R.string.rmb) + item.getWholesale_price());
         viewHolder.setVisible(R.id.lin_op,false);
 
     }

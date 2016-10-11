@@ -105,6 +105,7 @@
                     android:text="@string/pay_balance" />
 
                 <TextView
+                    android:id="@+id/tv_balance"
                     style="@style/LightText"
                     android:layout_marginLeft="@dimen/off_5dp"
                     android:text="@string/balance_available"

@@ -142,7 +142,7 @@
     <string name="order_confirm">确认订单</string>
     <string name="add_card">添加新卡</string>
     <string name="buy_now">立即购买</string>
-    <string name="join_cart">加入购物车</string>
+    <string name="join_cart">加入采购单</string>
     <string name="order_submit">提交订单</string>
     <string name="real_pay">实付款 : </string>
     <string name="real_money">应付金额 : </string>

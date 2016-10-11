@@ -164,9 +164,16 @@ public class OrderSubmit extends BaseToolActivity implements HttpGet.InterfaceHt
                             intent.putExtra(Constant.ID, objBean.getId());
                             startActivity(intent);
                         } else {//待支付订单页面
-                            Intent intent = new Intent(this, PurchaserMain.class);
-                            intent.putExtra(Constant.INDEX, 2);
-                            intent.putExtra(Constant.ORDER_TYPE, 1);
+                            Intent intent = new Intent();
+                            if ((int) aCache.getAsObject(Constant.U_IDENTITY) == 0) {
+                                intent.setClass(this, PurchaserMain.class);
+                                intent.putExtra(Constant.INDEX, 2);
+                                intent.putExtra(Constant.ORDER_TYPE, 1);
+                            } else {
+                                intent.setClass(this, FragmentActivity.class);
+                                intent.putExtra(Constant.INDEX, 1);
+                                intent.putExtra(Constant.NAME, getPackageName() + ".fragment." + "PurOrderFragment");
+                            }
                             startActivity(intent);
                         }
                         finish();

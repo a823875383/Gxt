@@ -107,7 +107,7 @@
     </LinearLayout>
 
     <EditText
-        android:id="@+id/ed_depict"
+        android:id="@+id/et_depict"
         android:layout_width="match_parent"
         android:layout_height="@dimen/off_150dp"
         android:background="@drawable/rect_white"
@@ -115,6 +115,7 @@
         android:padding="@dimen/off_10dp" />
 
     <Button
+        android:id="@+id/bt_submit"
         style="@style/WhiteText"
         android:layout_width="@dimen/off_180dp"
         android:layout_height="@dimen/off_40dp"

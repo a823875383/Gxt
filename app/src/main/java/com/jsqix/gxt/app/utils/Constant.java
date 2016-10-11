@@ -19,4 +19,5 @@ public class Constant {
     //aCache key
     public final static String USER = "user";
     public final static String U_ID = "user_id";
+    public final static String U_IDENTITY = "U_IDENTITY";
 }

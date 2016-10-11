@@ -8,7 +8,7 @@ import gxt.jsqix.com.mycommon.base.bean.BaseBean;
  * Created by dongqing on 2016/10/10.
  */
 
-public class OrderPayResult extends BaseBean{
+public class OrderMoneyResult extends BaseBean{
 
     /**
      * id : 1118940

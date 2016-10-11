@@ -129,11 +129,14 @@ public class LoginActivity extends BaseCompat implements HttpGet.InterfaceHttpGe
                 if (resultBean.getObj().getSuppliter_status() == 1) {//供应商
                     if (resultBean.getObj().getProcure_status() == 1) {//采购商
                         startActivity(new Intent(this, DoubleMain.class));
+                        aCache.put(Constant.U_IDENTITY, 2);
                     } else {
                         startActivity(new Intent(this, SupplierMain.class));
+                        aCache.put(Constant.U_IDENTITY, 1);
                     }
                 } else if (resultBean.getObj().getProcure_status() == 1) {//采购商
                     startActivity(new Intent(this, PurchaserMain.class));
+                    aCache.put(Constant.U_IDENTITY, 0);
                 }
                 aCache.put(Constant.USER, resultBean.getObj());
                 aCache.put(Constant.U_ID, resultBean.getObj().getId());

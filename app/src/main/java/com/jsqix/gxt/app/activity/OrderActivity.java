@@ -77,7 +77,6 @@ public class OrderActivity extends BaseToolActivity implements HttpGet.Interface
         adapter.setSupplierListener(this);
         refreshListView.setAdapter(adapter);
         refreshListView.setOnRefreshListener(this);
-        getOrdertList();
     }
 
     @Override
@@ -85,6 +84,12 @@ public class OrderActivity extends BaseToolActivity implements HttpGet.Interface
         super.initVariable();
         title = getIntent().getExtras().getString(Constant.TITLE, "");
         type = getIntent().getExtras().getInt(Constant.ORDER_TYPE, 0);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getOrdertList();
     }
 
     /**

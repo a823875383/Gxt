@@ -343,11 +343,13 @@ public class OrderListAdapter extends CommonAdapter<OrderListResult.ObjBean.Item
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(mContext, ReturnRequest.class);
-            intent.putExtra(Constant.DATA, listBean);
+            intent.putExtra(Constant.DATA, listBean.getOrder_list().get(position).getDetail_id());
             if (CommUtils.textToString((Button) v).equals("退款")) {
+                intent.putExtra(Constant.ORDER_TYPE, 3);
                 mContext.startActivity(intent);
 
             } else if (CommUtils.textToString((Button) v).equals("退货")) {
+                intent.putExtra(Constant.ORDER_TYPE, 4);
                 mContext.startActivity(intent);
 
             } else if (CommUtils.textToString((Button) v).equals("填写物流信息")) {
