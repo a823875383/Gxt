@@ -2,11 +2,13 @@ package com.jsqix.gxt.app.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.jsqix.gxt.app.R;
+import com.jsqix.gxt.app.app.AppContext;
 import com.jsqix.gxt.app.utils.Constant;
 import com.jsqix.utils.DensityUtil;
 
@@ -115,5 +117,10 @@ public class SupplierMain extends BaseCompat {
     @Override
     protected boolean isStatusWhite() {
         return false;
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        return AppContext.getInstance().closeAppByBack(keyCode, event);
     }
 }

@@ -3,7 +3,7 @@
     <string name="login_name">请输入您的手机号</string>
     <string name="login_pass">请输入密码，长度6-12位</string>
     <string name="login_code">请输入验证码</string>
-    <string name="login_forget">忘记密码?</string>
+    <string name="login_forget">忘记密码&#063;</string>
     <string name="login_button">立即登录</string>
     <string name="title_forget">找回密码</string>
     <string name="forget_phone">请输入您已注册的手机号</string>
@@ -21,13 +21,13 @@
     <string name="currency">总资产 (元)</string>
     <string name="goods_man">商品管理</string>
     <string name="my_order">我的订单</string>
-    <string name="order_all">全部 ( x )</string>
-    <string name="order_unpay">待付款 ( x )</string>
-    <string name="order_unreceive">待收货 ( x )</string>
-    <string name="order_refund">退货/退款中 ( x )</string>
-    <string name="order_done">已完成 ( x )</string>
-    <string name="blank">银行卡 ( x )</string>
-    <string name="my_address">收货地址 ( x )</string>
+    <string name="order_all">全部&#160;(&#160;x&#160;)</string>
+    <string name="order_unpay">待付款&#160;(&#160;x&#160;)</string>
+    <string name="order_unreceive">待收货&#160;(&#160;x&#160;)</string>
+    <string name="order_refund">退货/退款中&#160;(&#160;x&#160;)</string>
+    <string name="order_done">已完成&#160;(&#160;x&#160;)</string>
+    <string name="blank">银行卡&#160;(&#160;x&#160;)</string>
+    <string name="my_address">收货地址&#160;(&#160;x&#160;)</string>
     <string name="my_account">我的账户</string>
     <string name="my_blank">我的银行卡</string>
     <string name="change_name">修改登录名</string>
@@ -41,7 +41,7 @@
     <string name="refund_order">退货/退款中</string>
     <string name="done_order">已完成</string>
     <string name="user_center">个人中心</string>
-    <string name="bank_added">已添加银行卡 ( x张 )</string>
+    <string name="bank_added">已添加银行卡&#160;(&#160;x张&#160;)</string>
     <string name="add_bank">添加银行卡</string>
     <string name="money">金额</string>
     <string name="recharge_money">请输入充值金额</string>
@@ -60,7 +60,7 @@
     <string name="login">登录</string>
     <string name="pay_phone">付款账户：</string>
     <string name="balance_account">账户余额</string>
-    <string name="balance_available">( 可用余额x元 )</string>
+    <string name="balance_available">(&#160;可用余额x元&#160;)</string>
     <string name="recharge_button">确认充值</string>
     <string name="cashier_counter">点窝收银台</string>
     <string name="login_phone">请输入手机号</string>
@@ -74,7 +74,7 @@
     <string name="input_card_no">请输入持卡人对应的卡号</string>
     <string name="withdraw_money">提现金额</string>
     <string name="balance_withdraw">余额提现</string>
-    <string name="available_money">可用余额 x元</string>
+    <string name="available_money">可用余额&#160;x元</string>
     <string name="bank_select">选择银行卡</string>
     <string name="banks">银行卡</string>
     <string name="delete">删除</string>
@@ -82,8 +82,8 @@
     <string name="goods_search">请输入关键字搜索</string>
     <string name="search">搜索</string>
     <string name="shelf">下架</string>
-    <string name="stock">库存 ：</string>
-    <string name="MOQ">起订量 ：</string>
+    <string name="stock">库存&#160;：</string>
+    <string name="MOQ">起订量&#160;：</string>
     <string name="title_order_all">全部订单</string>
     <string name="title_order_unpay">待付款</string>
     <string name="title_order_unreceive">待收货</string>
@@ -93,8 +93,8 @@
     <string name="deliver">发货</string>
     <string name="merchant_feedback">商家反馈</string>
     <string name="logistics_info">物流信息</string>
-    <string name="logistics_company">物流公司 ：</string>
-    <string name="logistics_number">物流单号 ：</string>
+    <string name="logistics_company">物流公司&#160;：</string>
+    <string name="logistics_number">物流单号&#160;：</string>
     <string name="confirm">确定</string>
     <string name="submit">提交</string>
     <string name="cancel">取消</string>
@@ -111,12 +111,12 @@
     <string name="manage">管理</string>
     <string name="address_add">新增收货地址</string>
     <string name="address_add_new">添加新地址</string>
-    <string name="address_no">您还没有专属的收货地址哦 ！</string>
+    <string name="address_no">您还没有专属的收货地址哦&#160;&#160;</string>
     <string name="set_default">设为默认地址</string>
-    <string name="name">姓名 ：</string>
-    <string name="mobile">手机 ：</string>
-    <string name="area">所属区域 ：</string>
-    <string name="address">详细地址 ：</string>
+    <string name="name">姓名&#160;&#160;</string>
+    <string name="mobile">手机&#160;&#160;</string>
+    <string name="area">所属区域&#160;&#160;</string>
+    <string name="address">详细地址&#160;&#160;</string>
     <string name="contact">联系人</string>
     <string name="location_info">地址信息</string>
     <string name="save">保存</string>
@@ -125,15 +125,15 @@
     <string name="address_area">点击选择</string>
     <string name="address_info">请填写收货人详细地址</string>
     <string name="order_info">订单详情</string>
-    <string name="consignee">收件人 : </string>
+    <string name="consignee">收件人&#160;:&#160;</string>
     <string name="edit">编辑</string>
     <string name="select">全选</string>
-    <string name="total">合计 : </string>
-    <string name="settlement">去结算 ( x )</string>
-    <string name="no_purchase">您的采购单是空的哦 ! 赶紧去采购吧 !</string>
+    <string name="total">合计&#160;:&#160;</string>
+    <string name="settlement">去结算&#160;(&#160;x&#160;)</string>
+    <string name="no_purchase">您的采购单是空的哦&#160;!&#160;赶紧去采购吧&#160;!</string>
     <string name="forward_home">前往首页</string>
-    <string name="order_num">订购数量 : </string>
-    <string name="order_no">订单编号 : </string>
+    <string name="order_num">订购数量&#160;:&#160;</string>
+    <string name="order_no">订单编号&#160;:&#160;</string>
     <string name="return_request">退货申请</string>
     <string name="return_reason">退款原因</string>
     <string name="return_money">退款金额</string>
@@ -144,8 +144,8 @@
     <string name="buy_now">立即购买</string>
     <string name="join_cart">加入采购单</string>
     <string name="order_submit">提交订单</string>
-    <string name="real_pay">实付款 : </string>
-    <string name="real_money">应付金额 : </string>
+    <string name="real_pay">实付款&#160;:&#160;</string>
+    <string name="real_money">应付金额&#160;:&#160;</string>
     <string name="classify">分类</string>
     <string name="merchandise">商品</string>
     <string name="detail">详情</string>
@@ -153,15 +153,16 @@
     <string name="no_data">暂无数据</string>
     <string name="last_page">最后一页</string>
     <string name="all">全部</string>
-    <string name="rmb">￥ </string>
+    <string name="rmb">￥&#160;</string>
     <string-array name="return_cause">
         <item>商品与描述不符</item>
         <item>商品错发/漏发/少发</item>
         <item>商品质量问题</item>
         <item>其他</item>
     </string-array>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="order_add_time">订单创建时间&#160;:&#160;</string>
+    <string name="order_pay_time">付款时间&#160;:&#160;</string>
+    <string name="order_deliver_time">发货时间&#160;:&#160;</string>
+    <string name="order_finish_time">成交时间&#160;:&#160;</string>
 
 </resources>

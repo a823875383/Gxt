@@ -5,7 +5,7 @@
     android:paddingBottom="@dimen/off_5dp"
     android:paddingLeft="@dimen/off_5dp">
 
-    <CheckBox
+    <RadioButton
         android:id="@+id/checkbox"
         android:layout_width="@dimen/off_78dp"
         android:layout_height="@dimen/off_28dp"

@@ -214,7 +214,7 @@ public class OrderPay extends BaseToolActivity implements HttpGet.InterfaceHttpG
         if (moneyResult != null) {
             if (moneyResult.getCode().equals("000")) {
                 double needPay = moneyResult.getObj().get(0).getOrder_totals() - moneyResult.getObj().get(0).getPaid_amt();
-                if (needPay == 0) {
+                if (moneyResult.getObj().get(0).getOrder_status() == 100402) {
                     finish();
                 }
                 orderMoney.setText(getString(R.string.rmb) + needPay);

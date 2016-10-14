@@ -12,9 +12,11 @@ import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.jsqix.gxt.app.R;
 import com.jsqix.gxt.app.adapter.OrderListAdapter;
 import com.jsqix.gxt.app.obj.OrderListResult;
+import com.jsqix.gxt.app.obj.OrderObj;
 import com.jsqix.gxt.app.utils.Constant;
+import com.jsqix.gxt.app.utils.OrderDialogUtils;
+import com.jsqix.gxt.app.utils.OrderOpUtils;
 import com.jsqix.utils.ACache;
-import com.jsqix.utils.StringUtils;
 import com.jsqix.utils.Utils;
 
 import org.xutils.view.annotation.ContentView;
@@ -28,7 +30,6 @@ import java.util.Map;
 import gxt.jsqix.com.mycommon.base.BaseToolActivity;
 import gxt.jsqix.com.mycommon.base.api.HttpGet;
 import gxt.jsqix.com.mycommon.base.api.RequestIP;
-import gxt.jsqix.com.mycommon.base.bean.BaseBean;
 import gxt.jsqix.com.mycommon.base.view.RefreshFooter;
 import gxt.jsqix.com.mycommon.base.view.RefreshHeader;
 
@@ -36,7 +37,7 @@ import gxt.jsqix.com.mycommon.base.view.RefreshHeader;
  * 供应商订单页面
  */
 @ContentView(R.layout.activity_order)
-public class OrderActivity extends BaseToolActivity implements HttpGet.InterfaceHttpGet, PullToRefreshBase.OnRefreshListener2<ListView>, OrderListAdapter.SupplierListener {
+public class OrderActivity extends BaseToolActivity implements HttpGet.InterfaceHttpGet, PullToRefreshBase.OnRefreshListener2<ListView>, OrderDialogUtils.SupplierListener, OrderOpUtils.DataResultListener {
     @ViewInject(R.id.refreshListView)
     private PullToRefreshListView refreshListView;
 
@@ -45,10 +46,11 @@ public class OrderActivity extends BaseToolActivity implements HttpGet.Interface
     private int pageNum = 1;
     private boolean hasNext = true;
 
-    final static int ORDER_LIST = 0x0001, ORDER_OP = 0x0010;
+    final static int ORDER_LIST = 0x0001;
 
-    private List<OrderListResult.ObjBean.ItemListBean> data = new ArrayList<>();
+    private List<OrderObj> data = new ArrayList<>();
     private OrderListAdapter adapter;
+    private OrderOpUtils opUtils;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +79,9 @@ public class OrderActivity extends BaseToolActivity implements HttpGet.Interface
         adapter.setSupplierListener(this);
         refreshListView.setAdapter(adapter);
         refreshListView.setOnRefreshListener(this);
+
+        opUtils = new OrderOpUtils(this);
+        opUtils.setResultListener(this);
     }
 
     @Override
@@ -113,68 +118,12 @@ public class OrderActivity extends BaseToolActivity implements HttpGet.Interface
 
     }
 
-    /**
-     * 订单操作
-     *
-     * @param type        操作事项 1:发货 2：确认退货 3：同意退货 4：不同意退货 5：确认收货
-     * @param orderId     主订单id
-     * @param detailId    订单详情id
-     * @param expressType 快递公司类型
-     * @param expressNo   快递单号
-     * @param note        不同意退货理由
-     */
-    private void orderOperate(int type, int orderId, int detailId, int expressType, String expressNo, String note) {
-        Map<String, Object> unParas = new HashMap<>();
-        if (orderId != -1) {
-            unParas.put("orderId", orderId);
-        }
-        if (detailId != -1) {
-            unParas.put("deatilId", detailId);
-        }
-        if (expressType != -1) {
-            unParas.put("expressType", expressType);
-        }
-        if (!StringUtils.isEmpty(expressNo)) {
-            unParas.put("expressNo", expressNo);
-        }
-        if (!StringUtils.isEmpty(note)) {
-            unParas.put("note", note);
-        }
-        Map<String, Object> paras = new HashMap<>();
-        paras.put("type", type);
-        paras.put("userId", aCache.getAsString(Constant.U_ID));
-        HttpGet get = new HttpGet(this, unParas, paras, this) {
-            @Override
-            public void onPreExecute() {
-
-            }
-        };
-        get.setResultCode(ORDER_OP);
-        get.execute(RequestIP.UPT_SELLER_ORDER);
-    }
-
     @Override
     public void getCallback(int resultCode, String result) {
         switch (resultCode) {
             case ORDER_LIST:
                 orderListResult(result);
                 break;
-            case ORDER_OP:
-                orderOpResult(result);
-                break;
-        }
-    }
-
-    private void orderOpResult(String result) {
-        BaseBean baseBean = new Gson().fromJson(result, BaseBean.class);
-        if (baseBean != null) {
-            Utils.makeToast(this, baseBean.getMsg());
-            if (baseBean.getCode().equals("000")) {
-                pageNum = 1;
-                getOrdertList();
-            }
-        } else {
-            Utils.makeToast(this, getString(R.string.network_timeout));
         }
     }
 
@@ -220,28 +169,34 @@ public class OrderActivity extends BaseToolActivity implements HttpGet.Interface
 
 
     @Override
-    public void agreeRefund(OrderListResult.ObjBean.ItemListBean listBean, int position) {
-        orderOperate(2, -1, listBean.getOrder_list().get(position).getDetail_id(), -1, "", "");//确认退款
+    public void agreeRefund(OrderObj listBean, int position) {
+        opUtils.orderSellerOperate(2, -1, listBean.getOrder_list().get(position).getDetail_id(), -1, "", "");//确认退款
 
     }
 
     @Override
-    public void agreeReturn(OrderListResult.ObjBean.ItemListBean listBean, int position) {
-        orderOperate(3, -1, listBean.getOrder_list().get(position).getDetail_id(), -1, "", "");//同意退货
+    public void agreeReturn(OrderObj listBean, int position) {
+        opUtils.orderSellerOperate(3, -1, listBean.getOrder_list().get(position).getDetail_id(), -1, "", "");//同意退货
     }
 
     @Override
-    public void disagreeReturn(OrderListResult.ObjBean.ItemListBean listBean, String reason, int position) {
-        orderOperate(4, -1, listBean.getOrder_list().get(position).getDetail_id(), -1, "", reason);//不同意退货
+    public void disagreeReturn(OrderObj listBean, String reason, int position) {
+        opUtils.orderSellerOperate(4, -1, listBean.getOrder_list().get(position).getDetail_id(), -1, "", reason);//不同意退货
     }
 
     @Override
-    public void logistics(OrderListResult.ObjBean.ItemListBean listBean, int expressType, String expressNo, int position) {
-        orderOperate(1, listBean.getId(), -1, expressType, expressNo, "");//发货
+    public void logistics(OrderObj listBean, int expressType, String expressNo, int position) {
+        opUtils.orderSellerOperate(1, listBean.getId(), -1, expressType, expressNo, "");//发货
     }
 
     @Override
-    public void receiptOrder(OrderListResult.ObjBean.ItemListBean listBean, int position) {
-        orderOperate(5, -1, listBean.getOrder_list().get(position).getDetail_id(), -1, "", "");//确认收货
+    public void receiptOrder(OrderObj listBean, int position) {
+        opUtils.orderSellerOperate(5, -1, listBean.getOrder_list().get(position).getDetail_id(), -1, "", "");//确认收货
+    }
+
+    @Override
+    public void refreshData() {
+        pageNum = 1;
+        getOrdertList();
     }
 }

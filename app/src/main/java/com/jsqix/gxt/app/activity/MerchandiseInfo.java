@@ -14,7 +14,6 @@ import android.view.animation.TranslateAnimation;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -47,6 +46,7 @@ import java.util.Map;
 import gxt.jsqix.com.mycommon.base.BaseCompat;
 import gxt.jsqix.com.mycommon.base.api.HttpGet;
 import gxt.jsqix.com.mycommon.base.api.RequestIP;
+import gxt.jsqix.com.mycommon.base.bean.BaseBean;
 import gxt.jsqix.com.mycommon.base.util.CommUtils;
 import gxt.jsqix.com.mycommon.base.util.StatusBarCompat;
 import gxt.jsqix.com.mycommon.base.view.CustomDialog;
@@ -107,11 +107,11 @@ public class MerchandiseInfo extends BaseCompat implements HttpGet.InterfaceHttp
     private int currentIndicatorLeft = 0;
     private List<String> bannerData;//轮播图
     private String main_image;//主图
-    private List<ArrayList<CheckBox>> checkBoxLists = new ArrayList<ArrayList<CheckBox>>();//存放所有规格
+    private List<ArrayList<RadioButton>> checkBoxLists;//存放所有规格
     private String[] tags;//存放已选择的规格
-    private List<SparseArray> classify = new ArrayList<>();//存放所有分类与tags同大小
+    private List<SparseArray> classify;//存放所有分类与tags同大小
 
-    final static int GOODS_INFO = 0x0001, GOODS_SPEC = 0x0010, GOODS_STOCK = 0x0011;
+    final static int GOODS_INFO = 0x0001, GOODS_SPEC = 0x0010, GOODS_STOCK = 0x0011, ADD_CART = 0x0100;
     private GoodsDetailResult.ObjEntity defaultProduct;
 
     @Override
@@ -158,16 +158,38 @@ public class MerchandiseInfo extends BaseCompat implements HttpGet.InterfaceHttp
         iv_add = (ImageView) view.findViewById(R.id.iv_add);
         button_buy = (Button) view.findViewById(R.id.bt_buy);
         button_cart = (Button) view.findViewById(R.id.bt_cart);
-
+        iv_reduce.setOnClickListener(v -> {
+            int num = StringUtils.toInt(CommUtils.textToString(tv_num));
+            if (num > StringUtils.toInt(CommUtils.textToString(goods_moq))) {
+                num--;
+                tv_num.setText("" + num);
+            }
+        });
+        iv_add.setOnClickListener(v -> {
+            int num = StringUtils.toInt(CommUtils.textToString(tv_num));
+            if (num < StringUtils.toInt(CommUtils.textToString(goods_stock))) {
+                num++;
+                tv_num.setText("" + num);
+            }
+        });
+        button_buy.setOnClickListener(v -> {
+            Intent intent = new Intent(this, OrderSubmit.class);
+            intent.putExtra(Constant.BUY_TYPE, 0);
+            List<Map<String, Object>> list = new ArrayList<>();
+            Map<String, Object> map = new HashMap<>();
+            map.put("cartNumber", CommUtils.textToString(tv_num));
+            map.put("productId", productId);
+            list.add(map);
+            intent.putExtra(Constant.DATA, new Gson().toJson(list));
+            startActivity(intent);
+            specDialog.dismiss();
+        });
+        button_cart.setOnClickListener(v -> {
+            addCart(productId + "", CommUtils.textToString(tv_num));
+            specDialog.dismiss();
+        });
         specDialog.setView(view, Gravity.BOTTOM);
-//        specDialog.setParas(1, 0.75f);
 
-//        specDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
-//            @Override
-//            public void onDismiss(DialogInterface dialog) {
-//                tvSpec.setText(CommUtils.textToString(select_spec));
-//            }
-//        });
     }
 
     private void initWebView() {
@@ -248,8 +270,22 @@ public class MerchandiseInfo extends BaseCompat implements HttpGet.InterfaceHttp
 
     @Event(R.id.bt_buy)
     private void buyClick(View v) {
-        startActivity(new Intent(this, OrderSubmit.class));
+        Intent intent = new Intent(this, OrderSubmit.class);
+        intent.putExtra(Constant.BUY_TYPE, 0);
+        List<Map<String, Object>> list = new ArrayList<>();
+        Map<String, Object> map = new HashMap<>();
+        map.put("cartNumber", defaultProduct.getMin_num());
+        map.put("productId", productId);
+        list.add(map);
+        intent.putExtra(Constant.DATA, new Gson().toJson(list));
+        startActivity(intent);
     }
+
+    @Event(R.id.bt_cart)
+    private void cartClick(View v) {
+        addCart(productId + "", defaultProduct.getMin_num() + "");
+    }
+
 
     @Event(value = R.id.rg_nav_content, type = RadioGroup.OnCheckedChangeListener.class)
     private void changeClick(RadioGroup group, @IdRes int checkedId) {
@@ -353,6 +389,26 @@ public class MerchandiseInfo extends BaseCompat implements HttpGet.InterfaceHttp
 
     }
 
+    /**
+     * 加入购物车
+     *
+     * @param productId
+     * @param orderCounts
+     */
+    public void addCart(String productId, String orderCounts) {
+        Map<String, Object> paras = new HashMap<>();
+        paras.put("userId", aCache.getAsString(Constant.U_ID));
+        paras.put("productId", productId);
+        paras.put("orderCounts", orderCounts);
+        HttpGet get = new HttpGet(this, paras, this) {
+            @Override
+            public void onPreExecute() {
+
+            }
+        };
+        get.execute(RequestIP.ADD_CART);
+        get.setResultCode(ADD_CART);
+    }
 
     @Override
     public void getCallback(int resultCode, String result) {
@@ -364,21 +420,37 @@ public class MerchandiseInfo extends BaseCompat implements HttpGet.InterfaceHttp
                 specResult(result);
                 break;
             case GOODS_STOCK:
-                StockResult stockResult = new Gson().fromJson(result, StockResult.class);
-                if (stockResult != null) {
-                    if (stockResult.getCode().equals("000")) {
-                        productId = stockResult.getObj().getPRODUCT_ID();
-                        goods_stock.setText(stockResult.getObj().getSTOCK() + "");
-                        goods_moq.setText(stockResult.getObj().getMIN_NUM() + "");
-                        tv_num.setText(CommUtils.textToString(goods_moq));
-                        getProductDetail();
-                    } else {
-                        Utils.makeToast(this, stockResult.getMsg());
-                    }
-                } else {
-                    Utils.makeToast(this, getString(R.string.network_timeout));
-                }
+                stockResult(result);
                 break;
+            case ADD_CART:
+                cartResult(result);
+                break;
+        }
+    }
+
+    private void cartResult(String result) {
+        BaseBean baseBean = new Gson().fromJson(result, BaseBean.class);
+        if (baseBean != null) {
+            Utils.makeToast(this, baseBean.getMsg());
+        } else {
+            Utils.makeToast(this, getString(R.string.network_timeout));
+        }
+    }
+
+    private void stockResult(String result) {
+        StockResult stockResult = new Gson().fromJson(result, StockResult.class);
+        if (stockResult != null) {
+            if (stockResult.getCode().equals("000")) {
+                productId = stockResult.getObj().getPRODUCT_ID();
+                goods_stock.setText(stockResult.getObj().getSTOCK() + "");
+                goods_moq.setText(stockResult.getObj().getMIN_NUM() + "");
+                tv_num.setText(CommUtils.textToString(goods_moq));
+                getProductDetail();
+            } else {
+                Utils.makeToast(this, stockResult.getMsg());
+            }
+        } else {
+            Utils.makeToast(this, getString(R.string.network_timeout));
         }
     }
 
@@ -442,6 +514,8 @@ public class MerchandiseInfo extends BaseCompat implements HttpGet.InterfaceHttp
                 tv_num.setText(CommUtils.textToString(goods_moq));
                 List<SpecResult.ObjBean> objBeanList = specResult.getObj();
                 tags = new String[objBeanList.size()];
+                checkBoxLists = new ArrayList<>();
+                classify = new ArrayList<>();
                 for (int i = 0; i < objBeanList.size(); i++) {
                     View specView = LayoutInflater.from(this).inflate(R.layout.layout_spec_info, null);
                     TextView propertyName = (TextView) specView
@@ -463,12 +537,12 @@ public class MerchandiseInfo extends BaseCompat implements HttpGet.InterfaceHttp
                         linearLayout[n].setLayoutParams(lp);
                         linearLayout[n].setOrientation(LinearLayout.HORIZONTAL);
                     }
-                    ArrayList<CheckBox> boxs = new ArrayList<CheckBox>();
+                    ArrayList<RadioButton> boxs = new ArrayList<>();
                     for (int n = 0; n < num; n++) {
                         for (int j = 4 * n; j <= 4 * n + 3 && j < itemListBean.size(); j++) {
                             SpecResult.ObjBean.ItemListBean listBean = itemListBean.get(j);
                             View itemView = LayoutInflater.from(this).inflate(R.layout.layout_spec_item_info, null);
-                            CheckBox checkBox = (CheckBox) itemView.findViewById(R.id.checkbox);
+                            RadioButton checkBox = (RadioButton) itemView.findViewById(R.id.checkbox);
                             checkBox.setText(listBean.getName());
                             String tag = objBean.getName() + ":" + objBean.getId() + "-" + listBean.getName() + ":" + listBean.getId();
                             checkBox.setTag(tag);
@@ -490,9 +564,9 @@ public class MerchandiseInfo extends BaseCompat implements HttpGet.InterfaceHttp
 
                 }
                 for (int i = 0; i < checkBoxLists.size(); i++) {
-                    final ArrayList<CheckBox> boxs = checkBoxLists.get(i);
+                    final ArrayList<RadioButton> boxs = checkBoxLists.get(i);
                     for (int j = 0; j < boxs.size(); j++) {
-                        CheckBox box = boxs.get(j);
+                        RadioButton box = boxs.get(j);
                         box.setOnClickListener(new myStandardClick(i, j));
                     }
                 }

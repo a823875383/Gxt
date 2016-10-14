@@ -77,5 +77,8 @@
         android:layout_height="1px"
         android:background="#F1F1F1" />
 
-    <include layout="@layout/layout_listview" />
+    <include
+        layout="@layout/layout_refresh_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </LinearLayout>

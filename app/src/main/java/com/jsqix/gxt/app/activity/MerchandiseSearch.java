@@ -10,7 +10,12 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
+import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.jsqix.gxt.app.R;
+import com.jsqix.gxt.app.adapter.GoodsManageAdapter;
+import com.jsqix.gxt.app.obj.MerchandiseManageResult;
+import com.jsqix.gxt.app.utils.GoodsOpUtils;
 import com.jsqix.utils.StringUtils;
 import com.jsqix.utils.Utils;
 
@@ -18,17 +23,22 @@ import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import gxt.jsqix.com.mycommon.base.BaseCompat;
 import gxt.jsqix.com.mycommon.base.util.StatusBarCompat;
+import gxt.jsqix.com.mycommon.base.view.RefreshFooter;
+import gxt.jsqix.com.mycommon.base.view.RefreshHeader;
 
 /**
  * Created by dongqing on 16/9/20.
  * 搜索
  */
 @ContentView(R.layout.activity_merchandise_search)
-public abstract class MerchandiseSearch extends BaseCompat {
-    @ViewInject(R.id.listView)
-    public ListView listView;
+public abstract class MerchandiseSearch extends BaseCompat implements PullToRefreshBase.OnRefreshListener2<ListView>{
+    @ViewInject(R.id.refreshListView)
+    protected PullToRefreshListView refreshListView;
     @ViewInject(R.id.title_bar)
     private RelativeLayout titleBar;
     @ViewInject(R.id.tv_left)
@@ -41,6 +51,12 @@ public abstract class MerchandiseSearch extends BaseCompat {
     private EditText searchEdit;
     @ViewInject(R.id.tv_right)
     private TextView mRight;
+
+    protected List<MerchandiseManageResult.ObjBean.ItemListBean> data = new ArrayList<>();
+    protected GoodsManageAdapter adapter;
+
+    protected GoodsOpUtils opUtils;
+    protected String key;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,11 +73,11 @@ public abstract class MerchandiseSearch extends BaseCompat {
     private void searchClick(View v) {
         if (mRight.getText().toString().equals(getString(R.string.search))) {
             //搜索
-            String key = searchEdit.getText().toString().trim();
+            key = searchEdit.getText().toString().trim();
             if (StringUtils.isEmpty(key)) {
                 Utils.makeToast(this, getString(R.string.goods_search));
             } else {
-                Drawable drawable = getResources().getDrawable(R.mipmap.ic_search_white);
+                Drawable drawable = getResources().getDrawable(R.mipmap.ic_search_gray);
                 drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
                 mRight.setCompoundDrawables(drawable, null, null, null);
                 mRight.setText("");
@@ -71,12 +87,14 @@ public abstract class MerchandiseSearch extends BaseCompat {
                 searchLayout.setVisibility(View.GONE);
                 searchEdit.setText("");
                 search(key);
+                refreshListView.setVisibility(View.VISIBLE);
             }
         } else {
             mRight.setCompoundDrawables(null, null, null, null);
             mRight.setText(getString(R.string.search));
             mTitle.setVisibility(View.GONE);
             searchLayout.setVisibility(View.VISIBLE);
+            refreshListView.setVisibility(View.GONE);
         }
     }
 
@@ -87,6 +105,11 @@ public abstract class MerchandiseSearch extends BaseCompat {
         ViewGroup.MarginLayoutParams lp = (ViewGroup.MarginLayoutParams) titleBar.getLayoutParams();
         lp.setMargins(0, StatusBarCompat.getStatusBarHeight(this), 0, 0);
         titleBar.setLayoutParams(lp);
+
+        refreshListView.setHeaderLayout(new RefreshHeader(this));
+        refreshListView.setFooterLayout(new RefreshFooter(this));
+
+//        refreshListView.setEmptyView();
     }
 
     @Override

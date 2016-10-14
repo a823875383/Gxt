@@ -3,10 +3,12 @@ package com.jsqix.gxt.app.activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.view.KeyEvent;
 import android.widget.RadioGroup;
 
 import com.jsqix.gxt.app.R;
 import com.jsqix.gxt.app.adapter.ViewPageAdapter;
+import com.jsqix.gxt.app.app.AppContext;
 import com.jsqix.gxt.app.fragment.DouOrderFragment;
 import com.jsqix.gxt.app.fragment.DoubleFragment;
 import com.jsqix.gxt.app.fragment.HomeFragment;
@@ -121,5 +123,10 @@ public class DoubleMain extends BaseCompat {
     @Override
     protected boolean isStatusWhite() {
         return false;
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        return AppContext.getInstance().closeAppByBack(keyCode, event);
     }
 }

@@ -16,6 +16,52 @@
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="@dimen/off_40dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/off_15dp"
+        android:paddingRight="@dimen/off_15dp">
+
+        <TextView
+            style="@style/BlackText"
+            android:layout_width="@dimen/off_70dp"
+            android:layout_height="wrap_content"
+            android:text="商品状态：" />
+
+        <RadioGroup
+            android:id="@+id/radio_goods"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/off_10dp"
+            android:checkedButton="@+id/radio_0"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radio_0"
+                android:layout_width="@dimen/off_55dp"
+                android:layout_height="@dimen/off_28dp"
+                android:background="@drawable/merchandise_choose"
+                android:button="@null"
+                android:gravity="center"
+                android:text="上架"
+                android:textColor="@drawable/merchandise_color" />
+
+            <RadioButton
+                android:id="@+id/radio_1"
+                android:layout_width="@dimen/off_55dp"
+                android:layout_height="@dimen/off_28dp"
+                android:layout_marginLeft="@dimen/off_10dp"
+                android:background="@drawable/merchandise_choose"
+                android:button="@null"
+                android:gravity="center"
+                android:text="下架"
+                android:textColor="@drawable/merchandise_color" />
+        </RadioGroup>
+    </LinearLayout>
+
+    <View style="@style/div_style" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:paddingBottom="@dimen/off_20dp"
@@ -29,9 +75,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <include layout="@layout/layout_spec" />
-
-            <include layout="@layout/layout_spec" />
         </LinearLayout>
 
         <LinearLayout
@@ -41,13 +84,14 @@
 
             <TextView
                 style="@style/BlackText"
-                android:layout_width="@dimen/off_60dp"
+                android:layout_width="@dimen/off_70dp"
                 android:text="@string/stock" />
 
             <EditText
+                android:id="@+id/et_stock"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/off_40dp"
-                android:layout_marginLeft="@dimen/off_5dp"
+                android:layout_marginLeft="@dimen/off_10dp"
                 android:background="@drawable/rect_white" />
         </LinearLayout>
 
@@ -58,22 +102,24 @@
 
             <TextView
                 style="@style/BlackText"
-                android:layout_width="@dimen/off_60dp"
+                android:layout_width="@dimen/off_70dp"
                 android:text="@string/MOQ" />
 
             <EditText
+                android:id="@+id/et_moq"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/off_40dp"
-                android:layout_marginLeft="@dimen/off_5dp"
+                android:layout_marginLeft="@dimen/off_10dp"
                 android:background="@drawable/rect_white" />
         </LinearLayout>
     </LinearLayout>
 
     <Button
+        android:id="@+id/bt_submit"
         style="@style/WhiteText"
         android:layout_width="match_parent"
         android:layout_height="@dimen/off_40dp"
         android:background="@color/green"
-        android:text="@string/shelf"
+        android:text="@string/confirm"
         android:textSize="@dimen/font_size_18sp" />
 </LinearLayout>

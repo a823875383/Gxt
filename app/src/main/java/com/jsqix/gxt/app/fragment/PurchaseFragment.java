@@ -3,6 +3,7 @@ package com.jsqix.gxt.app.fragment;
 
 import android.content.Intent;
 import android.os.Handler;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -39,6 +40,7 @@ import gxt.jsqix.com.mycommon.base.api.RequestIP;
 import gxt.jsqix.com.mycommon.base.bean.BaseBean;
 import gxt.jsqix.com.mycommon.base.util.CommUtils;
 import gxt.jsqix.com.mycommon.base.util.StatusBarCompat;
+import gxt.jsqix.com.mycommon.base.view.CustomDialog;
 import gxt.jsqix.com.mycommon.base.view.RefreshFooter;
 import gxt.jsqix.com.mycommon.base.view.RefreshHeader;
 
@@ -70,6 +72,8 @@ public class PurchaseFragment extends BaseFragment implements HttpGet.InterfaceH
     @ViewInject(R.id.bt_delete)
     private Button deleteBt;
 
+    private CustomDialog deleteDialog;
+
     private boolean isEdit = false;
 
     private List<CartListResult.ObjBean.ItemListBean> data = new ArrayList<>();
@@ -97,6 +101,8 @@ public class PurchaseFragment extends BaseFragment implements HttpGet.InterfaceH
         refreshListView.setAdapter(adapter);
 
         settleBt.setText(getString(R.string.settlement).replace("x", 0 + ""));
+
+        initDialog();
     }
 
     @Override
@@ -105,11 +111,36 @@ public class PurchaseFragment extends BaseFragment implements HttpGet.InterfaceH
     }
 
     @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        super.setUserVisibleHint(isVisibleToUser);
+    public void onResume() {
+        super.onResume();
         if (getUserVisibleHint()) {
             getGoodsCart();
         }
+    }
+
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser && isResumed()) {
+            getGoodsCart();
+        }
+    }
+
+    private void initDialog() {
+        deleteDialog = new CustomDialog(mContext);
+        View deleteView = LayoutInflater.from(mContext).inflate(R.layout.view_order_refund, null);
+        TextView tvMsg = (TextView) deleteView.findViewById(R.id.tv_msg);
+        Button btLeft = (Button) deleteView.findViewById(R.id.bt_confirm);
+        Button btRight = (Button) deleteView.findViewById(R.id.bt_cancel);
+        tvMsg.setText("是否确定删除");
+        btLeft.setOnClickListener(v -> {
+            deleteCart();
+        });
+        btRight.setOnClickListener(v -> {
+            deleteDialog.dismiss();
+        });
+        deleteDialog.setView(deleteView);
     }
 
     @Event(R.id.tv_right)
@@ -132,23 +163,33 @@ public class PurchaseFragment extends BaseFragment implements HttpGet.InterfaceH
 
     @Event(R.id.bt_delete)
     private void deleteClick(View v) {
+        if (adapter.getSelectNum() == 0) {
+            Utils.makeToast(mContext, "请至少选择一个商品");
+        } else {
+            deleteDialog.show();
+        }
 
     }
 
     @Event(R.id.bt_settle)
     private void settleClick(View v) {
-        List<Map<String, Object>> list = new ArrayList<>();
-        for (CartListResult.ObjBean.ItemListBean listBean : data) {
-            Map<String, Object> map = new HashMap<>();
-            map.put("productId", listBean.getProduct_id());
-            map.put("cartNumber", listBean.getCart_number());
-            list.add(map);
+        if (adapter.getSelectNum() == 0) {
+            Utils.makeToast(mContext, "请至少选择一个商品");
+        } else {
+            List<Map<String, Object>> list = new ArrayList<>();
+            for (CartListResult.ObjBean.ItemListBean listBean : data) {
+                if (listBean.isSelect()) {
+                    Map<String, Object> map = new HashMap<>();
+                    map.put("productId", listBean.getProduct_id());
+                    map.put("cartNumber", listBean.getCart_number());
+                    list.add(map);
+                }
+            }
+            Intent intent = new Intent(mContext, OrderSubmit.class);
+            intent.putExtra(Constant.BUY_TYPE, 1);
+            intent.putExtra(Constant.DATA, new Gson().toJson(list));
+            startActivity(intent);
         }
-        Intent intent = new Intent(mContext, OrderSubmit.class);
-        intent.putExtra(Constant.BUY_TYPE, 1);
-        intent.putExtra(Constant.DATA, new Gson().toJson(list));
-        startActivity(intent);
-
     }
 
     @Event(R.id.cb_choose)
@@ -171,6 +212,9 @@ public class PurchaseFragment extends BaseFragment implements HttpGet.InterfaceH
         startActivity(intent);
     }
 
+    /**
+     * 获取采购单列表
+     */
     private void getGoodsCart() {
         Map<String, Object> paras = new HashMap<>();
         paras.put("userId", mContext.aCache.getAsString(Constant.U_ID));
@@ -187,9 +231,56 @@ public class PurchaseFragment extends BaseFragment implements HttpGet.InterfaceH
         get.execute(RequestIP.GOODS_CART);
     }
 
+    /**
+     * 删除采购单
+     */
+    private void deleteCart() {
+        Map<String, Object> paras = new HashMap<>();
+        StringBuffer sb = new StringBuffer();
+        for (CartListResult.ObjBean.ItemListBean listBean : data) {
+            if (listBean.isSelect()) {
+                sb.append(listBean.getGoods_id() + ",");
+            }
+        }
+        if (sb.length() > 0) {
+            sb.deleteCharAt(sb.length() - 1);
+        }
+        paras.put("userId", mContext.aCache.getAsString(Constant.U_ID));
+        paras.put("goodsIds", sb.toString());
+        paras.put("timeStamp", System.currentTimeMillis());
+        HttpGet get = new HttpGet(mContext, paras, this) {
+            @Override
+            public void onPreExecute() {
+
+            }
+        };
+        get.setResultCode(DELETE_CART);
+        get.execute(RequestIP.DELETE_CART);
+    }
+
     @Override
     public void getCallback(int resultCode, String result) {
+        switch (resultCode) {
+            case GET_CART:
+                dataResult(result);
+                break;
+            case DELETE_CART:
+                BaseBean baseBean = new Gson().fromJson(result, BaseBean.class);
+                if (baseBean != null) {
+                    Utils.makeToast(mContext, baseBean.getMsg());
+                    if (baseBean.getCode().equals("000")) {
+                        deleteDialog.dismiss();
+                        getGoodsCart();
+                    }
+                } else {
+                    Utils.makeToast(mContext, getString(R.string.network_timeout));
+                }
+                break;
+        }
 
+    }
+
+    private void dataResult(String result) {
         BaseBean baseBean = new Gson().fromJson(result, BaseBean.class);
         if (baseBean != null) {
             if (baseBean.getCode().equals("000")) {
@@ -197,21 +288,29 @@ public class PurchaseFragment extends BaseFragment implements HttpGet.InterfaceH
                 data.clear();
                 data.addAll(listResult.getObj().getItem_list());
                 adapter.notifyDataSetChanged();
-                choose.setChecked(false);
-                totlaMoney.setText(getString(R.string.rmb) + "0.0");
-                settleBt.setText(getString(R.string.settlement).replace("x", 0 + ""));
+                dataLayout.setVisibility(View.VISIBLE);
+                emptyLayout.setVisibility(View.GONE);
+                tvEdit.setVisibility(View.VISIBLE);
+                if (!isEdit) {
+                    choose.setChecked(false);
+                    totlaMoney.setText(getString(R.string.rmb) + "0.0");
+                    settleBt.setText(getString(R.string.settlement).replace("x", 0 + ""));
+                }
             } else {
                 Utils.makeToast(mContext, baseBean.getMsg());
                 dataLayout.setVisibility(View.GONE);
                 emptyLayout.setVisibility(View.VISIBLE);
                 tvEdit.setVisibility(View.GONE);
+                isEdit = false;
             }
         } else {
             Utils.makeToast(mContext, getString(R.string.network_timeout));
         }
-        new Handler().postDelayed(() -> {
-            refreshListView.onRefreshComplete();
-        }, 500);
+        if (refreshListView.isRefreshing()) {
+            new Handler().postDelayed(() -> {
+                refreshListView.onRefreshComplete();
+            }, 500);
+        }
     }
 
     @Override

@@ -1,5 +1,7 @@
 package com.jsqix.gxt.app.utils;
 
+import com.jsqix.utils.NetworkTools;
+
 import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
@@ -9,7 +11,7 @@ import java.util.Enumeration;
  * Created by dongqing on 2016/10/9.
  */
 
-public class NetUtils {
+public class NetUtils extends NetworkTools {
     /**
      * 获取手机ip地址
      *

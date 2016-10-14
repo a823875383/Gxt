@@ -106,7 +106,7 @@ public class AddressManage extends BaseToolActivity implements HttpGet.Interface
             }
         };
         get.setResultCode(ADDR_DEFALUT);
-        get.execute(RequestIP.UPDATE_DEFULT);
+        get.execute(RequestIP.UPDATE_DEFAULT);
     }
 
 
