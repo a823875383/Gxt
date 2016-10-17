@@ -80,6 +80,7 @@
                 android:paddingTop="@dimen/off_15dp">
 
                 <TextView
+                    android:id="@+id/tv_order_all"
                     style="@style/LightText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -102,6 +103,7 @@
                 android:paddingTop="@dimen/off_15dp">
 
                 <TextView
+                    android:id="@+id/tv_order_unpay"
                     style="@style/LightText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -123,6 +125,7 @@
                 android:paddingTop="@dimen/off_15dp">
 
                 <TextView
+                    android:id="@+id/tv_order_unreceive"
                     style="@style/LightText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -150,6 +153,7 @@
                 android:paddingTop="@dimen/off_15dp">
 
                 <TextView
+                    android:id="@+id/tv_order_refund"
                     style="@style/LightText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -171,6 +175,7 @@
                 android:paddingTop="@dimen/off_15dp">
 
                 <TextView
+                    android:id="@+id/tv_order_done"
                     style="@style/LightText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

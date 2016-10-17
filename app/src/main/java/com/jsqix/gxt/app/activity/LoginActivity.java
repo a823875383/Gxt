@@ -36,9 +36,9 @@ public class LoginActivity extends BaseCompat implements HttpGet.InterfaceHttpGe
     @ViewInject(R.id.et_pass)
     private EditText loginPass;//密码
     @ViewInject(R.id.et_code)
-    private EditText loginCode;//验证码
+    private EditText loginCode;//登录名
 //    @ViewInject(R.id.iv_code)
-//    private ImageView imgCode;//登录名
+//    private ImageView imgCode;//验证码
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

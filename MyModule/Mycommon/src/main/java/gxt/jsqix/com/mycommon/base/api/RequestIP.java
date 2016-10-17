@@ -8,6 +8,13 @@ public class RequestIP {
     private static final String IP = "http://192.168.1.223:8086/";
 
     public final static String LOGIN = IP + "user/login";
+    public final static String SEND_CODE = IP + "user/sendCode";
+    public final static String CHECK_CODE = IP + "user/checkCode";
+    public final static String UPDATE_PWD = IP + "user/updatePwd";
+    public final static String BLANK_COUNT = IP + "user/blankCount";
+    public final static String BACK_LISTS = IP + "user/backList";
+    public final static String ADD_BANKS = IP + "user/addBank";
+    public final static String DELETE_CARD = IP + "user/deleteCard";
 
     public final static String GET_GOODS_LIST = IP + "buyGoods/getGoodsList";
     public final static String GET_GOODS_ONE_CLASSIFY = IP + "buyGoods/getGoodsOneClassify";
@@ -34,6 +41,7 @@ public class RequestIP {
     public final static String UPDATE_ADDRESS = IP + "city/updateAddress";
     public final static String UPDATE_DEFAULT = IP + "city/updateDefult";
     public final static String DELETE_ADDRESS = IP + "city/deleteAddress";
+    public final static String ADDRESS_COUNT = IP + "city/addressCount";
 
     public final static String ORDER_BUYER_LIST = IP + "order/orderBuyerList";
     public final static String ORDER_SELLER_LIST = IP + "order/orderSellerList";
@@ -42,5 +50,8 @@ public class RequestIP {
     public final static String UPT_BUYER_ORDER = IP + "order/uptBuyerOrder";
     public final static String UPT_SELLER_ORDER = IP + "order/uptOrder";
     public final static String MY_ORDER_DETAIL = IP + "order/myOrderDetail";
+    public final static String PROC_PRESENT_APPLYS = IP + "order/procPresentApply";
+
+    public final static String ORDER_COUNT = IP + "account/counts";
 
 }

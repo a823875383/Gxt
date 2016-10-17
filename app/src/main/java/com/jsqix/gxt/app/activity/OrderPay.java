@@ -187,7 +187,7 @@ public class OrderPay extends BaseToolActivity implements HttpGet.InterfaceHttpG
         BalanceResult balanceResult = new Gson().fromJson(result, BalanceResult.class);
         if (balanceResult != null) {
             if (balanceResult.getCode().equals("000")) {
-                balanceAvailable.setText(getString(R.string.balance_available).replace("x", StringUtils.toFormat((long) balanceResult.getObj() / 100)));
+                balanceAvailable.setText(getString(R.string.balance_available).replace("x", CommUtils.toFormat(balanceResult.getObj() / 100.0)));
             } else {
                 Utils.makeToast(this, balanceResult.getMsg());
             }

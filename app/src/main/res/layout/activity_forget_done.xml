@@ -9,7 +9,7 @@
     tools:context="com.jsqix.gxt.app.activity.ForgetDone">
 
     <EditText
-        android:id="@+id/et_phone"
+        android:id="@+id/et_pass"
         style="@style/EditStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -15,7 +15,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
-        android:padding="@dimen/off_10dp">
+        android:padding="@dimen/off_10dp"
+        android:visibility="visible">
 
         <ImageView
             android:id="@+id/iv_bank_icon"
@@ -53,6 +54,25 @@
             android:layout_centerVertical="true"
             android:src="@mipmap/ic_arrow" />
     </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/lin_add"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="@dimen/off_10dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv_add_bank"
+            style="@style/BlackText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@mipmap/ic_add_bank"
+            android:drawablePadding="@dimen/off_10dp"
+            android:gravity="center_vertical"
+            android:text="@string/add_card" />
+    </LinearLayout>
 
     <View style="@style/div_style" />
 
@@ -93,13 +113,14 @@
                 android:layout_height="@dimen/off_60dp"
                 android:layout_marginLeft="@dimen/off_10dp"
                 android:background="@null"
+                android:inputType="numberDecimal"
                 android:gravity="center_vertical" />
         </LinearLayout>
 
         <View style="@style/div_style" />
 
         <TextView
-            android:id="@+id/et_available"
+            android:id="@+id/tv_available"
             style="@style/LightText"
             android:layout_marginBottom="@dimen/off_10dp"
             android:layout_marginTop="@dimen/off_10dp"

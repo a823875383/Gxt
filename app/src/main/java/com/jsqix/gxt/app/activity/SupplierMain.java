@@ -6,26 +6,52 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.jsqix.gxt.app.R;
 import com.jsqix.gxt.app.app.AppContext;
+import com.jsqix.gxt.app.obj.BalanceResult;
+import com.jsqix.gxt.app.obj.CountResult;
 import com.jsqix.gxt.app.utils.Constant;
 import com.jsqix.utils.DensityUtil;
+import com.jsqix.utils.Utils;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import gxt.jsqix.com.mycommon.base.BaseCompat;
+import gxt.jsqix.com.mycommon.base.api.HttpGet;
+import gxt.jsqix.com.mycommon.base.api.RequestIP;
+import gxt.jsqix.com.mycommon.base.util.CommUtils;
 import gxt.jsqix.com.mycommon.base.util.StatusBarCompat;
 
 /**
  * 供应商主页
  */
 @ContentView(R.layout.activity_main_supplier)
-public class SupplierMain extends BaseCompat {
+public class SupplierMain extends BaseCompat implements HttpGet.InterfaceHttpGet {
     @ViewInject(R.id.layout_user)
     private LinearLayout users;
+    @ViewInject(R.id.tv_money)
+    private TextView balanceAvailable;
+    @ViewInject(R.id.tv_order_all)
+    private TextView orderAllCount;
+    @ViewInject(R.id.tv_order_unpay)
+    private TextView orderUnpayCount;
+    @ViewInject(R.id.tv_order_unreceive)
+    private TextView orderUnreceiveCount;
+    @ViewInject(R.id.tv_order_refund)
+    private TextView orderRefundCount;
+    @ViewInject(R.id.tv_order_done)
+    private TextView orderDoneCount;
+
+
+    final static int BALANCE_QUERY = 0x0001, ORDER_ALL = 0x0010, ORDER_UNPAY = 0x0020, ORDER_UNRECEIVE = 0x0030, ORDER_REFUND = 0x0040, ORDER_DONE = 0x0050;
 
 
     @Override
@@ -44,11 +70,24 @@ public class SupplierMain extends BaseCompat {
         ViewGroup.MarginLayoutParams lp = (ViewGroup.MarginLayoutParams) users.getLayoutParams();
         lp.setMargins(0, StatusBarCompat.getStatusBarHeight(this) + DensityUtil.dip2px(this, 5), 0, 0);
         users.setLayoutParams(lp);
+
+
     }
 
     @Override
     protected void initVariable() {
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        queryBalance();
+        queryOrderNum(0, ORDER_ALL);
+        queryOrderNum(1, ORDER_UNPAY);
+        queryOrderNum(2, ORDER_UNRECEIVE);
+        queryOrderNum(3, ORDER_REFUND);
+        queryOrderNum(4, ORDER_DONE);
     }
 
     @Event(R.id.iv_set)
@@ -123,4 +162,94 @@ public class SupplierMain extends BaseCompat {
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         return AppContext.getInstance().closeAppByBack(keyCode, event);
     }
+
+    /**
+     * 查询用户余额
+     */
+    private void queryBalance() {
+        Map<String, Object> paras = new HashMap<>();
+        paras.put("userId", aCache.getAsString(Constant.U_ID));
+        HttpGet get = new HttpGet(this, paras, this) {
+            @Override
+            public void onPreExecute() {
+
+            }
+        };
+        get.setResultCode(BALANCE_QUERY);
+        get.execute(RequestIP.GET_USER_BALANCE);
+    }
+
+    /**
+     * 查询订单数量
+     *
+     * @param resultCode
+     */
+    private void queryOrderNum(int orderStatus, int resultCode) {
+        Map<String, Object> paras = new HashMap<>();
+        paras.put("orderStatus", orderStatus);
+        HttpGet get = new HttpGet(this, paras, this) {
+            @Override
+            public void onPreExecute() {
+
+            }
+        };
+        get.setResultCode(resultCode);
+        get.execute(RequestIP.ORDER_COUNT);
+    }
+
+    @Override
+    public void getCallback(int resultCode, String result) {
+        switch (resultCode) {
+            case BALANCE_QUERY:
+                balanceResult(result);
+                break;
+            default:
+                countResult(resultCode, result);
+                break;
+        }
+    }
+
+    private void countResult(int resultCode, String result) {
+        CountResult countResult = new Gson().fromJson(result, CountResult.class);
+        if (countResult != null) {
+            if (countResult.getCode().equals("000")) {
+                switch (resultCode) {
+                    case ORDER_ALL:
+                        orderAllCount.setText(getString(R.string.order_all).replace("x", countResult.getObj() + ""));
+                        break;
+                    case ORDER_UNPAY:
+                        orderUnpayCount.setText(getString(R.string.order_unpay).replace("x", countResult.getObj() + ""));
+                        break;
+                    case ORDER_UNRECEIVE:
+                        orderUnreceiveCount.setText(getString(R.string.order_unreceive).replace("x", countResult.getObj() + ""));
+                        break;
+                    case ORDER_REFUND:
+                        orderRefundCount.setText(getString(R.string.order_refund).replace("x", countResult.getObj() + ""));
+                        break;
+                    case ORDER_DONE:
+                        orderDoneCount.setText(getString(R.string.order_done).replace("x", countResult.getObj() + ""));
+                        break;
+                }
+            } else {
+                Utils.makeToast(this, countResult.getMsg());
+            }
+        } else {
+            Utils.makeToast(this, getString(R.string.network_timeout));
+        }
+
+    }
+
+    private void balanceResult(String result) {
+        BalanceResult balanceResult = new Gson().fromJson(result, BalanceResult.class);
+        if (balanceResult != null) {
+            if (balanceResult.getCode().equals("000")) {
+                balanceAvailable.setText(CommUtils.toFormat(balanceResult.getObj() / 100.0));
+            } else {
+                Utils.makeToast(this, balanceResult.getMsg());
+            }
+        } else {
+            Utils.makeToast(this, getString(R.string.network_timeout));
+        }
+    }
+
 }

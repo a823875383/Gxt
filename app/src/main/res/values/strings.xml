@@ -72,6 +72,7 @@
     <string name="card_no">请输入新手机号</string>
     <string name="input_card_user">请输入持卡人姓名</string>
     <string name="input_card_no">请输入持卡人对应的卡号</string>
+    <string name="input_card_phone">请输入关联银行卡的手机号</string>
     <string name="withdraw_money">提现金额</string>
     <string name="balance_withdraw">余额提现</string>
     <string name="available_money">可用余额&#160;x元</string>
@@ -154,6 +155,7 @@
     <string name="last_page">最后一页</string>
     <string name="all">全部</string>
     <string name="rmb">￥&#160;</string>
+    <string name="bank_number">*&#160;*&#160;*&#160;*&#160;&#160;&#160;&#160;*&#160;*&#160;*&#160;*&#160;&#160;&#160;&#160;*&#160;*&#160;*&#160;*&#160;&#160;&#160;&#160;####</string>
     <string-array name="return_cause">
         <item>商品与描述不符</item>
         <item>商品错发/漏发/少发</item>

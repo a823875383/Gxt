@@ -14,6 +14,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/off_10dp"
+        android:inputType="phone"
+        android:maxLength="11"
         android:background="@drawable/round_white"
         android:hint="@string/forget_phone"
         android:padding="@dimen/off_10dp" />

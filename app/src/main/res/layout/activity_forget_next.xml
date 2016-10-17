@@ -48,9 +48,9 @@
             android:layout_width="80dp"
             android:layout_height="@dimen/off_40dp"
             android:layout_marginLeft="@dimen/off_20dp"
-            android:background="@drawable/round_line_green"
+            android:background="@drawable/button_select"
             android:text="@string/resend"
-            android:textColor="@color/light_green" />
+            android:textColor="@drawable/merchandise_color" />
 
     </LinearLayout>
 
