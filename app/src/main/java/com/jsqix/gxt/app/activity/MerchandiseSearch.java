@@ -13,8 +13,6 @@ import android.widget.TextView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.jsqix.gxt.app.R;
-import com.jsqix.gxt.app.adapter.GoodsManageAdapter;
-import com.jsqix.gxt.app.obj.MerchandiseManageResult;
 import com.jsqix.gxt.app.utils.GoodsOpUtils;
 import com.jsqix.utils.StringUtils;
 import com.jsqix.utils.Utils;
@@ -22,9 +20,6 @@ import com.jsqix.utils.Utils;
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import gxt.jsqix.com.mycommon.base.BaseCompat;
 import gxt.jsqix.com.mycommon.base.util.StatusBarCompat;
@@ -52,8 +47,7 @@ public abstract class MerchandiseSearch extends BaseCompat implements PullToRefr
     @ViewInject(R.id.tv_right)
     private TextView mRight;
 
-    protected List<MerchandiseManageResult.ObjBean.ItemListBean> data = new ArrayList<>();
-    protected GoodsManageAdapter adapter;
+
 
     protected GoodsOpUtils opUtils;
     protected String key;

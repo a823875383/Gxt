@@ -17,6 +17,17 @@
             android:layout_height="@dimen/off_50dp">
 
             <TextView
+                android:id="@+id/tv_left"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:drawableLeft="@mipmap/ic_back_white"
+                android:drawablePadding="@dimen/off_5dp"
+                android:gravity="center"
+                android:visibility="gone"
+                android:paddingLeft="@dimen/off_16dp"
+                android:paddingRight="@dimen/off_16dp" />
+
+            <TextView
                 android:id="@+id/tv_title"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/off_50dp"
@@ -25,6 +36,34 @@
                 android:text="@string/home"
                 android:textColor="@color/white"
                 android:textSize="18sp" />
+
+            <LinearLayout
+                android:id="@+id/lin_search"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="@dimen/off_8dp"
+                android:layout_marginTop="@dimen/off_8dp"
+                android:layout_toLeftOf="@+id/tv_right"
+                android:layout_toRightOf="@+id/tv_left"
+                android:background="@drawable/round_search_transparent"
+                android:paddingLeft="@dimen/off_5dp"
+                android:paddingRight="@dimen/off_5dp"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/et_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:drawableLeft="@mipmap/ic_search_white"
+                    android:drawablePadding="@dimen/off_10dp"
+                    android:hint="@string/goods_search"
+                    android:singleLine="true"
+                    android:textColorHint="@color/white"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/font_size_15sp" />
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/tv_right"
@@ -37,7 +76,8 @@
                 android:drawableRight="@mipmap/ic_search_white"
                 android:gravity="center"
                 android:paddingLeft="@dimen/off_16dp"
-                android:paddingRight="@dimen/off_16dp" />
+                android:paddingRight="@dimen/off_16dp"
+                android:textColor="@color/white" />
         </RelativeLayout>
     </LinearLayout>
 
@@ -70,8 +110,8 @@
         android:cacheColorHint="@android:color/transparent"
         android:horizontalSpacing="@dimen/off_10dp"
         android:numColumns="2"
-        android:scrollbars="none"
         android:overScrollMode="never"
+        android:scrollbars="none"
         ptr:ptrShowIndicator="false" />
 
     <include

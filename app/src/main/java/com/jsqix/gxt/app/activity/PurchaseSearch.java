@@ -11,7 +11,7 @@ public class PurchaseSearch extends MerchandiseSearch {
 
     @Override
     void search(String key) {
-
+        finish();
     }
 
     @Override

@@ -13,7 +13,9 @@ import com.jsqix.gxt.app.utils.GoodsDialogUtils;
 import com.jsqix.gxt.app.utils.GoodsOpUtils;
 import com.jsqix.utils.Utils;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import gxt.jsqix.com.mycommon.base.api.HttpGet;
@@ -27,6 +29,9 @@ public class SupplierSearch extends MerchandiseSearch implements GoodsDialogUtil
     private boolean hasNext = true;
 
     final static int GOODS_LIST = 0x0001;
+
+    protected List<MerchandiseManageResult.ObjBean.ItemListBean> data = new ArrayList<>();
+    protected GoodsManageAdapter adapter;
 
     @Override
     void search(String key) {

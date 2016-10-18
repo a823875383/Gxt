@@ -2,10 +2,12 @@ package com.jsqix.gxt.app.fragment;
 
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -39,6 +41,7 @@ import gxt.jsqix.com.mycommon.base.BaseFragment;
 import gxt.jsqix.com.mycommon.base.api.HttpGet;
 import gxt.jsqix.com.mycommon.base.api.RequestIP;
 import gxt.jsqix.com.mycommon.base.bean.BaseBean;
+import gxt.jsqix.com.mycommon.base.util.CommUtils;
 import gxt.jsqix.com.mycommon.base.util.StatusBarCompat;
 import gxt.jsqix.com.mycommon.base.view.RefreshFooter;
 import gxt.jsqix.com.mycommon.base.view.RefreshHeader;
@@ -50,6 +53,17 @@ import gxt.jsqix.com.mycommon.base.view.RefreshHeader;
 public class HomeFragment extends BaseFragment implements HttpGet.InterfaceHttpGet, PullToRefreshBase.OnRefreshListener2<GridView>, HomeGoodsAdapter.CartListener {
     @ViewInject(R.id.title_bar)
     private RelativeLayout title_bar;
+    @ViewInject(R.id.tv_left)
+    private TextView backLeft;
+    @ViewInject(R.id.tv_title)
+    private TextView mTitle;
+    @ViewInject(R.id.lin_search)
+    private LinearLayout searchLayout;
+    @ViewInject(R.id.et_search)
+    private EditText searchEdit;
+    @ViewInject(R.id.tv_right)
+    private TextView searchRight;
+
     @ViewInject(R.id.refreshGridView)
     PullToRefreshGridView refreshGridView;
     @ViewInject(R.id.gridView)
@@ -72,6 +86,8 @@ public class HomeFragment extends BaseFragment implements HttpGet.InterfaceHttpG
     private List<ClassifyResult.ObjBean> rightData = new ArrayList<>();
     private ClassifyRightAdapter rightAdapter;
 
+    int oneClassifyId = -1, twoClassifyId = -1;
+    String productName = "";
 
     final static int DATA_LIST = 0x0001, CLASSIFY_LEFT = 0x0010, CLASSIFY_RIGHT = 0x0011, ADD_CART = 0x0100;
 
@@ -106,8 +122,32 @@ public class HomeFragment extends BaseFragment implements HttpGet.InterfaceHttpG
 
     }
 
-    int oneClassifyId = -1, twoClassifyId = -1;
-    String productName = "";
+    @Event(R.id.tv_right)
+    private void searchClick(View v) {
+        if (backLeft.getVisibility() == View.VISIBLE) {
+            productName = CommUtils.textToString(searchEdit);
+            getGoodsData();
+        } else {
+            backLeft.setVisibility(View.VISIBLE);
+            mTitle.setVisibility(View.GONE);
+            searchLayout.setVisibility(View.VISIBLE);
+            searchRight.setText("搜索");
+            searchRight.setCompoundDrawables(null, null, null, null);
+        }
+    }
+
+    @Event(R.id.tv_left)
+    private void backClick(View v) {
+        productName = "";
+        backLeft.setVisibility(View.GONE);
+        mTitle.setVisibility(View.VISIBLE);
+        searchLayout.setVisibility(View.GONE);
+        searchRight.setText("");
+        Drawable drawable = getResources().getDrawable(R.mipmap.ic_search_white);
+        drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+        searchRight.setCompoundDrawables(null, null, drawable, null);
+        getGoodsData();
+    }
 
     /**
      * 获取商品
