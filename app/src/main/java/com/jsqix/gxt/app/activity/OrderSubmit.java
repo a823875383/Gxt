@@ -32,6 +32,7 @@ import gxt.jsqix.com.mycommon.base.BaseToolActivity;
 import gxt.jsqix.com.mycommon.base.api.ApiClient;
 import gxt.jsqix.com.mycommon.base.api.HttpGet;
 import gxt.jsqix.com.mycommon.base.api.RequestIP;
+import gxt.jsqix.com.mycommon.base.util.CommUtils;
 
 @ContentView(R.layout.activity_order_submit)
 public class OrderSubmit extends BaseToolActivity implements HttpGet.InterfaceHttpGet {
@@ -118,7 +119,7 @@ public class OrderSubmit extends BaseToolActivity implements HttpGet.InterfaceHt
         HttpGet get = new HttpGet(this, paras, this) {
             @Override
             public void onPreExecute() {
-
+                loadingUtils.show();
             }
         };
         get.setResultCode(SURE_ORDER);
@@ -140,7 +141,7 @@ public class OrderSubmit extends BaseToolActivity implements HttpGet.InterfaceHt
         HttpGet get = new HttpGet(this, paras, this) {
             @Override
             public void onPreExecute() {
-
+                loadingUtils.show();
             }
         };
         get.setResultCode(SUBMIT_ORDER);
@@ -155,35 +156,40 @@ public class OrderSubmit extends BaseToolActivity implements HttpGet.InterfaceHt
                 sureResult(result);
                 break;
             case SUBMIT_ORDER:
-                OrderSubmitResult submitResult = new Gson().fromJson(result, OrderSubmitResult.class);
-                if (submitResult != null) {
-                    if (submitResult.getCode().equals("000")) {
-                        if (submitResult.getObj().size() == 1) {//支付页面
-                            OrderSubmitResult.ObjBean objBean = submitResult.getObj().get(0);
-                            Intent intent = new Intent(this, OrderPay.class);
-                            intent.putExtra(Constant.ID, objBean.getId());
-                            startActivity(intent);
-                        } else {//待支付订单页面
-                            Intent intent = new Intent();
-                            if ((int) aCache.getAsObject(Constant.U_IDENTITY) == 0) {
-                                intent.setClass(this, PurchaserMain.class);
-                                intent.putExtra(Constant.INDEX, 2);
-                                intent.putExtra(Constant.ORDER_TYPE, 1);
-                            } else {
-                                intent.setClass(this, FragmentActivity.class);
-                                intent.putExtra(Constant.INDEX, 1);
-                                intent.putExtra(Constant.NAME, getPackageName() + ".fragment." + "PurOrderFragment");
-                            }
-                            startActivity(intent);
-                        }
-                        finish();
-                    } else {
-                        Utils.makeToast(this, submitResult.getMsg());
-                    }
-                } else {
-                    Utils.makeToast(this, getString(R.string.network_timeout));
-                }
+                addOrderResult(result);
                 break;
+        }
+        loadingUtils.dismiss();
+    }
+
+    private void addOrderResult(String result) {
+        OrderSubmitResult submitResult = new Gson().fromJson(result, OrderSubmitResult.class);
+        if (submitResult != null) {
+            if (submitResult.getCode().equals("000")) {
+                if (submitResult.getObj().size() == 1) {//支付页面
+                    OrderSubmitResult.ObjBean objBean = submitResult.getObj().get(0);
+                    Intent intent = new Intent(this, OrderPay.class);
+                    intent.putExtra(Constant.ID, objBean.getId());
+                    startActivity(intent);
+                } else {//待支付订单页面
+                    Intent intent = new Intent();
+                    if ((int) aCache.getAsObject(Constant.U_IDENTITY) == 0) {
+                        intent.setClass(this, PurchaserMain.class);
+                        intent.putExtra(Constant.INDEX, 2);
+                        intent.putExtra(Constant.ORDER_TYPE, 1);
+                    } else {
+                        intent.setClass(this, FragmentActivity.class);
+                        intent.putExtra(Constant.INDEX, 1);
+                        intent.putExtra(Constant.NAME, getPackageName() + ".fragment." + "PurOrderFragment");
+                    }
+                    startActivity(intent);
+                }
+                finish();
+            } else {
+                Utils.makeToast(this, submitResult.getMsg());
+            }
+        } else {
+            Utils.makeToast(this, getString(R.string.network_timeout));
         }
     }
 
@@ -209,8 +215,8 @@ public class OrderSubmit extends BaseToolActivity implements HttpGet.InterfaceHt
                 adapter.notifyDataSetChanged();
 
                 goodsNum.setText(sureResult.getObj().getCounts() + "");
-                orderPrice.setText(sureResult.getObj().getTotal_amt() + "");
-                orderTotal.setText(getString(R.string.rmb) + sureResult.getObj().getTotal_amt());
+                orderPrice.setText(CommUtils.toFormat(sureResult.getObj().getTotal_amt()) + "");
+                orderTotal.setText(getString(R.string.rmb) + CommUtils.toFormat(sureResult.getObj().getTotal_amt()));
             } else {
                 Utils.makeToast(this, sureResult.getMsg());
             }

@@ -186,7 +186,7 @@ public class OrderPay extends BaseToolActivity implements HttpGet.InterfaceHttpG
         HttpGet get = new HttpGet(this, paras, this) {
             @Override
             public void onPreExecute() {
-
+                loadingUtils.show();
             }
         };
         get.setResultCode(BALANCE_QUERY);
@@ -225,6 +225,7 @@ public class OrderPay extends BaseToolActivity implements HttpGet.InterfaceHttpG
                 payResult(result);
                 break;
         }
+        loadingUtils.dismiss();
     }
 
     private void balanceResult(String result) {

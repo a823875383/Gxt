@@ -113,7 +113,7 @@ public class OrderInfo extends BaseToolActivity implements HttpGet.InterfaceHttp
         HttpGet get = new HttpGet(this, unParas, paras, this) {
             @Override
             public void onPreExecute() {
-
+                loadingUtils.show();
             }
         };
         get.execute(RequestIP.MY_ORDER_DETAIL);
@@ -283,6 +283,7 @@ public class OrderInfo extends BaseToolActivity implements HttpGet.InterfaceHttp
         } else {
             Utils.makeToast(this, getString(R.string.network_timeout));
         }
+        loadingUtils.dismiss();
     }
 
     @Override

@@ -20,15 +20,19 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 import gxt.jsqix.com.mycommon.R;
+import gxt.jsqix.com.mycommon.base.util.LoadingUtils;
 
 /**
  * Created by dq on 2016/9/9.
  */
 public abstract class BaseCompat extends BaseActivity implements View.OnClickListener {
+    public LoadingUtils loadingUtils;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        loadingUtils = new LoadingUtils(this);
+
         initVariable();
         startView();
         if (isTransparent()) {
@@ -43,7 +47,6 @@ public abstract class BaseCompat extends BaseActivity implements View.OnClickLis
                 getWindow().setStatusBarColor(getStatusColor());
             }
         }
-
     }
 
     private void startView() {

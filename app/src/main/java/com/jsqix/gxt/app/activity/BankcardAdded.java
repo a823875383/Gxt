@@ -82,7 +82,7 @@ public class BankcardAdded extends BaseToolActivity implements HttpGet.Interface
         HttpGet get = new HttpGet(this, paras, this) {
             @Override
             public void onPreExecute() {
-
+                loadingUtils.show();
             }
         };
         get.setResultCode(BANK_LIST);
@@ -100,7 +100,7 @@ public class BankcardAdded extends BaseToolActivity implements HttpGet.Interface
         HttpGet get = new HttpGet(this, paras, this) {
             @Override
             public void onPreExecute() {
-
+                loadingUtils.show();
             }
         };
         get.setResultCode(BANK_DELETE);
@@ -117,6 +117,7 @@ public class BankcardAdded extends BaseToolActivity implements HttpGet.Interface
                 deleteResult(result);
                 break;
         }
+        loadingUtils.dismiss();
     }
 
     private void deleteResult(String result) {

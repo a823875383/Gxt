@@ -77,9 +77,9 @@ public class PurchaserFragment extends BaseFragment implements HttpGet.Interface
     public void onResume() {
         super.onResume();
         if (getUserVisibleHint()) {
-            queryBalance();
             queryBank();
             queryAddress();
+            queryBalance();
         }
     }
 
@@ -88,9 +88,9 @@ public class PurchaserFragment extends BaseFragment implements HttpGet.Interface
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         if (isVisibleToUser && isResumed()) {
-            queryBalance();
             queryBank();
             queryAddress();
+            queryBalance();
         }
     }
 
@@ -134,7 +134,7 @@ public class PurchaserFragment extends BaseFragment implements HttpGet.Interface
         HttpGet get = new HttpGet(mContext, paras, this) {
             @Override
             public void onPreExecute() {
-
+                mContext.loadingUtils.show();
             }
         };
         get.setResultCode(BALANCE_QUERY);
@@ -183,6 +183,7 @@ public class PurchaserFragment extends BaseFragment implements HttpGet.Interface
                 countResult(resultCode, result);
                 break;
         }
+        mContext.loadingUtils.dismiss();
     }
 
     private void countResult(int resultCode, String result) {
@@ -210,7 +211,7 @@ public class PurchaserFragment extends BaseFragment implements HttpGet.Interface
         BalanceResult balanceResult = new Gson().fromJson(result, BalanceResult.class);
         if (balanceResult != null) {
             if (balanceResult.getCode().equals("000")) {
-                balanceAvailable.setText(CommUtils.toFormat( balanceResult.getObj() / 100.0));
+                balanceAvailable.setText(CommUtils.toFormat(balanceResult.getObj() / 100.0));
             } else {
                 Utils.makeToast(mContext, balanceResult.getMsg());
             }

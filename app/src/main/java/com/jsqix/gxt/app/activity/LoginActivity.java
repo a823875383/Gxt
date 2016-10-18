@@ -113,7 +113,7 @@ public class LoginActivity extends BaseCompat implements HttpGet.InterfaceHttpGe
         HttpGet get = new HttpGet(this, unparas, paras, this) {
             @Override
             public void onPreExecute() {
-
+                loadingUtils.show();
             }
         };
         get.execute(RequestIP.LOGIN);
@@ -148,6 +148,7 @@ public class LoginActivity extends BaseCompat implements HttpGet.InterfaceHttpGe
             Utils.makeToast(this, getString(R.string.network_timeout));
 
         }
+        loadingUtils.dismiss();
     }
 
     @Override

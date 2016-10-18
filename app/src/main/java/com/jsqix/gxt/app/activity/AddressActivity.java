@@ -170,7 +170,7 @@ public class AddressActivity extends BaseToolActivity implements HttpGet.Interfa
         HttpGet get = new HttpGet(this, unParas, paras, this) {
             @Override
             public void onPreExecute() {
-
+                loadingUtils.show();
             }
         };
         get.setResultCode(ADDR_QUERY);
@@ -194,7 +194,7 @@ public class AddressActivity extends BaseToolActivity implements HttpGet.Interfa
         HttpGet get = new HttpGet(this, unParas, paras, this) {
             @Override
             public void onPreExecute() {
-
+                loadingUtils.show();
             }
         };
         get.setResultCode(ADDR_ADD);
@@ -218,7 +218,7 @@ public class AddressActivity extends BaseToolActivity implements HttpGet.Interfa
         HttpGet get = new HttpGet(this, unParas, paras, this) {
             @Override
             public void onPreExecute() {
-
+                loadingUtils.show();
             }
         };
         get.setResultCode(ADDR_MODIFY);
@@ -232,7 +232,7 @@ public class AddressActivity extends BaseToolActivity implements HttpGet.Interfa
         HttpGet get = new HttpGet(this, paras, this) {
             @Override
             public void onPreExecute() {
-
+                loadingUtils.show();
             }
         };
         get.setResultCode(ADDR_DELETE);
@@ -262,6 +262,7 @@ public class AddressActivity extends BaseToolActivity implements HttpGet.Interfa
                 break;
 
         }
+        loadingUtils.dismiss();
     }
 
     private void dataResult(String result) {

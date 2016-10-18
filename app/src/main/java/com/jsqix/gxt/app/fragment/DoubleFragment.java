@@ -72,9 +72,9 @@ public class DoubleFragment extends BaseFragment implements HttpGet.InterfaceHtt
     public void onResume() {
         super.onResume();
         if (getUserVisibleHint()) {
-            queryBalance();
             queryBank();
             queryAddress();
+            queryBalance();
         }
     }
 
@@ -83,9 +83,9 @@ public class DoubleFragment extends BaseFragment implements HttpGet.InterfaceHtt
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         if (isVisibleToUser && isResumed()) {
-            queryBalance();
             queryBank();
             queryAddress();
+            queryBalance();
         }
     }
 
@@ -140,7 +140,7 @@ public class DoubleFragment extends BaseFragment implements HttpGet.InterfaceHtt
         HttpGet get = new HttpGet(mContext, paras, this) {
             @Override
             public void onPreExecute() {
-
+                mContext.loadingUtils.show();
             }
         };
         get.setResultCode(BALANCE_QUERY);
@@ -189,6 +189,7 @@ public class DoubleFragment extends BaseFragment implements HttpGet.InterfaceHtt
                 countResult(resultCode, result);
                 break;
         }
+        mContext.loadingUtils.dismiss();
     }
 
     private void countResult(int resultCode, String result) {

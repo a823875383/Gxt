@@ -98,7 +98,7 @@ public class CitySelect extends BaseToolActivity implements HttpGet.InterfaceHtt
         HttpGet get = new HttpGet(this, unParas, paras, this) {
             @Override
             public void onPreExecute() {
-
+                loadingUtils.show();
             }
         };
         get.execute(RequestIP.PRO_LIST);
@@ -120,6 +120,6 @@ public class CitySelect extends BaseToolActivity implements HttpGet.InterfaceHtt
         } else {
             Utils.makeToast(this, getString(R.string.network_timeout));
         }
-
+        loadingUtils.dismiss();
     }
 }

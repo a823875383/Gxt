@@ -84,7 +84,7 @@ public class BankcradChoose extends BaseToolActivity implements HttpGet.Interfac
         HttpGet get = new HttpGet(this, paras, this) {
             @Override
             public void onPreExecute() {
-
+                loadingUtils.show();
             }
         };
         get.execute(RequestIP.BACK_LISTS);
@@ -112,6 +112,7 @@ public class BankcradChoose extends BaseToolActivity implements HttpGet.Interfac
         } else {
             Utils.makeToast(this, getString(R.string.network_timeout));
         }
+        loadingUtils.dismiss();
     }
 
     @Override

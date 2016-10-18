@@ -113,7 +113,7 @@ public class BankcardAdd extends BaseToolActivity implements HttpGet.InterfaceHt
         HttpGet get = new HttpGet(this, paras, this) {
             @Override
             public void onPreExecute() {
-
+                loadingUtils.show();
             }
         };
         get.execute(RequestIP.ADD_BANKS);
@@ -130,5 +130,6 @@ public class BankcardAdd extends BaseToolActivity implements HttpGet.InterfaceHt
         } else {
             Utils.makeToast(this, getString(R.string.network_timeout));
         }
+        loadingUtils.dismiss();
     }
 }

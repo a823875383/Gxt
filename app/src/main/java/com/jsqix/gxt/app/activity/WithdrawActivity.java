@@ -104,8 +104,8 @@ public class WithdrawActivity extends BaseToolActivity implements HttpGet.Interf
                         return;
                     }
                 }
-                if(s.toString().equals("0.00")){
-                    s="0.01";
+                if (s.toString().equals("0.00")) {
+                    s = "0.01";
                     inputMoney.setText(s);
                     inputMoney.setSelection(s.length());
                 }
@@ -174,7 +174,7 @@ public class WithdrawActivity extends BaseToolActivity implements HttpGet.Interf
         HttpGet get = new HttpGet(this, paras, this) {
             @Override
             public void onPreExecute() {
-
+                loadingUtils.show();
             }
         };
         get.setResultCode(BALANCE_QUERY);
@@ -193,7 +193,7 @@ public class WithdrawActivity extends BaseToolActivity implements HttpGet.Interf
         HttpGet get = new HttpGet(this, paras, this) {
             @Override
             public void onPreExecute() {
-
+                loadingUtils.show();
             }
         };
         get.setResultCode(WITHDRAW);
@@ -213,6 +213,7 @@ public class WithdrawActivity extends BaseToolActivity implements HttpGet.Interf
                 withdrawResult(result);
                 break;
         }
+        loadingUtils.dismiss();
     }
 
     private void withdrawResult(String result) {

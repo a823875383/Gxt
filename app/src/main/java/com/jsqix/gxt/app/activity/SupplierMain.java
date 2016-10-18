@@ -82,12 +82,13 @@ public class SupplierMain extends BaseCompat implements HttpGet.InterfaceHttpGet
     @Override
     protected void onResume() {
         super.onResume();
-        queryBalance();
+
         queryOrderNum(0, ORDER_ALL);
         queryOrderNum(1, ORDER_UNPAY);
         queryOrderNum(2, ORDER_UNRECEIVE);
         queryOrderNum(3, ORDER_REFUND);
         queryOrderNum(4, ORDER_DONE);
+        queryBalance();
     }
 
     @Event(R.id.iv_set)
@@ -172,7 +173,7 @@ public class SupplierMain extends BaseCompat implements HttpGet.InterfaceHttpGet
         HttpGet get = new HttpGet(this, paras, this) {
             @Override
             public void onPreExecute() {
-
+                loadingUtils.show();
             }
         };
         get.setResultCode(BALANCE_QUERY);
@@ -207,6 +208,7 @@ public class SupplierMain extends BaseCompat implements HttpGet.InterfaceHttpGet
                 countResult(resultCode, result);
                 break;
         }
+        loadingUtils.dismiss();
     }
 
     private void countResult(int resultCode, String result) {

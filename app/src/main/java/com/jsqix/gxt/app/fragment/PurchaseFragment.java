@@ -339,6 +339,6 @@ public class PurchaseFragment extends BaseFragment implements HttpGet.InterfaceH
                 sum += listBean.getCart_number() * listBean.getWholesale_price();
             }
         }
-        totlaMoney.setText(getString(R.string.rmb) + sum);
+        totlaMoney.setText(getString(R.string.rmb) + CommUtils.toFormat(sum));
     }
 }

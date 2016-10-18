@@ -357,7 +357,7 @@ public class MerchandiseInfo extends BaseCompat implements HttpGet.InterfaceHttp
         HttpGet get = new HttpGet(this, paras, this) {
             @Override
             public void onPreExecute() {
-
+                loadingUtils.show();
             }
         };
         get.execute(RequestIP.LIST_GOODS_STANDARD);
@@ -403,7 +403,7 @@ public class MerchandiseInfo extends BaseCompat implements HttpGet.InterfaceHttp
         HttpGet get = new HttpGet(this, paras, this) {
             @Override
             public void onPreExecute() {
-
+                loadingUtils.show();
             }
         };
         get.execute(RequestIP.ADD_CART);
@@ -426,6 +426,7 @@ public class MerchandiseInfo extends BaseCompat implements HttpGet.InterfaceHttp
                 cartResult(result);
                 break;
         }
+        loadingUtils.dismiss();
     }
 
     private void cartResult(String result) {

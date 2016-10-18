@@ -95,7 +95,7 @@ public class AddressChoose extends BaseToolActivity implements HttpGet.Interface
         HttpGet get = new HttpGet(this, unParas, Paras, this) {
             @Override
             public void onPreExecute() {
-
+                loadingUtils.show();
             }
         };
         get.execute(RequestIP.ADDRESS_LIST);
@@ -128,6 +128,7 @@ public class AddressChoose extends BaseToolActivity implements HttpGet.Interface
         } else {
             Utils.makeToast(this, getString(R.string.network_timeout));
         }
+        loadingUtils.dismiss();
     }
 
     @Override

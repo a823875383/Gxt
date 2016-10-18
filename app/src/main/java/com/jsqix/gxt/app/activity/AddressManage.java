@@ -83,7 +83,7 @@ public class AddressManage extends BaseToolActivity implements HttpGet.Interface
         HttpGet get = new HttpGet(this, unParas, Paras, this) {
             @Override
             public void onPreExecute() {
-
+                loadingUtils.show();
             }
         };
         get.setResultCode(ADDR_QUERY);
@@ -102,7 +102,7 @@ public class AddressManage extends BaseToolActivity implements HttpGet.Interface
         HttpGet get = new HttpGet(this, paras, this) {
             @Override
             public void onPreExecute() {
-
+                loadingUtils.show();
             }
         };
         get.setResultCode(ADDR_DEFALUT);
@@ -120,6 +120,7 @@ public class AddressManage extends BaseToolActivity implements HttpGet.Interface
                 defaultResult(result);
                 break;
         }
+        loadingUtils.dismiss();
     }
 
     private void defaultResult(String result) {
