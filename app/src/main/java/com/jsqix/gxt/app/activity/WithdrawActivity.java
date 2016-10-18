@@ -53,7 +53,7 @@ public class WithdrawActivity extends BaseToolActivity implements HttpGet.Interf
     private TextView balanceAvailable;
 
     private int bankId;
-    private double avaiableMoney;
+    private double availableMoney;
     final static int BALANCE_QUERY = 0x0001, BANK_LIST = 0x0010, WITHDRAW = 0x0011;
 
     @Override
@@ -76,7 +76,39 @@ public class WithdrawActivity extends BaseToolActivity implements HttpGet.Interf
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (s.toString().contains(".")) {
+                    if (s.length() - 1 - s.toString().indexOf(".") > 2) {//保留两位小数
+                        s = s.toString().subSequence(0,
+                                s.toString().indexOf(".") + 3);
+                        inputMoney.setText(s);
+                        inputMoney.setSelection(s.length());
+                    }
 
+                }
+                if (s.toString().trim().substring(0).equals(".")) {//自动添加0
+                    s = "0" + s;
+                    inputMoney.setText(s);
+                    inputMoney.setSelection(2);
+                }
+                if (CommUtils.toDouble(s) > availableMoney) {
+                    s = availableMoney + "";
+                    inputMoney.setText(s);
+                    inputMoney.setSelection(s.length());
+                    return;
+                }
+                if (s.toString().startsWith("0")
+                        && s.toString().trim().length() > 1) {//0开头
+                    if (!s.toString().substring(1, 2).equals(".")) {
+                        inputMoney.setText(s.subSequence(1, 2));
+                        inputMoney.setSelection(1);
+                        return;
+                    }
+                }
+                if(s.toString().equals("0.00")){
+                    s="0.01";
+                    inputMoney.setText(s);
+                    inputMoney.setSelection(s.length());
+                }
             }
 
             @Override
@@ -199,8 +231,8 @@ public class WithdrawActivity extends BaseToolActivity implements HttpGet.Interf
         BalanceResult balanceResult = new Gson().fromJson(result, BalanceResult.class);
         if (balanceResult != null) {
             if (balanceResult.getCode().equals("000")) {
-                avaiableMoney = balanceResult.getObj() / 100.0;
-                balanceAvailable.setText(getString(R.string.balance_available).replace("x", CommUtils.toFormat(avaiableMoney)));
+                availableMoney = balanceResult.getObj() / 100.0;
+                balanceAvailable.setText(getString(R.string.balance_available).replace("x", CommUtils.toFormat(availableMoney)));
             } else {
                 Utils.makeToast(this, balanceResult.getMsg());
             }

@@ -41,10 +41,11 @@ public class OrderPay extends BaseToolActivity implements HttpGet.InterfaceHttpG
     private TextView balanceAvailable;
 
     private CustomDialog payDialog;
-    private EditText payMoeny, payPass;
+    private EditText payMoney, payPass;
     private Button submit, cancel;
 
     private int orderId;
+    private double availableMoney, needMoney;
     final static int ORDER_QUERY = 0x0001, BALANCE_QUERY = 0x0010, ORDER_PAY = 0x0011;
 
     @Override
@@ -75,12 +76,12 @@ public class OrderPay extends BaseToolActivity implements HttpGet.InterfaceHttpG
     private void initPayDialog() {
         payDialog = new CustomDialog(this);
         View view = LayoutInflater.from(this).inflate(R.layout.view_balance_pay, null);
-        payMoeny = (EditText) view.findViewById(R.id.et_money);
+        payMoney = (EditText) view.findViewById(R.id.et_money);
         payPass = (EditText) view.findViewById(R.id.et_pass);
         submit = (Button) view.findViewById(R.id.bt_submit);
         cancel = (Button) view.findViewById(R.id.bt_cancel);
         submit.setOnClickListener(v -> {
-            if (StringUtils.isEmpty(CommUtils.textToString(payMoeny))) {
+            if (StringUtils.isEmpty(CommUtils.textToString(payMoney))) {
                 Utils.makeToast(this, "请输入支付金额");
             } else if (StringUtils.isEmpty(CommUtils.textToString(payPass))) {
                 Utils.makeToast(this, "请输入支付密码");
@@ -91,7 +92,7 @@ public class OrderPay extends BaseToolActivity implements HttpGet.InterfaceHttpG
         cancel.setOnClickListener(v -> {
             payDialog.dismiss();
         });
-        payMoeny.addTextChangedListener(new TextWatcher() {
+        payMoney.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -99,7 +100,50 @@ public class OrderPay extends BaseToolActivity implements HttpGet.InterfaceHttpG
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (s.toString().contains(".")) {
+                    if (s.length() - 1 - s.toString().indexOf(".") > 2) {//保留两位小数
+                        s = s.toString().subSequence(0,
+                                s.toString().indexOf(".") + 3);
+                        payMoney.setText(s);
+                        payMoney.setSelection(s.length());
+                    }
 
+                }
+                if (s.toString().trim().substring(0).equals(".")) {//自动添加0
+                    s = "0" + s;
+                    payMoney.setText(s);
+                    payMoney.setSelection(2);
+                }
+                if (needMoney > availableMoney) {
+                    if (CommUtils.toDouble(s) > availableMoney) {
+                        s = availableMoney + "";
+                        payMoney.setText(s);
+                        payMoney.setSelection(s.length());
+                        return;
+                    }
+                } else {
+                    if (CommUtils.toDouble(s) > needMoney) {
+                        s = needMoney + "";
+                        payMoney.setText(s);
+                        payMoney.setSelection(s.length());
+                        return;
+                    }
+                }
+
+
+                if (s.toString().startsWith("0")
+                        && s.toString().trim().length() > 1) {//0开头
+                    if (!s.toString().substring(1, 2).equals(".")) {
+                        payMoney.setText(s.subSequence(1, 2));
+                        payMoney.setSelection(1);
+                        return;
+                    }
+                }
+                if (s.toString().equals("0.00")) {
+                    s = "0.01";
+                    payMoney.setText(s);
+                    payMoney.setSelection(s.length());
+                }
             }
 
             @Override
@@ -156,7 +200,7 @@ public class OrderPay extends BaseToolActivity implements HttpGet.InterfaceHttpG
         Map<String, Object> paras = new HashMap<>();
         paras.put("userId", aCache.getAsString(Constant.U_ID));
         paras.put("orderId", orderId);
-        paras.put("payAmt", CommUtils.textToString(payMoeny));
+        paras.put("payAmt", CommUtils.textToString(payMoney));
         paras.put("payPwd", CommUtils.textToString(payPass));
         HttpGet get = new HttpGet(this, paras, this) {
             @Override
@@ -187,7 +231,8 @@ public class OrderPay extends BaseToolActivity implements HttpGet.InterfaceHttpG
         BalanceResult balanceResult = new Gson().fromJson(result, BalanceResult.class);
         if (balanceResult != null) {
             if (balanceResult.getCode().equals("000")) {
-                balanceAvailable.setText(getString(R.string.balance_available).replace("x", CommUtils.toFormat(balanceResult.getObj() / 100.0)));
+                availableMoney = balanceResult.getObj() / 100.0;
+                balanceAvailable.setText(getString(R.string.balance_available).replace("x", CommUtils.toFormat(availableMoney)));
             } else {
                 Utils.makeToast(this, balanceResult.getMsg());
             }
@@ -213,11 +258,11 @@ public class OrderPay extends BaseToolActivity implements HttpGet.InterfaceHttpG
         OrderMoneyResult moneyResult = new Gson().fromJson(result, OrderMoneyResult.class);
         if (moneyResult != null) {
             if (moneyResult.getCode().equals("000")) {
-                double needPay = moneyResult.getObj().get(0).getOrder_totals() - moneyResult.getObj().get(0).getPaid_amt();
+                needMoney = moneyResult.getObj().get(0).getOrder_totals() - moneyResult.getObj().get(0).getPaid_amt();
                 if (moneyResult.getObj().get(0).getOrder_status() == 100402) {
                     finish();
                 }
-                orderMoney.setText(getString(R.string.rmb) + needPay);
+                orderMoney.setText(getString(R.string.rmb) + needMoney);
                 queryBalance();
             } else {
                 Utils.makeToast(this, moneyResult.getMsg());
