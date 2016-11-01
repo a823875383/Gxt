@@ -17,6 +17,7 @@ public class ApiClient {
 //    public static final String RequestIP = UAD.getRequestIp();
 
     public final static int P_ID = 102204;
+    public final static int ACC_TYPE = 100104;
     public final static int ORDER_TYPE = 1002;
     public final static int CHANNEL = 1003;
     public final static String UTF_8 = "UTF-8";

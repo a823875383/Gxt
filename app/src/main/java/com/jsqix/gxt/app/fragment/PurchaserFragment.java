@@ -4,7 +4,6 @@ package com.jsqix.gxt.app.fragment;
 import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -16,8 +15,8 @@ import com.jsqix.gxt.app.activity.ChangePassword;
 import com.jsqix.gxt.app.activity.ChangePhoneFirst;
 import com.jsqix.gxt.app.activity.RechargeFirst;
 import com.jsqix.gxt.app.activity.WithdrawActivity;
-import com.jsqix.gxt.app.obj.BalanceResult;
 import com.jsqix.gxt.app.obj.CountResult;
+import com.jsqix.gxt.app.obj.UserBalanceResult;
 import com.jsqix.gxt.app.utils.Constant;
 import com.jsqix.utils.DensityUtil;
 import com.jsqix.utils.Utils;
@@ -30,6 +29,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import gxt.jsqix.com.mycommon.base.BaseFragment;
+import gxt.jsqix.com.mycommon.base.api.ApiClient;
 import gxt.jsqix.com.mycommon.base.api.HttpGet;
 import gxt.jsqix.com.mycommon.base.api.RequestIP;
 import gxt.jsqix.com.mycommon.base.util.CommUtils;
@@ -44,7 +44,7 @@ public class PurchaserFragment extends BaseFragment implements HttpGet.Interface
     @ViewInject(R.id.layout_user)
     private LinearLayout users;
     @ViewInject(R.id.iv_set)
-    private ImageView imgSet;
+    private TextView imgSet;
     @ViewInject(R.id.tv_money)
     private TextView balanceAvailable;
     @ViewInject(R.id.tv_address)
@@ -60,7 +60,9 @@ public class PurchaserFragment extends BaseFragment implements HttpGet.Interface
 
     @Override
     protected void initView() {
-        imgSet.setVisibility(View.GONE);
+//        imgSet.setVisibility(View.GONE);
+        imgSet.setCompoundDrawables(null, null, null, null);
+        imgSet.setText("注销");
 
         //title margin透明通知栏高度
         ViewGroup.MarginLayoutParams lp = (ViewGroup.MarginLayoutParams) users.getLayoutParams();
@@ -129,16 +131,20 @@ public class PurchaserFragment extends BaseFragment implements HttpGet.Interface
      * 查询用户余额
      */
     private void queryBalance() {
+        Map<String, Object> unParas = new HashMap<>();
+        unParas.put("platId", ApiClient.P_ID);
         Map<String, Object> paras = new HashMap<>();
         paras.put("userId", mContext.aCache.getAsString(Constant.U_ID));
-        HttpGet get = new HttpGet(mContext, paras, this) {
+        paras.put("timeStamp", System.currentTimeMillis());
+        paras.put("acctType", ApiClient.ACC_TYPE);
+        HttpGet get = new HttpGet(mContext, unParas, paras, this) {
             @Override
             public void onPreExecute() {
                 mContext.loadingUtils.show();
             }
         };
         get.setResultCode(BALANCE_QUERY);
-        get.execute(RequestIP.GET_USER_BALANCE);
+        get.execute(RequestIP.USER_BALANCE);
     }
 
     /**
@@ -158,7 +164,7 @@ public class PurchaserFragment extends BaseFragment implements HttpGet.Interface
     }
 
     /**
-     * 查询用户收货地址数量
+     * 查询银行卡数量
      */
     private void queryBank() {
         Map<String, Object> paras = new HashMap<>();
@@ -208,10 +214,10 @@ public class PurchaserFragment extends BaseFragment implements HttpGet.Interface
     }
 
     private void balanceResult(String result) {
-        BalanceResult balanceResult = new Gson().fromJson(result, BalanceResult.class);
+        UserBalanceResult balanceResult = new Gson().fromJson(result, UserBalanceResult.class);
         if (balanceResult != null) {
             if (balanceResult.getCode().equals("000")) {
-                balanceAvailable.setText(CommUtils.toFormat(balanceResult.getObj() / 100.0));
+                balanceAvailable.setText(CommUtils.toFormat(balanceResult.getObj().getAcc_balance() / 100.0));
             } else {
                 Utils.makeToast(mContext, balanceResult.getMsg());
             }

@@ -52,6 +52,8 @@ public class RequestIP {
     public final static String MY_ORDER_DETAIL = IP + "order/myOrderDetail";
     public final static String PROC_PRESENT_APPLYS = IP + "order/procPresentApply";
 
-    public final static String ORDER_COUNT = IP + "account/counts";
+    public final static String ORDER_COUNT = IP + "account/count";
+    public final static String ORDER_COUNT1 = IP + "account/count1";
+    public final static String USER_BALANCE = IP + "account/UserBalance";
 
 }

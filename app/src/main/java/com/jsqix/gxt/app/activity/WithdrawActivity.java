@@ -13,8 +13,8 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.jsqix.gxt.app.R;
-import com.jsqix.gxt.app.obj.BalanceResult;
 import com.jsqix.gxt.app.obj.BankListResult;
+import com.jsqix.gxt.app.obj.UserBalanceResult;
 import com.jsqix.gxt.app.utils.Constant;
 import com.jsqix.utils.StringUtils;
 import com.jsqix.utils.Utils;
@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import gxt.jsqix.com.mycommon.base.BaseToolActivity;
+import gxt.jsqix.com.mycommon.base.api.ApiClient;
 import gxt.jsqix.com.mycommon.base.api.HttpGet;
 import gxt.jsqix.com.mycommon.base.api.RequestIP;
 import gxt.jsqix.com.mycommon.base.bean.BaseBean;
@@ -52,7 +53,7 @@ public class WithdrawActivity extends BaseToolActivity implements HttpGet.Interf
     @ViewInject(R.id.tv_available)
     private TextView balanceAvailable;
 
-    private int bankId;
+    private int bankId = 0;
     private double availableMoney;
     final static int BALANCE_QUERY = 0x0001, BANK_LIST = 0x0010, WITHDRAW = 0x0011;
 
@@ -116,12 +117,13 @@ public class WithdrawActivity extends BaseToolActivity implements HttpGet.Interf
 
             }
         });
+
+        getBankList();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        getBankList();
         queryBalance();
     }
 
@@ -141,7 +143,9 @@ public class WithdrawActivity extends BaseToolActivity implements HttpGet.Interf
 
     @Event(R.id.bt_done)
     private void withdrawClick(View v) {
-        if (!StringUtils.isEmpty(CommUtils.textToString(inputMoney))) {
+        if (bankId == 0) {
+            Utils.makeToast(this, "请添加银行卡");
+        } else if (!StringUtils.isEmpty(CommUtils.textToString(inputMoney))) {
             withdraw(CommUtils.textToString(inputMoney));
         } else {
             Utils.makeToast(this, "请输入提现金额");
@@ -169,16 +173,20 @@ public class WithdrawActivity extends BaseToolActivity implements HttpGet.Interf
      * 查询用户余额
      */
     private void queryBalance() {
+        Map<String, Object> unParas = new HashMap<>();
+        unParas.put("platId", ApiClient.P_ID);
         Map<String, Object> paras = new HashMap<>();
         paras.put("userId", aCache.getAsString(Constant.U_ID));
-        HttpGet get = new HttpGet(this, paras, this) {
+        paras.put("timeStamp", System.currentTimeMillis());
+        paras.put("acctType", ApiClient.ACC_TYPE);
+        HttpGet get = new HttpGet(this, unParas, paras, this) {
             @Override
             public void onPreExecute() {
                 loadingUtils.show();
             }
         };
         get.setResultCode(BALANCE_QUERY);
-        get.execute(RequestIP.GET_USER_BALANCE);
+        get.execute(RequestIP.USER_BALANCE);
     }
 
     /**
@@ -229,10 +237,10 @@ public class WithdrawActivity extends BaseToolActivity implements HttpGet.Interf
     }
 
     private void balanceResult(String result) {
-        BalanceResult balanceResult = new Gson().fromJson(result, BalanceResult.class);
+        UserBalanceResult balanceResult = new Gson().fromJson(result, UserBalanceResult.class);
         if (balanceResult != null) {
             if (balanceResult.getCode().equals("000")) {
-                availableMoney = balanceResult.getObj() / 100.0;
+                availableMoney = balanceResult.getObj().getAcc_balance() / 100.0;
                 balanceAvailable.setText(getString(R.string.balance_available).replace("x", CommUtils.toFormat(availableMoney)));
             } else {
                 Utils.makeToast(this, balanceResult.getMsg());

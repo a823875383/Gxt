@@ -11,13 +11,13 @@ public class BalanceResult extends BaseBean {
      * obj : 98983507
      */
 
-    private long obj;
+    private double obj;
 
-    public long getObj() {
+    public double getObj() {
         return obj;
     }
 
-    public void setObj(long obj) {
+    public void setObj(double obj) {
         this.obj = obj;
     }
 }

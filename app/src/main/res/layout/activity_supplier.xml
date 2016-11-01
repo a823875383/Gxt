@@ -7,47 +7,55 @@
     android:orientation="vertical"
     tools:context=".activity.SupplierSet">
 
-    <TextView
-        style="@style/LightText"
-        android:layout_height="@dimen/off_50dp"
-        android:gravity="center_vertical"
-        android:padding="@dimen/off_10dp"
-        android:text="@string/my_account">
-
-    </TextView>
-
-    <View style="@style/div_style" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
         android:orientation="vertical"
-        android:paddingLeft="@dimen/off_10dp"
-        android:paddingRight="@dimen/off_10dp">
+        android:visibility="gone">
 
         <TextView
-            android:id="@+id/tv_change_phone"
-            style="@style/BlackText"
-            android:layout_width="match_parent"
+            style="@style/LightText"
             android:layout_height="@dimen/off_50dp"
-            android:drawableRight="@mipmap/ic_arrow"
             android:gravity="center_vertical"
-            android:text="@string/change_phone" />
+            android:padding="@dimen/off_10dp"
+            android:text="@string/my_account">
+
+        </TextView>
 
         <View style="@style/div_style" />
 
-        <TextView
-            android:id="@+id/tv_change_pass"
-            style="@style/BlackText"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/off_50dp"
-            android:drawableRight="@mipmap/ic_arrow"
-            android:gravity="center_vertical"
-            android:text="@string/change_pass" />
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/off_10dp"
+            android:paddingRight="@dimen/off_10dp">
+
+            <TextView
+                android:id="@+id/tv_change_phone"
+                style="@style/BlackText"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/off_50dp"
+                android:drawableRight="@mipmap/ic_arrow"
+                android:gravity="center_vertical"
+                android:text="@string/change_phone" />
+
+            <View style="@style/div_style" />
+
+            <TextView
+                android:id="@+id/tv_change_pass"
+                style="@style/BlackText"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/off_50dp"
+                android:drawableRight="@mipmap/ic_arrow"
+                android:gravity="center_vertical"
+                android:text="@string/change_pass" />
+        </LinearLayout>
+
+        <View style="@style/div_style" />
     </LinearLayout>
 
-    <View style="@style/div_style" />
 
     <TextView
         style="@style/LightText"
@@ -91,4 +99,20 @@
     </LinearLayout>
 
     <View style="@style/div_style" />
+
+    <View
+        style="@style/div_style"
+        android:layout_marginTop="@dimen/off_50dp" />
+
+    <TextView
+        android:id="@+id/tv_exit"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/off_50dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:text="@string/exit"
+        android:textColor="@color/actionsheet_red" />
+
+    <View style="@style/div_style" />
+
 </LinearLayout>

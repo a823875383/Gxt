@@ -110,6 +110,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:layout_marginTop="@dimen/off_10dp"
+            android:visibility="gone"
             android:text="@string/login_forget" />
 
         <Button

@@ -245,7 +245,9 @@ public class OrderPay extends BaseToolActivity implements HttpGet.InterfaceHttpG
     private void payResult(String result) {
         BaseBean baseBean = new Gson().fromJson(result, BaseBean.class);
         if (baseBean != null) {
-            Utils.makeToast(this, baseBean.getMsg());
+            if (!baseBean.getCode().equals("000")) {
+                Utils.makeToast(this, baseBean.getMsg());
+            }
             if (baseBean.getCode().equals("000")) {
                 payDialog.dismiss();
                 queryOrder();
@@ -261,6 +263,7 @@ public class OrderPay extends BaseToolActivity implements HttpGet.InterfaceHttpG
             if (moneyResult.getCode().equals("000")) {
                 needMoney = moneyResult.getObj().get(0).getOrder_totals() - moneyResult.getObj().get(0).getPaid_amt();
                 if (moneyResult.getObj().get(0).getOrder_status() == 100402) {
+                    Utils.makeToast(this, "订单支付成功");
                     finish();
                 }
                 orderMoney.setText(getString(R.string.rmb) + needMoney);

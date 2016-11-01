@@ -44,7 +44,9 @@
         <activity android:name=".activity.BankcradChoose" />
         <activity android:name=".activity.BankcardAdded" />
         <activity android:name=".activity.SupplierMerchandise" />
-        <activity android:name=".activity.SupplierSearch" />
+        <activity
+            android:name=".activity.SupplierSearch"
+            android:windowSoftInputMode="stateVisible" />
         <activity android:name=".activity.PurchaseSearch" />
         <activity android:name=".activity.OrderActivity" />
         <activity android:name=".activity.AddressManage" />
@@ -56,7 +58,7 @@
         <activity android:name=".activity.OrderSubmit" />
         <activity android:name=".activity.MerchandiseInfo" />
         <activity android:name=".activity.OrderPay" />
-        <activity android:name=".activity.CitySelect"></activity>
+        <activity android:name=".activity.CitySelect"/>
     </application>
 
 </manifest>

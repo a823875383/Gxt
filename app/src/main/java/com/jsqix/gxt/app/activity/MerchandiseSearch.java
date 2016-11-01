@@ -1,9 +1,11 @@
 package com.jsqix.gxt.app.activity;
 
+import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -31,7 +33,7 @@ import gxt.jsqix.com.mycommon.base.view.RefreshHeader;
  * 搜索
  */
 @ContentView(R.layout.activity_merchandise_search)
-public abstract class MerchandiseSearch extends BaseCompat implements PullToRefreshBase.OnRefreshListener2<ListView>{
+public abstract class MerchandiseSearch extends BaseCompat implements PullToRefreshBase.OnRefreshListener2<ListView> {
     @ViewInject(R.id.refreshListView)
     protected PullToRefreshListView refreshListView;
     @ViewInject(R.id.title_bar)
@@ -46,7 +48,10 @@ public abstract class MerchandiseSearch extends BaseCompat implements PullToRefr
     private EditText searchEdit;
     @ViewInject(R.id.tv_right)
     private TextView mRight;
-
+    @ViewInject(R.id.empty_view)
+    protected LinearLayout emptyView;
+    @ViewInject(R.id.tv_empty)
+    private TextView emptyMsg;
 
 
     protected GoodsOpUtils opUtils;
@@ -61,6 +66,8 @@ public abstract class MerchandiseSearch extends BaseCompat implements PullToRefr
     @Event(R.id.tv_left)
     private void backClick(View v) {
         finish();
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(searchEdit.getWindowToken(), 0);
     }
 
     @Event(R.id.tv_right)
@@ -82,6 +89,8 @@ public abstract class MerchandiseSearch extends BaseCompat implements PullToRefr
                 searchEdit.setText("");
                 search(key);
                 refreshListView.setVisibility(View.VISIBLE);
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(searchEdit.getWindowToken(), 0);
             }
         } else {
             mRight.setCompoundDrawables(null, null, null, null);
@@ -89,6 +98,9 @@ public abstract class MerchandiseSearch extends BaseCompat implements PullToRefr
             mTitle.setVisibility(View.GONE);
             searchLayout.setVisibility(View.VISIBLE);
             refreshListView.setVisibility(View.GONE);
+            emptyView.setVisibility(View.GONE);
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.showSoftInput(searchEdit, InputMethodManager.SHOW_FORCED);
         }
     }
 
@@ -103,7 +115,7 @@ public abstract class MerchandiseSearch extends BaseCompat implements PullToRefr
         refreshListView.setHeaderLayout(new RefreshHeader(this));
         refreshListView.setFooterLayout(new RefreshFooter(this));
 
-//        refreshListView.setEmptyView();
+        emptyMsg.setText("对不起，您搜索的商品不存在！");
     }
 
     @Override

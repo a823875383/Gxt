@@ -11,8 +11,8 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.jsqix.gxt.app.R;
 import com.jsqix.gxt.app.app.AppContext;
-import com.jsqix.gxt.app.obj.BalanceResult;
 import com.jsqix.gxt.app.obj.CountResult;
+import com.jsqix.gxt.app.obj.UserBalanceResult;
 import com.jsqix.gxt.app.utils.Constant;
 import com.jsqix.utils.DensityUtil;
 import com.jsqix.utils.Utils;
@@ -25,6 +25,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import gxt.jsqix.com.mycommon.base.BaseCompat;
+import gxt.jsqix.com.mycommon.base.api.ApiClient;
 import gxt.jsqix.com.mycommon.base.api.HttpGet;
 import gxt.jsqix.com.mycommon.base.api.RequestIP;
 import gxt.jsqix.com.mycommon.base.util.CommUtils;
@@ -51,7 +52,7 @@ public class SupplierMain extends BaseCompat implements HttpGet.InterfaceHttpGet
     private TextView orderDoneCount;
 
 
-    final static int BALANCE_QUERY = 0x0001, ORDER_ALL = 0x0010, ORDER_UNPAY = 0x0020, ORDER_UNRECEIVE = 0x0030, ORDER_REFUND = 0x0040, ORDER_DONE = 0x0050;
+    final static int BALANCE_QUERY = 0x0001, ORDER_ALL = 0x0010, ORDER_UNPAY = 0x0020, ORDER_UNRECEIVE1 = 0x0030, ORDER_UNRECEIVE2 = 0x0031, ORDER_REFUND = 0x0040, ORDER_DONE1 = 0x0050, ORDER_DONE2 = 0x0051;
 
 
     @Override
@@ -83,11 +84,13 @@ public class SupplierMain extends BaseCompat implements HttpGet.InterfaceHttpGet
     protected void onResume() {
         super.onResume();
 
-        queryOrderNum(0, ORDER_ALL);
-        queryOrderNum(1, ORDER_UNPAY);
-        queryOrderNum(2, ORDER_UNRECEIVE);
-        queryOrderNum(3, ORDER_REFUND);
-        queryOrderNum(4, ORDER_DONE);
+        queryRefundNum(ORDER_REFUND);
+        queryOrderNum(-1, ORDER_ALL);
+        queryOrderNum(100401, ORDER_UNPAY);
+        queryOrderNum(100402, ORDER_UNRECEIVE1);
+        queryOrderNum(100403, ORDER_UNRECEIVE2);
+        queryOrderNum(100404, ORDER_DONE1);
+        queryOrderNum(100405, ORDER_DONE2);
         queryBalance();
     }
 
@@ -168,16 +171,20 @@ public class SupplierMain extends BaseCompat implements HttpGet.InterfaceHttpGet
      * 查询用户余额
      */
     private void queryBalance() {
+        Map<String, Object> unParas = new HashMap<>();
+        unParas.put("platId", ApiClient.P_ID);
         Map<String, Object> paras = new HashMap<>();
         paras.put("userId", aCache.getAsString(Constant.U_ID));
-        HttpGet get = new HttpGet(this, paras, this) {
+        paras.put("timeStamp", System.currentTimeMillis());
+        paras.put("acctType", ApiClient.ACC_TYPE);
+        HttpGet get = new HttpGet(this, unParas, paras, this) {
             @Override
             public void onPreExecute() {
                 loadingUtils.show();
             }
         };
         get.setResultCode(BALANCE_QUERY);
-        get.execute(RequestIP.GET_USER_BALANCE);
+        get.execute(RequestIP.USER_BALANCE);
     }
 
     /**
@@ -186,9 +193,14 @@ public class SupplierMain extends BaseCompat implements HttpGet.InterfaceHttpGet
      * @param resultCode
      */
     private void queryOrderNum(int orderStatus, int resultCode) {
+        Map<String, Object> unParas = new HashMap<>();
+        if (orderStatus != -1) {
+            unParas.put("orderStatus", orderStatus);
+        }
         Map<String, Object> paras = new HashMap<>();
-        paras.put("orderStatus", orderStatus);
-        HttpGet get = new HttpGet(this, paras, this) {
+        paras.put("userId", aCache.getAsString(Constant.U_ID));
+        paras.put("timeStamp", System.currentTimeMillis());
+        HttpGet get = new HttpGet(this, unParas, paras, this) {
             @Override
             public void onPreExecute() {
 
@@ -197,6 +209,22 @@ public class SupplierMain extends BaseCompat implements HttpGet.InterfaceHttpGet
         get.setResultCode(resultCode);
         get.execute(RequestIP.ORDER_COUNT);
     }
+
+    private void queryRefundNum(int resultCode) {
+        Map<String, Object> unParas = new HashMap<>();
+        Map<String, Object> paras = new HashMap<>();
+        paras.put("userId", aCache.getAsString(Constant.U_ID));
+        paras.put("timeStamp", System.currentTimeMillis());
+        HttpGet get = new HttpGet(this, unParas, paras, this) {
+            @Override
+            public void onPreExecute() {
+
+            }
+        };
+        get.setResultCode(resultCode);
+        get.execute(RequestIP.ORDER_COUNT1);
+    }
+
 
     @Override
     public void getCallback(int resultCode, String result) {
@@ -211,25 +239,37 @@ public class SupplierMain extends BaseCompat implements HttpGet.InterfaceHttpGet
         loadingUtils.dismiss();
     }
 
+    int num = 0;
+
     private void countResult(int resultCode, String result) {
         CountResult countResult = new Gson().fromJson(result, CountResult.class);
         if (countResult != null) {
             if (countResult.getCode().equals("000")) {
                 switch (resultCode) {
                     case ORDER_ALL:
-                        orderAllCount.setText(getString(R.string.order_all).replace("x", countResult.getObj() + ""));
+                        num += countResult.getObj();
+                        orderAllCount.setText(getString(R.string.order_all).replace("x", num + ""));
                         break;
                     case ORDER_UNPAY:
                         orderUnpayCount.setText(getString(R.string.order_unpay).replace("x", countResult.getObj() + ""));
                         break;
-                    case ORDER_UNRECEIVE:
-                        orderUnreceiveCount.setText(getString(R.string.order_unreceive).replace("x", countResult.getObj() + ""));
+                    case ORDER_UNRECEIVE1:
+                        num = countResult.getObj();
+                        break;
+                    case ORDER_UNRECEIVE2:
+                        num += countResult.getObj();
+                        orderUnreceiveCount.setText(getString(R.string.order_unreceive).replace("x", num + ""));
                         break;
                     case ORDER_REFUND:
-                        orderRefundCount.setText(getString(R.string.order_refund).replace("x", countResult.getObj() + ""));
+                        num = countResult.getObj();
+                        orderRefundCount.setText(getString(R.string.order_refund).replace("x", num + ""));
                         break;
-                    case ORDER_DONE:
-                        orderDoneCount.setText(getString(R.string.order_done).replace("x", countResult.getObj() + ""));
+                    case ORDER_DONE1:
+                        num = countResult.getObj();
+                        break;
+                    case ORDER_DONE2:
+                        num += countResult.getObj();
+                        orderDoneCount.setText(getString(R.string.order_done).replace("x", num + ""));
                         break;
                 }
             } else {
@@ -242,10 +282,10 @@ public class SupplierMain extends BaseCompat implements HttpGet.InterfaceHttpGet
     }
 
     private void balanceResult(String result) {
-        BalanceResult balanceResult = new Gson().fromJson(result, BalanceResult.class);
+        UserBalanceResult balanceResult = new Gson().fromJson(result, UserBalanceResult.class);
         if (balanceResult != null) {
             if (balanceResult.getCode().equals("000")) {
-                balanceAvailable.setText(CommUtils.toFormat(balanceResult.getObj() / 100.0));
+                balanceAvailable.setText(CommUtils.toFormat(balanceResult.getObj().getAcc_balance() / 100.0));
             } else {
                 Utils.makeToast(this, balanceResult.getMsg());
             }

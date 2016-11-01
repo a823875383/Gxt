@@ -1,6 +1,7 @@
 package com.jsqix.gxt.app.activity;
 
 import android.os.Handler;
+import android.view.View;
 import android.widget.ListView;
 
 import com.google.gson.Gson;
@@ -86,6 +87,11 @@ public class SupplierSearch extends MerchandiseSearch implements GoodsDialogUtil
             if (manageResult.getCode().equals("000")) {
                 if (pageNum == 1) {
                     data.clear();
+                    if (manageResult.getObj().getItem_list().size() == 0) {
+                        emptyView.setVisibility(View.VISIBLE);
+                    } else {
+                        emptyView.setVisibility(View.GONE);
+                    }
                 }
                 hasNext = manageResult.getObj().isHas_next_page();
                 data.addAll(manageResult.getObj().getItem_list());

@@ -62,7 +62,7 @@ public class OrderSubmit extends BaseToolActivity implements HttpGet.InterfaceHt
     private SureOrderAdapter adapter;
 
     private String productListJson;
-    private int buyType, addressId;
+    private int buyType, addressId = 0;
 
     final static int SURE_ORDER = 0x0001, SUBMIT_ORDER = 0x0010;
 
@@ -97,8 +97,11 @@ public class OrderSubmit extends BaseToolActivity implements HttpGet.InterfaceHt
 
     @Event(R.id.bt_submit)
     private void submitClick(View v) {
-        //startActivity(new Intent(this, OrderPay.class));
-        addOrder();
+        if (addressId == 0) {
+            Utils.makeToast(this, "请添加收货地址");
+        } else {
+            addOrder();
+        }
     }
 
     @Event(R.id.lin_address)

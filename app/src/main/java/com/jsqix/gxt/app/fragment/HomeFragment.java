@@ -261,7 +261,11 @@ public class HomeFragment extends BaseFragment implements HttpGet.InterfaceHttpG
     private void cartResult(String result) {
         BaseBean baseBean = new Gson().fromJson(result, BaseBean.class);
         if (baseBean != null) {
-            Utils.makeToast(mContext, baseBean.getMsg());
+            if (baseBean.getCode().equals("000")) {
+                Utils.makeToast(mContext, "添加成功");
+            } else {
+                Utils.makeToast(mContext, baseBean.getMsg());
+            }
         } else {
             Utils.makeToast(mContext, mContext.getString(R.string.network_timeout));
         }

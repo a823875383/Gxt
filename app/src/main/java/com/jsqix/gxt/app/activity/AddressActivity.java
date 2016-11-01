@@ -16,6 +16,7 @@ import com.jsqix.gxt.app.obj.AddressObj;
 import com.jsqix.gxt.app.obj.AddressResult;
 import com.jsqix.gxt.app.obj.CityObj;
 import com.jsqix.gxt.app.utils.Constant;
+import com.jsqix.utils.StringUtils;
 import com.jsqix.utils.Utils;
 
 import org.xutils.view.annotation.ContentView;
@@ -130,6 +131,12 @@ public class AddressActivity extends BaseToolActivity implements HttpGet.Interfa
 
     @Event(R.id.tv_right)
     private void saveClick(View v) {
+        if(StringUtils.isEmpty(CommUtils.textToString(addressName))){}
+            else  if(StringUtils.isEmpty(CommUtils.textToString(addressName))){}
+            else  if(StringUtils.isEmpty(CommUtils.textToString(addressPhone))){}
+            else  if(StringUtils.isEmpty(CommUtils.textToString(addressName))){}
+            else  if(StringUtils.isEmpty(CommUtils.textToString(addressName))){}
+            else  if(StringUtils.isEmpty(CommUtils.textToString(addressName))){}
         if (addressId != 0) {
             updateAddress();
         } else {

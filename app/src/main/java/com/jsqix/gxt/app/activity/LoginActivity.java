@@ -155,4 +155,5 @@ public class LoginActivity extends BaseCompat implements HttpGet.InterfaceHttpGe
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         return AppContext.getInstance().closeAppByBack(keyCode, event);
     }
+
 }

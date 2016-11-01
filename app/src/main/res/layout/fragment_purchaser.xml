@@ -68,61 +68,68 @@
 
         <View style="@style/div_style" />
 
-        <View
-            style="@style/div_style"
-            android:layout_marginTop="@dimen/off_10dp" />
-
-
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/off_50dp"
-            android:background="@color/white"
-            android:gravity="center_vertical">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
 
             <View
-                android:layout_width="@dimen/off_4dp"
-                android:layout_height="@dimen/off_30dp"
-                android:background="@color/green" />
+                style="@style/div_style"
+                android:layout_marginTop="@dimen/off_10dp" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/off_50dp"
+                android:background="@color/white"
+                android:gravity="center_vertical">
+
+                <View
+                    android:layout_width="@dimen/off_4dp"
+                    android:layout_height="@dimen/off_30dp"
+                    android:background="@color/green" />
+
+                <TextView
+                    style="@style/BlackText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/off_10dp"
+                    android:text="@string/my_account"
+                    android:textSize="@dimen/font_size_16sp" />
+            </LinearLayout>
+
+            <View style="@style/div_style" />
 
             <TextView
-                style="@style/BlackText"
+                android:id="@+id/tv_change_phone"
+                style="@style/GrayText"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/off_10dp"
-                android:text="@string/my_account"
+                android:layout_height="@dimen/off_50dp"
+                android:background="@color/white"
+                android:drawableRight="@mipmap/ic_arrow"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/off_14dp"
+                android:paddingRight="@dimen/off_10dp"
+                android:text="@string/change_name"
                 android:textSize="@dimen/font_size_16sp" />
+
+            <View style="@style/div_style" />
+
+            <TextView
+                android:id="@+id/tv_change_pass"
+                style="@style/GrayText"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/off_50dp"
+                android:background="@color/white"
+                android:drawableRight="@mipmap/ic_arrow"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/off_14dp"
+                android:paddingRight="@dimen/off_10dp"
+                android:text="@string/change_pass"
+                android:textSize="@dimen/font_size_16sp" />
+
+            <View style="@style/div_style" />
         </LinearLayout>
 
-        <View style="@style/div_style" />
-
-        <TextView
-            android:id="@+id/tv_change_phone"
-            style="@style/GrayText"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/off_50dp"
-            android:background="@color/white"
-            android:drawableRight="@mipmap/ic_arrow"
-            android:gravity="center_vertical"
-            android:paddingLeft="@dimen/off_14dp"
-            android:paddingRight="@dimen/off_10dp"
-            android:text="@string/change_name"
-            android:textSize="@dimen/font_size_16sp" />
-
-        <View style="@style/div_style" />
-
-        <TextView
-            android:id="@+id/tv_change_pass"
-            style="@style/GrayText"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/off_50dp"
-            android:background="@color/white"
-            android:drawableRight="@mipmap/ic_arrow"
-            android:gravity="center_vertical"
-            android:paddingLeft="@dimen/off_14dp"
-            android:paddingRight="@dimen/off_10dp"
-            android:text="@string/change_pass"
-            android:textSize="@dimen/font_size_16sp" />
-
-        <View style="@style/div_style" />
     </LinearLayout>
 </ScrollView>

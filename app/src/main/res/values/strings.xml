@@ -24,7 +24,7 @@
     <string name="order_all">全部&#160;(&#160;x&#160;)</string>
     <string name="order_unpay">待付款&#160;(&#160;x&#160;)</string>
     <string name="order_unreceive">待收货&#160;(&#160;x&#160;)</string>
-    <string name="order_refund">退货/退款中&#160;(&#160;x&#160;)</string>
+    <string name="order_refund">退货/退款&#160;(&#160;x&#160;)</string>
     <string name="order_done">已完成&#160;(&#160;x&#160;)</string>
     <string name="blank">银行卡&#160;(&#160;x&#160;)</string>
     <string name="my_address">收货地址&#160;(&#160;x&#160;)</string>
@@ -166,5 +166,6 @@
     <string name="order_pay_time">付款时间&#160;:&#160;</string>
     <string name="order_deliver_time">发货时间&#160;:&#160;</string>
     <string name="order_finish_time">成交时间&#160;:&#160;</string>
+    <string name="exit">退出登录</string>
 
 </resources>

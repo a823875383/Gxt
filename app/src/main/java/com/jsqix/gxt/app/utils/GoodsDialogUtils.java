@@ -209,6 +209,7 @@ public class GoodsDialogUtils implements HttpGet.InterfaceHttpGet {
                         radio.setOnClickListener(new myStandardClick(i, j));
                     }
                 }
+                operateRadio.check(R.id.radio_0);
                 operateDialog.show();
             } else {
                 Utils.makeToast(mContext, specResult.getMsg());
@@ -229,6 +230,7 @@ public class GoodsDialogUtils implements HttpGet.InterfaceHttpGet {
             if (stockResult.getCode().equals("000")) {
                 productId = stockResult.getObj().getPRODUCT_ID();
                 operateStock.setText(stockResult.getObj().getSTOCK() + "");
+                operateStock.setSelection(CommUtils.textToString(operateStock).length());
                 operateMoq.setText(stockResult.getObj().getMIN_NUM() + "");
             } else {
                 Utils.makeToast(mContext, stockResult.getMsg());
@@ -277,7 +279,7 @@ public class GoodsDialogUtils implements HttpGet.InterfaceHttpGet {
         if (tags == null)
             return num;
         for (int i = 0; i < tags.length; i++) {
-            if (tags[i]!=null&&!tags[i].equals("")) {
+            if (tags[i] != null && !tags[i].equals("")) {
                 num++;
             }
         }
