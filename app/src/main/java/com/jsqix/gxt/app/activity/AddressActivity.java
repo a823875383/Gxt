@@ -131,16 +131,22 @@ public class AddressActivity extends BaseToolActivity implements HttpGet.Interfa
 
     @Event(R.id.tv_right)
     private void saveClick(View v) {
-        if(StringUtils.isEmpty(CommUtils.textToString(addressName))){}
-            else  if(StringUtils.isEmpty(CommUtils.textToString(addressName))){}
-            else  if(StringUtils.isEmpty(CommUtils.textToString(addressPhone))){}
-            else  if(StringUtils.isEmpty(CommUtils.textToString(addressName))){}
-            else  if(StringUtils.isEmpty(CommUtils.textToString(addressName))){}
-            else  if(StringUtils.isEmpty(CommUtils.textToString(addressName))){}
-        if (addressId != 0) {
-            updateAddress();
+        if (StringUtils.isEmpty(CommUtils.textToString(addressName))) {
+            Utils.makeToast(this, getString(R.string.address_name));
+        } else if (StringUtils.isEmpty(CommUtils.textToString(addressPhone))) {
+            Utils.makeToast(this, getString(R.string.address_phone));
+        } else if (StringUtils.notPhone(CommUtils.textToString(addressPhone))) {
+            Utils.makeToast(this, "手机号格式不正确");
+        } else if (StringUtils.isEmpty(CommUtils.textToString(addressArea))) {
+            Utils.makeToast(this, getString(R.string.address_info));
+        } else if (StringUtils.isEmpty(CommUtils.textToString(addressStreet))) {
+            Utils.makeToast(this, getString(R.string.address_area));
         } else {
-            addAddress();
+            if (addressId != 0) {
+                updateAddress();
+            } else {
+                addAddress();
+            }
         }
     }
 

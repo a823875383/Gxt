@@ -165,6 +165,7 @@ public class OrderDialogUtils implements HttpGet.InterfaceHttpGet {
 
             } else if (CommUtils.textToString((Button) v).equals("不同意退货")) {
                 getSupplierBtLeft().setOnClickListener(new DisagreeListener(listBean, position));
+                supplierReason.setText("");
                 getSupplierDialog().show();
 
             } else if (CommUtils.textToString((Button) v).equals("确认收货")) {
@@ -319,6 +320,7 @@ public class OrderDialogUtils implements HttpGet.InterfaceHttpGet {
             if (expressResult.getCode().equals("000")) {
                 ExpressAdapter adapter = new ExpressAdapter(mContext, android.R.layout.simple_spinner_dropdown_item, expressResult.getObj());
                 logisticsCompany.setAdapter(adapter);
+                logisticsNumber.setText("");
                 logisticsDialog.show();
             } else {
                 Utils.makeToast(mContext, expressResult.getMsg());

@@ -84,6 +84,8 @@
                 android:id="@+id/et_logistics_number"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/off_35dp"
+                android:singleLine="true"
+                android:inputType="number"
                 android:layout_marginLeft="@dimen/off_10dp"
                 android:background="@drawable/rect_white" />
         </LinearLayout>
