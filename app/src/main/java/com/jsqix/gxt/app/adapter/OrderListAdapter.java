@@ -213,16 +213,21 @@ public class OrderListAdapter extends CommonAdapter<OrderObj> {
         viewHolder.setOnClickListener(R.id.bt_op_02, dialogUtils.new OuterListner(item));
 
         viewHolder.getConvertView().setOnClickListener(v -> {
-            if (dialogUtils.getMerchantType() == 0) {
-                Intent intent = new Intent(mContext, OrderInfo.class);
-                intent.putExtra(Constant.ID, item.getId());
-                if (orderType != 3) {
-                    intent.putExtra(Constant.ORDER_TYPE, 1);
-                } else {
-                    intent.putExtra(Constant.ORDER_TYPE, 2);
-                }
-                mContext.startActivity(intent);
+//            if (dialogUtils.getMerchantType() == 0) {
+            Intent intent = new Intent(mContext, OrderInfo.class);
+            intent.putExtra(Constant.ID, item.getId());
+            if (orderType != 3) {
+                intent.putExtra(Constant.ORDER_TYPE, 1);
+            } else {
+                intent.putExtra(Constant.ORDER_TYPE, 2);
             }
+            if (dialogUtils.getMerchantType() == 0) {
+                intent.putExtra(Constant.BUY_TYPE, 0);
+            } else {
+                intent.putExtra(Constant.BUY_TYPE, 1);
+            }
+            mContext.startActivity(intent);
+//            }
         });
     }
 

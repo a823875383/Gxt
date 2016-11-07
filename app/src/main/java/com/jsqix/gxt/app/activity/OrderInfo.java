@@ -31,7 +31,7 @@ import gxt.jsqix.com.mycommon.base.api.HttpGet;
 import gxt.jsqix.com.mycommon.base.api.RequestIP;
 
 @ContentView(R.layout.activity_order_info)
-public class OrderInfo extends BaseToolActivity implements HttpGet.InterfaceHttpGet, OrderDialogUtils.PurchaseListener, OrderOpUtils.DataResultListener {
+public class OrderInfo extends BaseToolActivity implements HttpGet.InterfaceHttpGet, OrderDialogUtils.PurchaseListener, OrderDialogUtils.SupplierListener, OrderOpUtils.DataResultListener {
     @ViewInject(R.id.tv_update_status)
     private TextView updateStatus;
     @ViewInject(R.id.tv_update_date)
@@ -71,7 +71,7 @@ public class OrderInfo extends BaseToolActivity implements HttpGet.InterfaceHttp
     @ViewInject(R.id.tv_order_date_04)
     private TextView orderdDate_4;
 
-    private int orderId, type;
+    private int orderId, type, merchantType;
 
     private OrderDialogUtils dialogUtils;
     private OrderOpUtils opUtils;
@@ -93,6 +93,7 @@ public class OrderInfo extends BaseToolActivity implements HttpGet.InterfaceHttp
 
         dialogUtils = new OrderDialogUtils(this);
         dialogUtils.setPurchaseListener(this);
+        dialogUtils.setMerchantType(merchantType);
         opUtils = new OrderOpUtils(this);
         opUtils.setResultListener(this);
     }
@@ -102,6 +103,7 @@ public class OrderInfo extends BaseToolActivity implements HttpGet.InterfaceHttp
         super.initVariable();
         orderId = getIntent().getIntExtra(Constant.ID, 0);
         type = getIntent().getIntExtra(Constant.ORDER_TYPE, 1);
+        merchantType = getIntent().getIntExtra(Constant.BUY_TYPE, 0);
     }
 
     private void getOrderInfo() {
@@ -233,6 +235,7 @@ public class OrderInfo extends BaseToolActivity implements HttpGet.InterfaceHttp
                             updateStatus.setText("您的商品已确认收货,交易成功！");
                         } else if (orderListBean.getReturn_status() == 100502) {
                             goods_status.setText("卖家拒绝");
+                            updateStatus.setText("商家拒绝了您的退货申请！");
                         } else if (orderListBean.getReturn_status() == 100505) {
                             goods_status.setText("退款中");
                         } else if (orderListBean.getReturn_status() < 100505 && orderListBean.getReturn_status() != 100502) {
@@ -255,26 +258,54 @@ public class OrderInfo extends BaseToolActivity implements HttpGet.InterfaceHttp
                         goods_status.setText("退款中");
                     } else if (item.getOrder_status() == 100407) {
                         goods_status.setText("已退款");
+                        updateStatus.setText("您的订单退款成功！");
                     }
-                    if (item.getOrder_status() > 100402 && orderListBean.getReturn_status() == 0 && item.getOrder_status() != 100405) {
-                        goods_op.setVisibility(View.VISIBLE);
-                        btn_op1.setText("退货");
-                        if (item.getOrder_status() == 100403 && type != 2) {
-                            opLayout.setVisibility(View.VISIBLE);
-                            btOp1.setVisibility(View.VISIBLE);
-                            btOp2.setVisibility(View.GONE);
-                            btOp1.setText("确认收货");
-                        }
 
-                    }
-                    if (orderListBean.getReturn_status() == 100503) {
-                        btn_op1.setText("填写物流信息");
-                        goods_op.setVisibility(View.VISIBLE);
+                    //采购商
+                    if (dialogUtils.getMerchantType() == 0) {
+                        if (item.getOrder_status() > 100402 && orderListBean.getReturn_status() == 0 && item.getOrder_status() != 100405) {
+                            goods_op.setVisibility(View.VISIBLE);
+                            btn_op1.setText("退货");
+                            if (item.getOrder_status() == 100403 && type != 2) {
+                                opLayout.setVisibility(View.VISIBLE);
+                                btOp1.setVisibility(View.VISIBLE);
+                                btOp2.setVisibility(View.GONE);
+                                btOp1.setText("确认收货");
+                            }
+                        }
+                        if (orderListBean.getReturn_status() == 100503) {
+                            btn_op1.setText("填写物流信息");
+                            goods_op.setVisibility(View.VISIBLE);
+                            updateStatus.setText("商家同意了您的退货申请！");
+                        } else if (orderListBean.getDec_status() == 2 && orderListBean.getDay1() < 8) {
+                            btn_op1.setText("查看卖家反馈");
+                            goods_op.setVisibility(View.VISIBLE);
+                        } else if (orderListBean.getReturn_status() == 100505 || item.getOrder_status() == 100406) {
+                            updateStatus.setText("您的订单退款中！");
+                        }
+                    } else {
+                        //供应商
+                        if (orderListBean.getReturn_status() == 100501) {
+                            btn_op1.setText("同意退货");
+                            btn_op2.setText("不同意退货");
+                            goods_op.setVisibility(View.VISIBLE);
+                            btn_op2.setVisibility(View.VISIBLE);
+                            updateStatus.setText("买家提交了退货申请！");
+                        } else if (orderListBean.getReturn_status() == 100504) {
+                            btn_op1.setText("确认收货");
+                            goods_op.setVisibility(View.VISIBLE);
+                            updateStatus.setText("买家已填写退货物流信息！");
+                        } else if (orderListBean.getReturn_status() == 100505) {
+                            btn_op1.setText("确认退款");
+                            updateStatus.setText("买家提交了退款申请！");
+                            goods_op.setVisibility(View.VISIBLE);
+                        }
                     }
 
 
                     btn_op1.setOnClickListener(dialogUtils.new InnerListner(item, i));
                     btn_op2.setOnClickListener(dialogUtils.new InnerListner(item, i));
+
                     layoutOrder.addView(view);
                 }
                 btOp1.setOnClickListener(dialogUtils.new OuterListner(item));
@@ -293,16 +324,39 @@ public class OrderInfo extends BaseToolActivity implements HttpGet.InterfaceHttp
 
     @Override
     public void logistics(OrderObj listBean, int expressType, String expressNo, int position) {
-        opUtils.orderBuyerOperate(5, -1, listBean.getOrder_list().get(position).getDetail_id(), expressType, expressNo, "", "");//填写物流信息
+        if (dialogUtils.getMerchantType() == 0) {
+            opUtils.orderBuyerOperate(5, -1, listBean.getOrder_list().get(position).getDetail_id(), expressType, expressNo, "", "");//填写物流信息
+        } else {
+            opUtils.orderSellerOperate(1, listBean.getId(), -1, expressType, expressNo, "");//发货
+        }
     }
 
     @Override
     public void receiptOrder(OrderObj listBean, int position) {
-        opUtils.orderBuyerOperate(6, listBean.getId(), -1, -1, "", "", "");//确认收货
+        if (dialogUtils.getMerchantType() == 0) {
+            opUtils.orderBuyerOperate(6, listBean.getId(), -1, -1, "", "", "");//确认收货
+        } else {
+            opUtils.orderSellerOperate(5, -1, listBean.getOrder_list().get(position).getDetail_id(), -1, "", "");//确认收货
+        }
     }
 
     @Override
     public void refreshData() {
         getOrderInfo();
+    }
+
+    @Override
+    public void agreeRefund(OrderObj listBean, int position) {
+        opUtils.orderSellerOperate(2, -1, listBean.getOrder_list().get(position).getDetail_id(), -1, "", "");//确认退款
+    }
+
+    @Override
+    public void agreeReturn(OrderObj listBean, int position) {
+        opUtils.orderSellerOperate(3, -1, listBean.getOrder_list().get(position).getDetail_id(), -1, "", "");//同意退货
+    }
+
+    @Override
+    public void disagreeReturn(OrderObj listBean, String reason, int position) {
+        opUtils.orderSellerOperate(4, -1, listBean.getOrder_list().get(position).getDetail_id(), -1, "", reason);//不同意退货
     }
 }
